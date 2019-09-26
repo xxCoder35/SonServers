@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1500.0" style="-fx-background-color: linear-gradient(to bottom, #125964, #136371, #156e7f, #18788d, #1b839c, #2a8fa7, #389bb3, #44a8be, #5bb9c8, #72cad3, #89dcdd, #a1ede8);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.DBconfigController">
+   <children>
+      <VBox alignment="CENTER" layoutX="545.0" layoutY="255.0" prefHeight="336.0" prefWidth="488.0" spacing="100.0" style="-fx-background-position: fixed;">
+         <children>
+            <Label text="Veuillez introduire le nouveau chemin de la base de donnée" textFill="#fff0f0">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="cheminBDD" focusColor="#ffffffdb" labelFloat="true" promptText="Chemin de la base de donnée" unFocusColor="WHITE">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+               <children>
+                  <JFXButton fx:id="confirm" buttonType="RAISED" prefHeight="45.0" prefWidth="120.0" ripplerFill="#28c691" style="-fx-background-color: #246450; -fx-background-radius: 1000;" text="Confirmer" textFill="WHITE" />
+                  <JFXButton fx:id="cancel" buttonType="RAISED" cancelButton="true" prefHeight="45.0" prefWidth="120.0" ripplerFill="#28c691" style="-fx-background-color: #246450; -fx-background-radius: 1000;" text="Annuler" textFill="WHITE" />
+               </children>
+               <padding>
+                  <Insets left="53.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </VBox>
+      <Label fx:id="error" layoutX="205.0" layoutY="136.0" prefHeight="17.0" prefWidth="430.0" text="Impossible de se connecter au serveur ,chemin invalide" textFill="RED" visible="false">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

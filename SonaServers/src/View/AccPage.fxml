@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1062.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="4.0" layoutY="4.0" prefHeight="706.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #46b1b0, #60bbba, #76c5c5, #8cd0d0, #a0dada);">
+         <children>
+            <JFXButton layoutX="165.0" layoutY="54.0" prefHeight="25.0" prefWidth="30.0" text="+" />
+            <JFXButton layoutX="167.0" layoutY="199.0" prefHeight="27.0" prefWidth="26.0" text="+" />
+            <JFXButton graphicTextGap="10.0" layoutX="14.0" layoutY="644.0" text="Paramètres">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons8-edit-property-52.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <MenuButton layoutX="7.0" layoutY="54.0" mnemonicParsing="false" style="-fx-background-color: linear-gradient(to bottom, #46b1b0, #60bbba, #76c5c5, #8cd0d0, #a0dada);" text="Application Servers">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons8-server-96.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MenuButton>
+            <MenuButton layoutX="8.0" layoutY="197.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="162.0" style="-fx-background-color: linear-gradient(to bottom, #46b1b0, #60bbba, #76c5c5, #8cd0d0, #a0dada);" text="DB Servers">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons8-server-96.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MenuButton>
+            <JFXButton layoutX="14.0" layoutY="96.0" text="AS">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons8-server-96.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <contextMenu>
+                  <ContextMenu autoFix="false" autoHide="false" consumeAutoHidingEvents="false" hideOnEscape="false">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Act" />
+                      <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </JFXButton>
+         </children>
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" />
+         </effect>
+      </AnchorPane>
+      <JFXTextField focusColor="#f4e983" labelFloat="true" layoutX="726.0" layoutY="14.0" prefHeight="25.0" prefWidth="322.0" promptText="Rechercher" />
+      <VBox layoutX="343.0" layoutY="58.0" prefHeight="673.0" prefWidth="677.0" spacing="30.0" style="-fx-background-color: #78ffd9;" visible="false">
+         <children>
+            <JFXTextField text="Adresse IPV4" />
+            <JFXTextField text="Masque" />
+            <JFXTextField text="Passerelle" />
+            <JFXTextField text="Serveur DNS" />
+            <JFXTextField text="Adresse IPV6" />
+            <JFXTextField text="Adresse Physique" />
+            <Label prefHeight="17.0" prefWidth="328.0" text="Système d'exploitation">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField prefHeight="25.0" prefWidth="295.0" text="Edition (Windows / Linux)" />
+            <JFXComboBox prefHeight="25.0" prefWidth="399.0" promptText="Type (e.g. 64 bits /32bits) " />
+            <JFXDatePicker prefHeight="28.0" prefWidth="586.0" promptText="Installé le" />
+            <JFXTextField text="Version du système d'exploitation" />
+            <JFXButton text="Suivant &gt;">
+               <VBox.margin>
+                  <Insets left="500.0" />
+               </VBox.margin>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets left="30.0" right="30.0" top="20.0" />
+         </padding>
+      </VBox>
+      <VBox fx:id="HardwareForm" layoutX="343.0" layoutY="58.0" prefHeight="576.0" prefWidth="709.0" spacing="30.0" style="-fx-background-color: #f4e983;" visible="false">
+         <children>
+            <JFXTextField promptText="Mémoire" />
+            <JFXTextField promptText="CPU" />
+            <JFXTextField promptText="CPU" text="carte vidéo" />
+            <JFXTextField promptText="CPU" text="Périphérique VMCI" />
+            <JFXTextField promptText="CPU" text="Controleur SCSI0" />
+            <JFXTextField promptText="CPU" text="Lecteur CD/DVD1" />
+            <JFXTextField promptText="CPU" text="Disque dur 1" />
+            <JFXTextField promptText="CPU" text="Lecteur de disquette 1" />
+            <JFXTextField promptText="CPU" text="Adaptateur réseau 1" />
+            <JFXButton text="Suivant &gt;">
+               <VBox.margin>
+                  <Insets left="500.0" />
+               </VBox.margin>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets left="30.0" right="30.0" top="20.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

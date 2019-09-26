@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: linear-gradient(to bottom, #125964, #136371, #156e7f, #18788d, #1b839c, #2a8fa7, #389bb3, #44a8be, #5bb9c8, #72cad3, #89dcdd, #a1ede8);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="395.0" scaleShape="false" style="-fx-background-color: #CCEFF0; -fx-background-radius: 20; -fx-background-position: dynamic;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+         </BorderPane.margin>
+         <children>
+            <JFXTextField focusColor="#086164" labelFloat="true" layoutX="75.0" layoutY="135.0" prefHeight="39.0" prefWidth="277.0" promptText="nom d'utilisateur" unFocusColor="#0a7f83">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXPasswordField focusColor="#086164" labelFloat="true" layoutX="74.0" layoutY="221.0" prefHeight="25.0" prefWidth="282.0" promptText="mot de passe" unFocusColor="#0a7f83">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXButton buttonType="RAISED" layoutX="148.0" layoutY="312.0" prefHeight="37.0" prefWidth="104.0" ripplerFill="#40b3b5" style="-fx-background-color: #0A7F83;" text="Se connecter" textFill="#fffdfd">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="135.0" layoutY="52.0" prefHeight="34.0" prefWidth="197.0" text="Connexion" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <JFXButton text="Changer le chemin de la base de donnée" underline="true" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="20.0" />
+         </BorderPane.margin>
+      </JFXButton>
+   </bottom>
+</BorderPane>
