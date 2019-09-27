@@ -8,5 +8,7 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/moi/Desktop/jfoenix-9.0.0/jfoenix-9.0.0.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-java-8.0.16.jar"/>
+	<classpathentry kind="lib" path="C:/Users/moi/Desktop/commons-configuration-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/moi/Desktop/commons-configuration2-2.6/commons-configuration2-2.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

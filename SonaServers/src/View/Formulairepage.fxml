@@ -5,10 +5,10 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,12 +16,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1062.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1304.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="4.0" layoutY="4.0" prefHeight="706.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #46b1b0, #60bbba, #76c5c5, #8cd0d0, #a0dada);">
+      <AnchorPane layoutY="3.0" prefHeight="694.0" prefWidth="201.0" style="-fx-background-color: linear-gradient(to bottom, #46b1b0, #60bbba, #76c5c5, #8cd0d0, #a0dada);">
          <children>
-            <JFXButton layoutX="165.0" layoutY="54.0" prefHeight="25.0" prefWidth="30.0" text="+" />
-            <JFXButton layoutX="167.0" layoutY="199.0" prefHeight="27.0" prefWidth="26.0" text="+" />
+            <JFXButton layoutX="171.0" layoutY="61.0" prefHeight="25.0" prefWidth="30.0" text="+" />
+            <JFXButton layoutX="173.0" layoutY="200.0" prefHeight="27.0" prefWidth="26.0" text="+" />
             <JFXButton graphicTextGap="10.0" layoutX="14.0" layoutY="644.0" text="Paramètres">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
@@ -56,29 +56,12 @@
                   </ImageView>
                </graphic>
             </MenuButton>
-            <JFXButton layoutX="14.0" layoutY="96.0" text="AS">
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icons8-server-96.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <contextMenu>
-                  <ContextMenu autoFix="false" autoHide="false" consumeAutoHidingEvents="false" hideOnEscape="false">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Act" />
-                      <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                    </items>
-                  </ContextMenu>
-               </contextMenu>
-            </JFXButton>
          </children>
          <effect>
             <DropShadow blurType="TWO_PASS_BOX" />
          </effect>
       </AnchorPane>
-      <JFXTextField focusColor="#f4e983" labelFloat="true" layoutX="726.0" layoutY="14.0" prefHeight="25.0" prefWidth="322.0" promptText="Rechercher" />
+      <JFXTextField focusColor="#c6eeff" labelFloat="true" layoutX="726.0" layoutY="14.0" prefHeight="25.0" prefWidth="322.0" promptText="Rechercher" />
       <VBox layoutX="343.0" layoutY="58.0" prefHeight="673.0" prefWidth="677.0" spacing="30.0" style="-fx-background-color: #78ffd9;" visible="false">
          <children>
             <JFXTextField text="Adresse IPV4" />
@@ -127,5 +110,5 @@
             <Insets left="30.0" right="30.0" top="20.0" />
          </padding>
       </VBox>
-   </children>
+        </children>
 </AnchorPane>

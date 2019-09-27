@@ -46,7 +46,7 @@
             </JFXPasswordField>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <JFXButton fx:id="confirm" buttonType="RAISED" prefHeight="51.0" prefWidth="134.0" ripplerFill="#28c691" style="-fx-background-color: #246450; -fx-background-radius: 1000;" text="Confirmer" textFill="WHITE" />
+                  <JFXButton fx:id="confirm" buttonType="RAISED" onAction="#Clickconfirm" prefHeight="51.0" prefWidth="134.0" ripplerFill="#28c691" style="-fx-background-color: #246450; -fx-background-radius: 1000;" text="Confirmer" textFill="WHITE" />
                   <JFXButton fx:id="cancel" buttonType="RAISED" cancelButton="true" prefHeight="45.0" prefWidth="120.0" ripplerFill="#28c691" style="-fx-background-color: #246450; -fx-background-radius: 1000;" text="Annuler" textFill="WHITE" />
                </children>
                <padding>
