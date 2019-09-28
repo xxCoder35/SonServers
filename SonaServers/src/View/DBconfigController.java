@@ -1,5 +1,7 @@
 package View;
 
+import java.sql.Connection;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -39,13 +41,14 @@ protected void Clickconfirm(ActionEvent event)
 	String username;
 	String passwd;
 	boolean connexionetablie;
-	
+	Connection conn = null;
 	url=cheminBDD.getText();
 	username=user.getText();
 	passwd=pwd.getText();
-	try {connexionetablie=true;
-	//connexionetablie=DBconnection.BDDconnection(url, username, passwd);
-	if(!connexionetablie)
+	try {
+	Connection con=DBconnection.getConnection();
+	
+	if(con==null)
     { 
 		Alert alert=new Alert(Alert.AlertType.ERROR);
 	    alert.setTitle("Message d'erreur");
@@ -53,11 +56,12 @@ protected void Clickconfirm(ActionEvent event)
 	    alert.setContentText("Vérifiez les informations saisies  :( "); 
 	    alert.showAndWait();}
     else {
-    	
+    	con.close();
     	ReadConfigProperties prop=new ReadConfigProperties();
     	prop.setpropretyvalue("conf.properties","cheminBDD",url);
     	prop.setpropretyvalue("conf.properties","user",username);
     	prop.setpropretyvalue("conf.properties","password",passwd);
+    	
     	Alert alert=new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Message");
         alert.setContentText("Informations mise à jour avec succès :) ");
@@ -68,19 +72,13 @@ protected void Clickconfirm(ActionEvent event)
 	    alert.setTitle("Message d'erreur");
 	    alert.setHeaderText("impossible de se connecter à la BDD");
 	    VBox dialogPaneContent = new VBox();
-	   
         Label label = new Label("Stack Trace:");
- 
-  
         TextArea textArea = new TextArea();
         textArea.setText(e.getStackTrace().toString());
- 
         dialogPaneContent.getChildren().addAll(label, textArea);
 
         alert.getDialogPane().setContent(dialogPaneContent);
-        
-
-	   // alert.setContentText("Vérifiez les informations saisies  :( ");
+	    alert.setContentText("Vérifiez les informations saisies  :( ");
 	    alert.showAndWait();
 		
 	}

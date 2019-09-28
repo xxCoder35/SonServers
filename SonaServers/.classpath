@@ -8,7 +8,8 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/moi/Desktop/jfoenix-9.0.0/jfoenix-9.0.0.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-java-8.0.16.jar"/>
-	<classpathentry kind="lib" path="C:/Users/moi/Desktop/commons-configuration-1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/moi/Desktop/commons-configuration2-2.6/commons-configuration2-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/moi/Desktop/commons-dbcp2-2.4.0/commons-dbcp2-2.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/moi/Desktop/commons-pool2-2.7.0/commons-pool2-2.7.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/moi/Desktop/commons-logging-1.2-bin/commons-logging-1.2/commons-logging-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
