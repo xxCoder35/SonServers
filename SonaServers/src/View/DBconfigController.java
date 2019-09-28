@@ -16,7 +16,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Alert.AlertType;
 
-public class DBconfigController {
+public class DBconfigController implements MovePages {
 	
 	
 @FXML
@@ -35,7 +35,7 @@ private Label error;
 
 
 @FXML
-protected void Clickconfirm(ActionEvent event)
+protected void Clickconfirm(ActionEvent event) 
 {
 	String url;
 	String username;
@@ -66,6 +66,7 @@ protected void Clickconfirm(ActionEvent event)
         alert.setTitle("Message");
         alert.setContentText("Informations mise à jour avec succès :) ");
         alert.showAndWait();
+        goToLogin(event);
     }
     }catch(Exception e) {
 		Alert alert=new Alert(Alert.AlertType.ERROR);
@@ -85,8 +86,9 @@ protected void Clickconfirm(ActionEvent event)
    
 	
     }
-
-
+@FXML
+ protected void CancelHandler(ActionEvent evente) {
+               goToLogin(evente);}
 }
 
 

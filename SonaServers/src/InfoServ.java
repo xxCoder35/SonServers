@@ -14,18 +14,14 @@ import Model.DBconnection;
 import Ressources.ReadConfigProperties;
 
 public class InfoServ extends Application {
-            public static Connection  conn;
-			public static Connection getConn() {
-				return conn;
-			}
-			public static void setConn(Connection conn) {
-				InfoServ.conn = conn;
-			}
+            public Parent root;
+			
+			
 			@Override
 			public void start(Stage primaryStage) throws Exception {
-			Parent root =FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
+			 root =FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
 			primaryStage.setTitle("Configuration de la base de donnees ");
-		    primaryStage.setScene(new Scene(root, 1000, 700));
+		    primaryStage.setScene(new Scene(root, 1200, 700));
 		    primaryStage.show();
 			}
 	
