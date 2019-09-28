@@ -26,7 +26,11 @@ public final class DBconnection {
 
     public static Connection getConnection() throws SQLException {
         return dataSource.getConnection();
-        
+       
+    }
+    public static void CloseConnection() throws SQLException {
+        dataSource.close();
+       
     }
 
 }

@@ -24,6 +24,13 @@ public interface MovePages {
 		}
 	
 	}
+	public default void close(ActionEvent n)
+	{
+		Stage primaryStage = (Stage)((Node)n.getSource()).getScene().getWindow();
+	
+		primaryStage.close();
+	
+	}
 	public default void goToDBConfig(ActionEvent n)
 	{
 		Stage primaryStage = (Stage)((Node)n.getSource()).getScene().getWindow();
@@ -31,6 +38,20 @@ public interface MovePages {
 		try {
 			Parent root1;
 			root1 = FXMLLoader.load(getClass().getResource("/view/DBconfig.fxml"));
+			primaryStage.setScene(new Scene(root1,1200,700));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	}
+	public default void goToHome(ActionEvent n)
+	{
+		Stage primaryStage = (Stage)((Node)n.getSource()).getScene().getWindow();
+	
+		try {
+			Parent root1;
+			root1 = FXMLLoader.load(getClass().getResource("/view/FormulairePage.fxml"));
 			primaryStage.setScene(new Scene(root1,1200,700));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

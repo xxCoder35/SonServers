@@ -8,7 +8,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1304.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1304.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.HomePageController">
    <children>
       <AnchorPane layoutY="3.0" prefHeight="694.0" prefWidth="201.0" style="-fx-background-color: linear-gradient(to bottom, #46b1b0, #60bbba, #76c5c5, #8cd0d0, #a0dada);">
          <children>
-            <JFXButton layoutX="171.0" layoutY="61.0" prefHeight="25.0" prefWidth="30.0" text="+" />
+            <JFXButton layoutX="173.0" layoutY="118.0" prefHeight="25.0" prefWidth="30.0" text="+" />
             <JFXButton layoutX="173.0" layoutY="200.0" prefHeight="27.0" prefWidth="26.0" text="+" />
             <JFXButton graphicTextGap="10.0" layoutX="14.0" layoutY="644.0" text="Paramètres">
                <graphic>
@@ -30,7 +29,7 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <MenuButton layoutX="7.0" layoutY="54.0" mnemonicParsing="false" style="-fx-background-color: linear-gradient(to bottom, #46b1b0, #60bbba, #76c5c5, #8cd0d0, #a0dada);" text="Application Servers">
+            <MenuButton layoutX="8.0" layoutY="115.0" mnemonicParsing="false" style="-fx-background-color: linear-gradient(to bottom, #46b1b0, #60bbba, #76c5c5, #8cd0d0, #a0dada);" text="Application Servers">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -56,6 +55,11 @@
                   </ImageView>
                </graphic>
             </MenuButton>
+            <Label fx:id="Nomconnected" layoutX="22.0" layoutY="14.0" prefHeight="17.0" prefWidth="131.0" text="Label" textFill="#393535">
+               <font>
+                  <Font name="Arial Bold Italic" size="20.0" />
+               </font>
+            </Label>
          </children>
          <effect>
             <DropShadow blurType="TWO_PASS_BOX" />

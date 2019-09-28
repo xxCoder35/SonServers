@@ -64,9 +64,9 @@ protected void Clickconfirm(ActionEvent event)
     	
     	Alert alert=new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Message");
-        alert.setContentText("Informations mise à jour avec succès :) ");
+        alert.setContentText("Informations mise à jour avec succès :) Redémarrez l'application ");
         alert.showAndWait();
-        goToLogin(event);
+       close(event);
     }
     }catch(Exception e) {
 		Alert alert=new Alert(Alert.AlertType.ERROR);

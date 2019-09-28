@@ -19,7 +19,7 @@ public class InfoServ extends Application {
 			
 			@Override
 			public void start(Stage primaryStage) throws Exception {
-			 root =FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
+			root =FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
 			primaryStage.setTitle("Configuration de la base de donnees ");
 		    primaryStage.setScene(new Scene(root, 1200, 700));
 		    primaryStage.show();
@@ -28,13 +28,20 @@ public class InfoServ extends Application {
 	public static void main(String[] args) {
 
      //  System.out.print(DBconnection.BDDconnection("jdbc:mysql://127.0.0.1:3306/sonatrach_servers","root","admin"));
-	ReadConfigProperties prop=new ReadConfigProperties();
+	/*
 	prop.setpropretyvalue("conf.properties","password","admin");
 	prop.setpropretyvalue("conf.properties","cheminBDD","jdbc:mysql://127.0.0.1:3306/sonatrach_servers");
-	     prop.setpropretyvalue("conf.properties","user","root");
-	     launch(args);
+	     prop.setpropretyvalue("conf.properties","user","root");*/
 	
-	
+		launch(args);
+		ReadConfigProperties prop=new ReadConfigProperties();
+		System.out.println(prop.getpropretyvalue("conf.properties","password")+"   "+prop.getpropretyvalue("conf.properties","cheminBDD"));
+	try {
+		DBconnection.CloseConnection();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	
 	}
 
