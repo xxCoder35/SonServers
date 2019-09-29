@@ -60,21 +60,19 @@ private static String userConnected;
 
 	@FXML
     void seconnecter(ActionEvent event) {
-    	
-    				if(nomu.getText().equals(""))
-    		        {
-    		            erroru.setVisible(true);
-    		        }
-    		        
-    		        else if(mdp.getText().equals(""))
-    		        {
-    		        	errorm.setVisible(true);
-    		        }
-    		        else { String uname = nomu.getText();
-    			           String pass = mdp.getText();
-    			        
-    			        
-    				       String query = "SELECT * FROM `user` WHERE `userid` =? AND `passwd` =?";
+		
+		if(nomu.getText().equals(""))
+	        {
+	            erroru.setVisible(true);
+	        }
+		else  if(mdp.getText().equals(""))
+	        {
+	        	errorm.setVisible(true);
+	        }
+		 else {
+    		        	String uname = nomu.getText();
+    			        String pass = mdp.getText();
+ 			             String query = "SELECT * FROM `user` WHERE `userid` =? AND `passwd` =?";
 					try (
     		    		       Connection conn=DBconnection.getConnection();PreparedStatement pr=conn.prepareStatement(query); ){
 							
@@ -83,8 +81,7 @@ private static String userConnected;
                                ResultSet rs = pr.executeQuery();		        
 						        if (rs.next()) {
 						        	rs.close();
-						        	conn.close();
-						        	userConnected=uname;
+						           	userConnected=uname;
 						        	System.out.print("  "+uname);
 						          goToHome(event);
 						        }
@@ -101,10 +98,22 @@ private static String userConnected;
     		    				
     			}
     			catch ( SQLException e) {
-    				e.printStackTrace();
-    			}
+    				Alert alert=new Alert(Alert.AlertType.ERROR);
+    			    alert.setTitle("Message d'erreur");
+    			    alert.setHeaderText("impossible de se connecter à la BDD");
+    			    VBox dialogPaneContent = new VBox();
+    		        Label label = new Label("Stack Trace:");
+    		        TextArea textArea = new TextArea();
+    		        textArea.setText(e.getMessage());
+    		        dialogPaneContent.getChildren().addAll(label, textArea);
+
+    		        alert.getDialogPane().setContent(dialogPaneContent);
+    			    alert.setContentText("Données de connexion peuvent etre erronées :( ");
+    			    alert.showAndWait();
+    			}}
+					 
     	
-    		        }  
+    	 
 
     }
 
@@ -133,27 +142,7 @@ private static String userConnected;
 	             errorm.setVisible(false);
 	            }}
 	    });
-		try (
-	       Connection conn=DBconnection.getConnection();){
-
-		}
-		catch ( SQLException e) {
-			Alert alert=new Alert(Alert.AlertType.ERROR);
-		    alert.setTitle("Message d'erreur");
-		    alert.setHeaderText("impossible de se connecter à la BDD");
-		    VBox dialogPaneContent = new VBox();
-	        Label label = new Label("Stack Trace:");
-	        TextArea textArea = new TextArea();
-	        textArea.setText(e.getMessage());
-	        dialogPaneContent.getChildren().addAll(label, textArea);
-
-	        alert.getDialogPane().setContent(dialogPaneContent);
-		    alert.setContentText("Données de connexion peuvent etre erronées :( ");
-		    alert.showAndWait();
-		  //  e.printStackTrace();
-			
-		}
-		
+	
 		
 	}
     

@@ -30,12 +30,17 @@ public class InfoServ extends Application {
      //  System.out.print(DBconnection.BDDconnection("jdbc:mysql://127.0.0.1:3306/sonatrach_servers","root","admin"));
 	/*
 	prop.setpropretyvalue("conf.properties","password","admin");
-	prop.setpropretyvalue("conf.properties","cheminBDD","jdbc:mysql://127.0.0.1:3306/sonatrach_servers");
+
 	     prop.setpropretyvalue("conf.properties","user","root");*/
-	
+		//ReadConfigProperties prop=new ReadConfigProperties();
+		//System.out.println(prop.getpropretyvalue("Ressource/conf.properties","password")+"   "+prop.getpropretyvalue("conf.properties","cheminBDD"));
 		launch(args);
-		ReadConfigProperties prop=new ReadConfigProperties();
-		System.out.println(prop.getpropretyvalue("conf.properties","password")+"   "+prop.getpropretyvalue("conf.properties","cheminBDD"));
+		//ReadConfigProperties prop=new ReadConfigProperties();
+		/*prop.setpropretyvalue("conf.properties","password","admin");
+
+	     prop.setpropretyvalue("conf.properties","user","root");
+		prop.setpropretyvalue("conf.properties","cheminBDD","jdbc:mysql://127.0.0.1:3306/sonatrach_servers");
+		System.out.println(prop.getpropretyvalue("conf.properties","password")+"   "+prop.getpropretyvalue("conf.properties","cheminBDD"));*/
 	try {
 		DBconnection.CloseConnection();
 	} catch (SQLException e) {

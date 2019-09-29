@@ -5,14 +5,17 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1005.0" style="-fx-background-color: #D7F0EE;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.DBconfigController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #D7F0EE;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.DBconfigController">
    <children>
-      <VBox alignment="CENTER" layoutX="323.0" layoutY="39.0" prefHeight="459.0" prefWidth="498.0" spacing="100.0" style="-fx-background-color: #D7F0EE; -fx-background-radius: 50;">
+      <VBox alignment="CENTER" layoutX="644.0" layoutY="44.0" prefHeight="459.0" prefWidth="498.0" spacing="100.0" style="-fx-background-color: #D7F0EE; -fx-background-radius: 50;">
          <children>
             <JFXTextField fx:id="cheminBDD" focusColor="#122764" labelFloat="true" promptText="Chemin de la base de donnée" text="e.g.   jdbc:mysql://@Iphost:3306/nomBDD" unFocusColor="#0e1aa1">
                <font>
@@ -65,6 +68,13 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </VBox>
+      <ImageView fitHeight="316.0" fitWidth="315.0" layoutX="57.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/view/imageedit_16_6197169788.png" />
+         </image>
+      </ImageView>
+      <Line endX="100.0" startX="-100.0" />
+      <Line endX="31.5" endY="347.5" fill="#8cdee4" layoutX="434.0" layoutY="289.0" scaleX="2.0" startX="31.5" startY="-178.5" stroke="#160761" />
     
    </children>
    <padding>

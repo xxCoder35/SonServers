@@ -11,7 +11,7 @@ public class ReadConfigProperties {
 
 	public String getpropretyvalue(String filename,String propretykey) {
 		String result="";
-		InputStream input=getClass().getClassLoader().getResourceAsStream(filename);
+		InputStream input=ReadConfigProperties.class.getResourceAsStream(filename);
 
 			try {
 			Properties property=new Properties();
@@ -30,9 +30,9 @@ public class ReadConfigProperties {
 			Properties property=new Properties();
 			
 			try {
-				InputStream input=getClass().getClassLoader().getResourceAsStream(filename);
+				InputStream input=ReadConfigProperties.class.getResourceAsStream(filename);
 				
-				OutputStream out=new FileOutputStream(getClass().getClassLoader().getResource(filename).getPath(),true);
+				OutputStream out=new FileOutputStream(ReadConfigProperties.class.getResource(filename).getPath(),true);
 				property.load(input);
 				property.setProperty(propretykey, newvalue);
 				property.store(out,null);
