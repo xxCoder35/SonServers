@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="C:/Users/moi/Desktop/jfoenix-9.0.0/commons-dbcp2-2.4.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/moi/Desktop/jfoenix-9.0.0/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/moi/Desktop/jfoenix-9.0.0/commons-pool2-2.7.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/moi/Downloads/scenicview-win (1)/scenicview/lib/scenicview.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

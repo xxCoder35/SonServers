@@ -3,6 +3,22 @@ package Model;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Server {
+	public Server(SimpleStringProperty nomS, SimpleStringProperty typeS, SimpleStringProperty versionserver,
+			SimpleStringProperty memoire, SimpleStringProperty cPU, SimpleStringProperty serverOS,
+			SimpleStringProperty ipv4a, SimpleStringProperty ipv4m, SimpleStringProperty ipv6a,
+			SimpleStringProperty ipv6m) {
+		super();
+		this.nomS = nomS;
+		this.typeS = typeS;
+		this.versionserver = versionserver;
+		this.memoire = memoire;
+		CPU = cPU;
+		this.serverOS = serverOS;
+		this.ipv4a = ipv4a;
+		this.ipv4m = ipv4m;
+		this.ipv6a = ipv6a;
+		this.ipv6m = ipv6m;
+	}
 	private SimpleStringProperty nomS;
 	private SimpleStringProperty typeS;
     private SimpleStringProperty versionserver;

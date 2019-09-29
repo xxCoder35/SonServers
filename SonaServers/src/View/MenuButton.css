@@ -1,0 +1,35 @@
+
+
+
+
+/*ComboBox's Arrow Button is a Stack Pane.*/
+.menu-button .arrow-button{
+     -fx-background-color: #60BBBA; 
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+   
+}
+.menu-button .arrow {
+     -fx-background-color:green; 
+     -fx-opacity: 0.0
+
+}
+.menu-item {
+    
+    -fx-padding: 15 100 15 100;
+    -fx-background-color:#60BBBA;
+
+}
+.menu-item:hover {
+    -fx-background-color:green ;
+
+}
+.menu-item .label {
+    -fx-text-fill:white;
+    -fx-font-size: 16;
+}
+
+.menu-item:hover .label {
+    -fx-text-fill: #95B1B0 ;
+    -fx-font-weight: Bold;
+}
