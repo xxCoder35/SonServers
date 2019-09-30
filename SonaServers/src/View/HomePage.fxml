@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
@@ -20,7 +21,7 @@
    <children>
       <AnchorPane prefHeight="696.0" prefWidth="322.0" style="-fx-background-color: linear-gradient(to bottom, #46b1b0, #60bbba, #76c5c5, #8cd0d0, #a0dada);">
          <children>
-            <MenuButton fx:id="ASshow" layoutX="3.0" layoutY="77.0" mnemonicParsing="false" onAction="#showAs" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #60BBBA;" stylesheets="@MenuButton.css" text="Application Servers">
+            <MenuButton fx:id="ASshow" layoutX="3.0" layoutY="77.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #60BBBA;" stylesheets="@MenuButton.css" text="Application Servers">
                <items>
                   <MenuItem mnemonicParsing="false" text="act" />
                   <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -33,7 +34,7 @@
                   </ImageView>
                </graphic>
             </MenuButton>
-            <MenuButton fx:id="DBshow" layoutX="3.0" layoutY="144.0" mnemonicParsing="false" onAction="#showDBS" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #60BBBA;" stylesheets="@MenuButton.css" text="DB Servers">
+            <MenuButton fx:id="DBshow" layoutX="3.0" layoutY="144.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #60BBBA;" stylesheets="@MenuButton.css" text="DB Servers">
                <items>
                   <MenuItem mnemonicParsing="false" text="Action 1" />
                   <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -61,9 +62,23 @@
             <JFXButton fx:id="addDB" layoutX="278.0" layoutY="148.0" prefHeight="25.0" prefWidth="30.0" text="+">
               
             </JFXButton>
+            <MenuButton fx:id="othersShow" layoutX="3.0" layoutY="211.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #60BBBA;" stylesheets="@MenuButton.css" text="Autres">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons8-server-96.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MenuButton>
+            <JFXButton fx:id="addserver" layoutX="281.0" layoutY="215.0" prefHeight="25.0" prefWidth="30.0" text="+" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="322.0" prefHeight="720.0" prefWidth="1056.0">
+      <AnchorPane fx:id="showinfoPane" layoutX="322.0" prefHeight="720.0" prefWidth="1056.0">
          <children>
             <VBox layoutX="20.0" layoutY="150.0" prefHeight="346.0" prefWidth="352.0">
                <children>
@@ -75,7 +90,7 @@
                         <Insets left="15.0" />
                      </VBox.margin>
                   </Label>
-                  <GridPane hgap="25.0" prefHeight="237.0" prefWidth="390.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" vgap="20.0">
+                  <GridPane hgap="10.0" prefHeight="278.0" prefWidth="352.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" vgap="5.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -109,14 +124,64 @@
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Disque Dur" GridPane.rowIndex="8" />
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Lecteur Disquette" GridPane.rowIndex="9" />
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Adaptateur Réseau" GridPane.rowIndex="10" />
+                        <Label id="Champs" fx:id="cVersionS" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cMemoire" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cCPU" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cCV" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cVMCI" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cSCSI" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cCD" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cAdapres" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cDisquette" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cDD" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
                      </children>
                      <padding>
-                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                        <Insets bottom="10.0" left="10.0" top="3.0" />
                      </padding>
                   </GridPane>
                </children>
             </VBox>
-            <VBox layoutX="500.0" layoutY="52.0" prefHeight="346.0" prefWidth="352.0">
+            <VBox layoutX="500.0" layoutY="52.0" prefHeight="320.0" prefWidth="352.0">
                <children>
                   <Label id="title" layoutX="500.0" prefHeight="44.0" prefWidth="322.0" stylesheets="@ShowInfo.css" text="Système d'exploitation &amp; Réseau" textAlignment="CENTER" textFill="#0b7e8a">
                      <font>
@@ -126,14 +191,13 @@
                         <Insets left="15.0" />
                      </VBox.margin>
                   </Label>
-                  <GridPane hgap="25.0" prefHeight="300.0" prefWidth="383.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" vgap="20.0">
+                  <GridPane hgap="10.0" prefHeight="274.0" prefWidth="352.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" vgap="5.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -144,29 +208,66 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label GridPane.rowIndex="8" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="173.0" stylesheets="@ShowInfo.css" text="Version du OS" GridPane.rowIndex="1" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="@ShowInfo.css" text="Système d'exploitation">
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="173.0" stylesheets="@ShowInfo.css" text="Version du OS" GridPane.rowIndex="2" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="@ShowInfo.css" text="Système d'exploitation" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Date d'installation du OS" GridPane.rowIndex="2" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="179.0" stylesheets="@ShowInfo.css" text="adresse ipv4" GridPane.rowIndex="3" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="adresse ipv6" GridPane.rowIndex="4" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Serveur DNS" GridPane.rowIndex="5" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Passerelle" GridPane.rowIndex="6" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Adresse physique" GridPane.rowIndex="7" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Lecteur Disquette" GridPane.rowIndex="8" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Adaptateur Réseau" GridPane.rowIndex="9" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Date d'installation du OS" GridPane.rowIndex="3" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="179.0" stylesheets="@ShowInfo.css" text="adresse ipv4" GridPane.rowIndex="4" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="adresse ipv6" GridPane.rowIndex="5" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Serveur DNS" GridPane.rowIndex="6" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Passerelle" GridPane.rowIndex="7" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Adresse physique" GridPane.rowIndex="8" />
+                        <Label id="Champs" fx:id="cOS" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cVersionOS" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cDateOS" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cipv4" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cipv6" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cDNS" prefHeight="15.0" prefWidth="160.0" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cPasserelle" prefHeight="15.0" prefWidth="164.0" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cMAC" prefHeight="15.0" prefWidth="163.0" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
                      </children>
                      <padding>
-                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                        <Insets bottom="10.0" left="10.0" top="3.0" />
                      </padding>
                   </GridPane>
                </children>
             </VBox>
-            <Label id="title" layoutX="500.0" layoutY="399.0" prefHeight="29.0" prefWidth="322.0" stylesheets="@ShowInfo.css" text="Détails" textAlignment="CENTER" textFill="#0b7e8a">
+            <Label id="title" layoutX="503.0" layoutY="372.0" prefHeight="56.0" prefWidth="490.0" stylesheets="@ShowInfo.css" text="Détails" textAlignment="CENTER" textFill="#0b7e8a">
                <font>
                   <Font name="Bell MT" size="14.0" />
                </font>
@@ -176,44 +277,129 @@
             </Label>
             <AnchorPane prefHeight="44.0" prefWidth="1060.0">
                <children>
-                  <Label fx:id="servername" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="208.0" text="Nom du serveur" textFill="#5fc4c6">
+                  <Label fx:id="servername" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="278.0" text="Nom du serveur" textFill="#5fc4c6">
                      <font>
                         <Font name="System Bold Italic" size="23.0" />
                      </font>
                   </Label>
-                  <Line endX="262.0" layoutX="112.0" layoutY="48.0" startX="-100.0" stroke="#31bca9" />
+                  <Line endX="180.0" layoutX="112.0" layoutY="48.0" startX="-100.0" stroke="#31bca9" />
+                  <JFXButton fx:id="delete" graphicTextGap="0.0" layoutX="300.0" layoutY="19.0" onAction="#supprimerServer" prefHeight="27.0" prefWidth="30.0" ripplerFill="#afffc9" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../Desktop/Capture.PNG" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="modify" graphicTextGap="0.0" layoutX="333.0" layoutY="19.0" onAction="#modifierServ" prefHeight="27.0" prefWidth="30.0" ripplerFill="#d3ffb7" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../Desktop/edit.PNG" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
                </children>
             </AnchorPane>
-            <GridPane hgap="25.0" layoutX="491.0" layoutY="457.0" prefHeight="237.0" prefWidth="340.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" vgap="10.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
+            <AnchorPane layoutX="491.0" layoutY="428.0" prefHeight="202.0" prefWidth="513.0" style="-fx-background-color: #c3fcf2; -fx-border-radius: 20; -fx-background-radius: 20;" visible="false">
                <children>
-                  <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Mémoire" GridPane.rowIndex="1" />
-                  <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="@ShowInfo.css" text="version du serveur">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="CPU" GridPane.rowIndex="2" />
-                  <Label id="LabelChamps" prefHeight="15.0" prefWidth="179.0" stylesheets="@ShowInfo.css" text="Carte vidéo" GridPane.rowIndex="3" />
-                  <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Périphérique VMCI" GridPane.rowIndex="4" />
-                  <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Adaptateur Réseau" GridPane.rowIndex="5" />
+                  <HBox prefHeight="54.0" prefWidth="513.0" spacing="80.0" style="-fx-background-color: #c3fcf2; -fx-background-radius: 20;">
+                     <children>
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Description">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets top="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextArea id="Champs" editable="false" focusColor="#c3fcf2" prefHeight="35.0" prefWidth="244.0" stylesheets="@ShowInfo.css" text="bkbj hgbkbjhjbjdfxnlksdfk,sdkf,ld,fkd,fkDescription&#10;&#10;" unFocusColor="#c3fcf2">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </JFXTextArea>
+                     </children>
+                  </HBox>
+                  <GridPane fx:id="detailAS" layoutY="53.0" prefHeight="149.0" prefWidth="503.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" visible="false">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="@ShowInfo.css" text="Chemin App">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Solution hébérgée" GridPane.rowIndex="1" />
+                        <Label id="Champs" fx:id="cBDversion1" prefHeight="19.0" prefWidth="228.0" stylesheets="@ShowInfo.css" text="cBDversion" GridPane.columnIndex="1">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cVersionS11111111121" prefHeight="19.0" prefWidth="241.0" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </GridPane>
+                  <GridPane fx:id="detailDB" hgap="10.0" layoutY="53.0" prefHeight="127.0" prefWidth="436.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" vgap="5.0" visible="false">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Type BD" GridPane.rowIndex="1" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="@ShowInfo.css" text="version BD">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Solution hébérgée" GridPane.rowIndex="2" />
+                        <Label id="Champs" fx:id="cBDversion" prefHeight="19.0" prefWidth="231.0" stylesheets="@ShowInfo.css" text="cBDversion" GridPane.columnIndex="1">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cBDType" prefHeight="19.0" prefWidth="40.0" stylesheets="@ShowInfo.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cVersionS1111111112" prefHeight="19.0" prefWidth="40.0" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label id="Champs" fx:id="cBDversion2" prefHeight="19.0" prefWidth="231.0" stylesheets="@ShowInfo.css" text="cBDversion" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </GridPane>
                </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" top="10.0" />
-               </padding>
-            </GridPane>
+            </AnchorPane>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="formulairepane" layoutX="322.0" prefHeight="720.0" prefWidth="1056.0" visible="false" />
    </children>
 </AnchorPane>

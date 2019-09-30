@@ -6,7 +6,7 @@ public class Server {
 	public Server(SimpleStringProperty nomS, SimpleStringProperty typeS, SimpleStringProperty versionserver,
 			SimpleStringProperty memoire, SimpleStringProperty cPU, SimpleStringProperty serverOS,
 			SimpleStringProperty ipv4a, SimpleStringProperty ipv4m, SimpleStringProperty ipv6a,
-			SimpleStringProperty ipv6m) {
+			SimpleStringProperty ipv6m,SimpleStringProperty description) {
 		super();
 		this.nomS = nomS;
 		this.typeS = typeS;
@@ -18,6 +18,13 @@ public class Server {
 		this.ipv4m = ipv4m;
 		this.ipv6a = ipv6a;
 		this.ipv6m = ipv6m;
+		this.Description=description;
+	}
+	public SimpleStringProperty getDescription() {
+		return Description;
+	}
+	public void setDescription(SimpleStringProperty description) {
+		Description = description;
 	}
 	private SimpleStringProperty nomS;
 	private SimpleStringProperty typeS;
@@ -25,6 +32,7 @@ public class Server {
     private SimpleStringProperty memoire;
     private SimpleStringProperty CPU;
     private SimpleStringProperty serverOS;
+    private SimpleStringProperty Description;
     //Réseau
     private SimpleStringProperty ipv4a;
     private SimpleStringProperty ipv4m;

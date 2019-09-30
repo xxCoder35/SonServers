@@ -13,6 +13,7 @@ public final class DBconnection {
 
     static {
     	ReadConfigProperties prop=new ReadConfigProperties();
+    
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl(prop.getpropretyvalue("conf.properties","cheminBDD").concat("?serverTimezone=UTC"));
         dataSource.setUsername(prop.getpropretyvalue("conf.properties","user"));

@@ -51,7 +51,7 @@ public interface MovePages {
 	
 		try {
 			Parent root1;
-			root1 = FXMLLoader.load(getClass().getResource("/view/FormulairePage.fxml"));
+			root1 = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
 			primaryStage.setScene(new Scene(root1,1200,700));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
