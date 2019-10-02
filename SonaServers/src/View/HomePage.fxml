@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
@@ -97,6 +99,7 @@
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints />
+                        <RowConstraints />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -109,71 +112,71 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label GridPane.rowIndex="9" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Mémoire" GridPane.rowIndex="2" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="@ShowInfo.css" text="version du serveur" GridPane.rowIndex="1">
+                        <Label GridPane.rowIndex="10" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Mémoire" GridPane.rowIndex="3" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="@ShowInfo.css" text="version du serveur" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="CPU" GridPane.rowIndex="3" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="179.0" stylesheets="@ShowInfo.css" text="Carte vidéo" GridPane.rowIndex="4" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Périphérique VMCI" GridPane.rowIndex="5" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Controleur SCSI" GridPane.rowIndex="6" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Lecteur CD/DVD" GridPane.rowIndex="7" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Disque Dur" GridPane.rowIndex="8" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Lecteur Disquette" GridPane.rowIndex="9" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Adaptateur Réseau" GridPane.rowIndex="10" />
-                        <Label id="Champs" fx:id="cVersionS" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cMemoire" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cCPU" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cCV" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cVMCI" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cSCSI" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cCD" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cAdapres" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cDisquette" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cDD" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="CPU" GridPane.rowIndex="4" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="179.0" stylesheets="@ShowInfo.css" text="Carte vidéo" GridPane.rowIndex="5" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Périphérique VMCI" GridPane.rowIndex="6" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Controleur SCSI" GridPane.rowIndex="7" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Lecteur CD/DVD" GridPane.rowIndex="8" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Disque Dur" GridPane.rowIndex="9" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Lecteur Disquette" GridPane.rowIndex="10" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Adaptateur Réseau" GridPane.rowIndex="11" />
+                        <JFXTextField id="Champs" fx:id="versionserver" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="memoire" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="cpu" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="cartevideo" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="mvci" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="scsi" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="cddvd" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="disquedur" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="disquette" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="adaptateurres" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" top="3.0" />
@@ -220,46 +223,47 @@
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Serveur DNS" GridPane.rowIndex="6" />
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Passerelle" GridPane.rowIndex="7" />
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Adresse physique" GridPane.rowIndex="8" />
-                        <Label id="Champs" fx:id="cOS" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cVersionOS" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cDateOS" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cipv4" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cipv6" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cDNS" prefHeight="15.0" prefWidth="160.0" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cPasserelle" prefHeight="15.0" prefWidth="164.0" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cMAC" prefHeight="15.0" prefWidth="163.0" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
+                        <JFXTextField id="Champs" fx:id="dateinstalation" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="versionOs" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="ipv4" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="ipv6" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="dns" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="passerelle" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" fx:id="mac" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXComboBox fx:id="osCB" focusColor="#c3fcf2" prefHeight="25.0" prefWidth="170.0" unFocusColor="#c3fcf2" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <JFXTextField id="Champs" fx:id="osserver" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" top="3.0" />
@@ -303,7 +307,7 @@
                   </JFXButton>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="491.0" layoutY="428.0" prefHeight="202.0" prefWidth="513.0" style="-fx-background-color: #c3fcf2; -fx-border-radius: 20; -fx-background-radius: 20;" visible="false">
+            <AnchorPane layoutX="491.0" layoutY="428.0" prefHeight="202.0" prefWidth="513.0" style="-fx-background-color: #c3fcf2; -fx-border-radius: 20; -fx-background-radius: 20;">
                <children>
                   <HBox prefHeight="54.0" prefWidth="513.0" spacing="80.0" style="-fx-background-color: #c3fcf2; -fx-background-radius: 20;">
                      <children>
@@ -315,7 +319,7 @@
                               <Insets top="20.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXTextArea id="Champs" editable="false" focusColor="#c3fcf2" prefHeight="35.0" prefWidth="244.0" stylesheets="@ShowInfo.css" text="bkbj hgbkbjhjbjdfxnlksdfk,sdkf,ld,fkd,fkDescription&#10;&#10;" unFocusColor="#c3fcf2">
+                        <JFXTextArea id="Champs" fx:id="description" editable="false" focusColor="#c3fcf2" prefHeight="35.0" prefWidth="244.0" stylesheets="@ShowInfo.css" text="bkbj hgbkbjhjbjdfxnlksdfk,sdkf,ld,fkd,fkDescription&#10;&#10;" unFocusColor="#c3fcf2">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -338,22 +342,14 @@
                            </font>
                         </Label>
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Solution hébérgée" GridPane.rowIndex="1" />
-                        <Label id="Champs" fx:id="cBDversion1" prefHeight="19.0" prefWidth="228.0" stylesheets="@ShowInfo.css" text="cBDversion" GridPane.columnIndex="1">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cVersionS11111111121" prefHeight="19.0" prefWidth="241.0" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
+                        <JFXTextField focusColor="#c3fcf2" unFocusColor="#c3fcf2" GridPane.columnIndex="1" />
+                        <JFXTextField focusColor="#c3fcf2" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </padding>
                   </GridPane>
-                  <GridPane fx:id="detailDB" hgap="10.0" layoutY="53.0" prefHeight="127.0" prefWidth="436.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" vgap="5.0" visible="false">
+                  <GridPane fx:id="detailDB" hgap="10.0" layoutY="53.0" prefHeight="127.0" prefWidth="436.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" vgap="5.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -371,26 +367,26 @@
                            </font>
                         </Label>
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Solution hébérgée" GridPane.rowIndex="2" />
-                        <Label id="Champs" fx:id="cBDversion" prefHeight="19.0" prefWidth="231.0" stylesheets="@ShowInfo.css" text="cBDversion" GridPane.columnIndex="1">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
                         <Label id="Champs" fx:id="cBDType" prefHeight="19.0" prefWidth="40.0" stylesheets="@ShowInfo.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <Label id="Champs" fx:id="cVersionS1111111112" prefHeight="19.0" prefWidth="40.0" stylesheets="@ShowInfo.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label id="Champs" fx:id="cBDversion2" prefHeight="19.0" prefWidth="231.0" stylesheets="@ShowInfo.css" text="cBDversion" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </Label>
+                        <JFXTextField id="Champs" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField id="Champs" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
@@ -398,8 +394,36 @@
                   </GridPane>
                </children>
             </AnchorPane>
+            <JFXButton fx:id="maj" buttonType="RAISED" layoutX="419.0" layoutY="654.0" onAction="#Confirmermaj" prefHeight="44.0" prefWidth="125.0" style="-fx-background-color: #9ee4a8;" text="Mettre à Jour" textFill="#172519">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="formulairepane" layoutX="322.0" prefHeight="720.0" prefWidth="1056.0" visible="false" />
+      <AnchorPane layoutX="369.0" layoutY="44.0" prefHeight="645.0" prefWidth="653.0" visible="false">
+         <children>
+            <VBox layoutX="100.0" layoutY="82.0" prefHeight="478.0" prefWidth="551.0" spacing="50.0">
+               <padding>
+                  <Insets left="10.0" right="10.0" top="20.0" />
+               </padding>
+               <children>
+                  <JFXComboBox prefHeight="25.0" prefWidth="387.0" promptText="Serveur" />
+                  <JFXComboBox prefHeight="25.0" prefWidth="390.0" promptText="Paramètres à modifier" />
+                  <JFXTextField text="Nouvelle valeur ( il contiendra au début l'ancienne valeur hakda bech may3awdch yekteb koulech" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+                     <children>
+                        <JFXButton text="Confirmer" />
+                        <JFXButton text="Màj an other one" />
+                     </children>
+                     <padding>
+                        <Insets left="70.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -8,16 +8,14 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
-import com.mysql.cj.x.protobuf.MysqlxExpect.Open.Condition.Key;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 
 import Model.DBconnection;
 import Model.Server;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.MapChangeListener;
-import javafx.collections.MapChangeListener.Change;
-import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,121 +30,109 @@ import javafx.scene.layout.GridPane;
 public class HomePageController implements Initializable {
 
 	
-	   @FXML
-	    private MenuButton ASshow;
+	@FXML
+    private MenuButton ASshow;
 
-	    @FXML
-	    private MenuButton DBshow;
+    @FXML
+    private MenuButton DBshow;
 
-	    @FXML
-	    private JFXButton addAS;
+    @FXML
+    private JFXButton addAS;
 
-	    @FXML
-	    private JFXButton addDB;
+    @FXML
+    private JFXButton addDB;
 
-	    @FXML
-	    private MenuButton othersShow;
+    @FXML
+    private MenuButton othersShow;
 
-	    @FXML
-	    private JFXButton addserver;
+    @FXML
+    private JFXButton addserver;
 
-	    @FXML
-	    private AnchorPane showinfoPane;
+    @FXML
+    private AnchorPane showinfoPane;
 
-	    @FXML
-	    private Label cVersionS;
+    @FXML
+    private JFXTextField versionserver;
 
-	    @FXML
-	    private Label cMemoire;
+    @FXML
+    private JFXTextField memoire;
 
-	    @FXML
-	    private Label cCPU;
+    @FXML
+    private JFXTextField cpu;
 
-	    @FXML
-	    private Label cCV;
+    @FXML
+    private JFXTextField cartevideo;
 
-	    @FXML
-	    private Label cVMCI;
+    @FXML
+    private JFXTextField mvci;
 
-	    @FXML
-	    private Label cSCSI;
+    @FXML
+    private JFXTextField scsi;
 
-	    @FXML
-	    private Label cCD;
+    @FXML
+    private JFXTextField cddvd;
 
-	    @FXML
-	    private Label cAdapres;
+    @FXML
+    private JFXTextField disquedur;
 
-	    @FXML
-	    private Label cDisquette;
+    @FXML
+    private JFXTextField disquette;
 
-	    @FXML
-	    private Label cDD;
+    @FXML
+    private JFXTextField adaptateurres;
 
-	    @FXML
-	    private Label cOS;
+    @FXML
+    private JFXTextField dateinstalation;
 
-	    @FXML
-	    private Label cVersionOS;
+    @FXML
+    private JFXTextField versionOs;
 
-	    @FXML
-	    private Label cDateOS;
+    @FXML
+    private JFXTextField ipv4;
 
-	    @FXML
-	    private Label cipv4;
+    @FXML
+    private JFXTextField ipv6;
 
-	    @FXML
-	    private Label cipv6;
+    @FXML
+    private JFXTextField dns;
 
-	    @FXML
-	    private Label cDNS;
+    @FXML
+    private JFXTextField passerelle;
 
-	    @FXML
-	    private Label cPasserelle;
+    @FXML
+    private JFXTextField mac;
 
-	    @FXML
-	    private Label cMAC;
+    @FXML
+    private JFXButton detailsButton;
 
-	    @FXML
-	    private JFXButton detailsButton;
+    @FXML
+    private Label servername;
 
-	    @FXML
-	    private Label servername;
+    @FXML
+    private JFXButton delete;
 
-	    @FXML
-	    private JFXButton delete;
+    @FXML
+    private JFXButton modify;
 
-	    @FXML
-	    private JFXButton modify;
+    @FXML
+    private JFXTextArea description;
 
-	    @FXML
-	    private GridPane detailAS;
+    @FXML
+    private GridPane detailAS;
 
-	    @FXML
-	    private Label cBDversion1;
+    @FXML
+    private GridPane detailDB;
 
-	    @FXML
-	    private Label cVersionS11111111121;
+    @FXML
+    private Label cBDType;
 
-	    @FXML
-	    private GridPane detailDB;
+    @FXML
+    private AnchorPane formulairepane;
+    @FXML
+    private JFXTextField osserver;
+    @FXML
+    private JFXComboBox<String> osCB;
 
-	    @FXML
-	    private Label cBDversion;
-
-	    @FXML
-	    private Label cBDType;
-
-	    @FXML
-	    private Label cVersionS1111111112;
-
-	    @FXML
-	    private Label cBDversion2;
-
-	    @FXML
-	    private AnchorPane formulairepane;
-         
-	   
 
 		
 
@@ -165,10 +151,68 @@ public class HomePageController implements Initializable {
 
   @FXML
   void modifierServ(ActionEvent event) {
+  
+	    versionserver.setEditable(true);
+	    memoire.setEditable(true);
+	    cpu.setEditable(true);
+	    cartevideo.setEditable(true);
+	    mvci.setEditable(true);
+	    scsi.setEditable(true);
+	    cddvd.setEditable(true);
+	    disquedur.setEditable(true);
+        disquette.setEditable(true);
+	    adaptateurres.setEditable(true);
+	    dateinstalation.setEditable(true);
+	    versionOs.setEditable(true);
+	    ipv4.setEditable(true);
+	    ipv6.setEditable(true);
+	    dns.setEditable(true);
+	    passerelle.setEditable(true);
+	    mac.setEditable(true);
+	    description.setEditable(true);
+	    osserver.setVisible(false);
+	    osCB.setVisible(true);
+	    
+	    
 
+	 
+	  
+	  
+	  
+	  
+	
   }
 
- 
+  @FXML
+  void Confirmermaj(ActionEvent event) {
+	  
+	  
+	  versionserver.setEditable(false);
+	    memoire.setEditable(false);
+	    cpu.setEditable(false);
+	    cartevideo.setEditable(false);
+	    mvci.setEditable(false);
+	    scsi.setEditable(false);
+	    cddvd.setEditable(false);
+	    disquedur.setEditable(false);
+      disquette.setEditable(false);
+	    adaptateurres.setEditable(false);
+	    dateinstalation.setEditable(false);
+	    versionOs.setEditable(false);
+	    ipv4.setEditable(false);
+	    ipv6.setEditable(false);
+	    dns.setEditable(false);
+	    passerelle.setEditable(false);
+	    mac.setEditable(false);
+	    description.setEditable(false);
+	    osserver.setVisible(true);
+	    osserver.setText(osCB.getSelectionModel().getSelectedItem());
+	    osCB.setVisible(false);
+	    
+	    
+	
+
+  }
 
   @FXML
   void supprimerServer(ActionEvent event) {
@@ -206,7 +250,7 @@ public class HomePageController implements Initializable {
     		while (rs.next())
     		{
     			
-    		AS.put(rs.getString("servername"),new Server(new SimpleStringProperty(rs.getString("servername")),new SimpleStringProperty(rs.getString("typeserver")),new SimpleStringProperty(rs.getString("versionserver")),new SimpleStringProperty(rs.getString("memoire")),new SimpleStringProperty(rs.getString("cpu")),new SimpleStringProperty(rs.getString("os")),new SimpleStringProperty(rs.getString("ipv4")),new SimpleStringProperty(rs.getString("ipv4m")),new SimpleStringProperty(rs.getString("ipv6")),new SimpleStringProperty(rs.getString("ipv6m")),new SimpleStringProperty(rs.getString("description"))));
+    		AS.put(rs.getString("servername"),new Server(new SimpleStringProperty(rs.getString("servername")),new SimpleStringProperty(rs.getString("typeserver")),new SimpleStringProperty(rs.getString("versionserver")),new SimpleStringProperty(rs.getString("memoire")),new SimpleStringProperty(rs.getString("cpu")),new SimpleStringProperty(rs.getString("os")),new SimpleStringProperty(rs.getString("versionOs")),new SimpleStringProperty(rs.getString("dateinstalation")),new SimpleStringProperty(rs.getString("ipv4")),new SimpleStringProperty(rs.getString("ipv4m")),new SimpleStringProperty(rs.getString("ipv6")),new SimpleStringProperty(rs.getString("ipv6m")),new SimpleStringProperty(rs.getString("description")),new SimpleStringProperty(rs.getString("mvci")),new SimpleStringProperty(rs.getString("scsi")),new SimpleStringProperty(rs.getString("scsi")), new SimpleStringProperty(rs.getString("cddvd")),new SimpleStringProperty(rs.getString("disquedur")),new SimpleStringProperty(rs.getString("disquette")), new SimpleStringProperty(rs.getString("adaptateurres")),new SimpleStringProperty(rs.getString("dns")),new SimpleStringProperty(rs.getString("mac"))));
     		}
     		rs.close();
     	   
@@ -215,7 +259,7 @@ public class HomePageController implements Initializable {
     		while (rs.next())
     		{
     			
-    			DB.put(rs.getString("servername"),new Server(new SimpleStringProperty(rs.getString("servername")),new SimpleStringProperty(rs.getString("typeserver")),new SimpleStringProperty(rs.getString("versionserver")),new SimpleStringProperty(rs.getString("memoire")),new SimpleStringProperty(rs.getString("cpu")),new SimpleStringProperty(rs.getString("os")),new SimpleStringProperty(rs.getString("ipv4")),new SimpleStringProperty(rs.getString("ipv4m")),new SimpleStringProperty(rs.getString("ipv6")),new SimpleStringProperty(rs.getString("ipv6m")),new SimpleStringProperty(rs.getString("description"))));
+    			AS.put(rs.getString("servername"),new Server(new SimpleStringProperty(rs.getString("servername")),new SimpleStringProperty(rs.getString("typeserver")),new SimpleStringProperty(rs.getString("versionserver")),new SimpleStringProperty(rs.getString("memoire")),new SimpleStringProperty(rs.getString("cpu")),new SimpleStringProperty(rs.getString("os")),new SimpleStringProperty(rs.getString("versionOs")),new SimpleStringProperty(rs.getString("dateinstalation")),new SimpleStringProperty(rs.getString("ipv4")),new SimpleStringProperty(rs.getString("ipv4m")),new SimpleStringProperty(rs.getString("ipv6")),new SimpleStringProperty(rs.getString("ipv6m")),new SimpleStringProperty(rs.getString("description")),new SimpleStringProperty(rs.getString("mvci")),new SimpleStringProperty(rs.getString("scsi")),new SimpleStringProperty(rs.getString("scsi")), new SimpleStringProperty(rs.getString("cddvd")),new SimpleStringProperty(rs.getString("disquedur")),new SimpleStringProperty(rs.getString("disquette")), new SimpleStringProperty(rs.getString("adaptateurres")),new SimpleStringProperty(rs.getString("dns")),new SimpleStringProperty(rs.getString("mac")),new SimpleStringProperty(rs.getString("solHeb")),new SimpleStringProperty(rs.getString("typeBD")), new SimpleStringProperty(rs.getString("versionBD"))));
     		}
     		rs.close();
     		
@@ -233,11 +277,11 @@ public class HomePageController implements Initializable {
     	        
     	     System.out.printf(((MenuItem) e.getSource()).getText()+"choosed!");
     	     servername.setText(((MenuItem) e.getSource()).getText());
-    	     cCPU.setText(AS.get(((MenuItem) e.getSource()).getText()).getCPU().get());
-    	     cMemoire.setText(AS.get(((MenuItem) e.getSource()).getText()).getMemoire().get());
-    	     cVersionS.setText(AS.get(((MenuItem) e.getSource()).getText()).getVersionserver().get());
-    	     cipv4.setText(AS.get(((MenuItem) e.getSource()).getText()).getIpv4a().get()+"\\"+AS.get(((MenuItem) e.getSource()).getText()).getIpv4m().get());
-    	     cipv6.setText(AS.get(((MenuItem) e.getSource()).getText()).getIpv6a().get()+"\\"+AS.get(((MenuItem) e.getSource()).getText()).getIpv6m().get());
+    	     cpu.setText(AS.get(((MenuItem) e.getSource()).getText()).getCPU().get());
+    	     memoire.setText(AS.get(((MenuItem) e.getSource()).getText()).getMemoire().get());
+    	     versionserver.setText(AS.get(((MenuItem) e.getSource()).getText()).getVersionserver().get());
+    	     ipv4.setText(AS.get(((MenuItem) e.getSource()).getText()).getIpv4a().get()+"\\"+AS.get(((MenuItem) e.getSource()).getText()).getIpv4m().get());
+    	     ipv6.setText(AS.get(((MenuItem) e.getSource()).getText()).getIpv6a().get()+"\\"+AS.get(((MenuItem) e.getSource()).getText()).getIpv6m().get());
     	     showinfoPane.setVisible(true);
     	     
     	     
@@ -253,12 +297,12 @@ public class HomePageController implements Initializable {
     	        
     	     System.out.printf(((MenuItem) e.getSource()).getText()+"choosed!");
     	     servername.setText(((MenuItem) e.getSource()).getText());
-    	     cCPU.setText(DB.get(((MenuItem) e.getSource()).getText()).getCPU().get());
-    	     cMemoire.setText(DB.get(((MenuItem) e.getSource()).getText()).getMemoire().get());
-    	     cVersionS.setText(DB.get(((MenuItem) e.getSource()).getText()).getVersionserver().get());
-    	     cipv4.setText(DB.get(((MenuItem) e.getSource()).getText()).getIpv4a()+"\\"+DB.get(((MenuItem) e.getSource()).getText()).getIpv4m().get());
-    	     cipv6.setText(DB.get(((MenuItem) e.getSource()).getText()).getIpv6a().get()+"\\"+DB.get(((MenuItem) e.getSource()).getText()).getIpv6m().get());
-    	     cOS.setText(DB.get(((MenuItem) e.getSource()).getText()).getServerOS().get());
+    	     cpu.setText(DB.get(((MenuItem) e.getSource()).getText()).getCPU().get());
+    	     memoire.setText(DB.get(((MenuItem) e.getSource()).getText()).getMemoire().get());
+    	     versionserver.setText(DB.get(((MenuItem) e.getSource()).getText()).getVersionserver().get());
+    	     ipv4.setText(DB.get(((MenuItem) e.getSource()).getText()).getIpv4a()+"\\"+DB.get(((MenuItem) e.getSource()).getText()).getIpv4m().get());
+    	     ipv6.setText(DB.get(((MenuItem) e.getSource()).getText()).getIpv6a().get()+"\\"+DB.get(((MenuItem) e.getSource()).getText()).getIpv6m().get());
+    	     osserver.setText(DB.get(((MenuItem) e.getSource()).getText()).getServerOS().get());
     	     
     	     showinfoPane.setVisible(true);
     	     
