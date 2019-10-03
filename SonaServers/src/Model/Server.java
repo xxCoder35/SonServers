@@ -2,6 +2,7 @@ package Model;
 
 import javafx.beans.property.SimpleStringProperty;
 
+
 public class Server {
 
 	public SimpleStringProperty getDescription() {
@@ -28,6 +29,7 @@ public class Server {
     private SimpleStringProperty CDDVD;
     private SimpleStringProperty DD;
     private SimpleStringProperty disquette;
+    private SimpleStringProperty cartevid;
     private SimpleStringProperty adapRes;
     private SimpleStringProperty dns;
     private SimpleStringProperty passerelle;
@@ -41,7 +43,7 @@ public class Server {
     private SimpleStringProperty versionBD;
 //Constructeur for others
 	public Server(SimpleStringProperty nomS, SimpleStringProperty typeS, SimpleStringProperty versionserver,
-			SimpleStringProperty memoire, SimpleStringProperty cPU, SimpleStringProperty serverOS,
+			SimpleStringProperty memoire, SimpleStringProperty cPU,SimpleStringProperty carteVid,SimpleStringProperty serverOS,
 			SimpleStringProperty versionOS, SimpleStringProperty dateOS, SimpleStringProperty ipv4a,
 			SimpleStringProperty ipv4m, SimpleStringProperty ipv6a, SimpleStringProperty ipv6m,
 			SimpleStringProperty description, SimpleStringProperty vMCI, SimpleStringProperty sCSI,
@@ -50,6 +52,7 @@ public class Server {
 			SimpleStringProperty physicalAd) {
 		super();
 		this.nomS = nomS;
+		this.cartevid=carteVid;
 		this.typeS = typeS;
 		this.versionserver = versionserver;
 		this.memoire = memoire;
@@ -78,7 +81,7 @@ public class Server {
 		return nomS;
 	}
 	public Server(SimpleStringProperty nomS, SimpleStringProperty typeS, SimpleStringProperty versionserver,
-			SimpleStringProperty memoire, SimpleStringProperty cPU, SimpleStringProperty serverOS,
+			SimpleStringProperty memoire, SimpleStringProperty cPU,SimpleStringProperty carteVid, SimpleStringProperty serverOS,
 			SimpleStringProperty versionOS, SimpleStringProperty dateOS, SimpleStringProperty ipv4a,
 			SimpleStringProperty ipv4m, SimpleStringProperty ipv6a, SimpleStringProperty ipv6m,
 			SimpleStringProperty description, SimpleStringProperty vMCI, SimpleStringProperty sCSI,
@@ -117,7 +120,7 @@ public class Server {
 		this.nomS = nomS;
 	}
 	public Server(SimpleStringProperty nomS, SimpleStringProperty typeS, SimpleStringProperty versionserver,
-			SimpleStringProperty memoire, SimpleStringProperty cPU, SimpleStringProperty serverOS,
+			SimpleStringProperty memoire, SimpleStringProperty cPU,SimpleStringProperty carteVid, SimpleStringProperty serverOS,
 			SimpleStringProperty versionOS, SimpleStringProperty dateOS, SimpleStringProperty ipv4a,
 			SimpleStringProperty ipv4m, SimpleStringProperty ipv6a, SimpleStringProperty ipv6m,
 			SimpleStringProperty description, SimpleStringProperty vMCI, SimpleStringProperty sCSI,
@@ -126,6 +129,7 @@ public class Server {
 			SimpleStringProperty physicalAd, SimpleStringProperty solutionHeb, SimpleStringProperty typeBD,
 			SimpleStringProperty versionBD) {
 		super();
+		this.cartevid=carteVid;
 		this.nomS = nomS;
 		this.typeS = typeS;
 		this.versionserver = versionserver;
@@ -150,6 +154,102 @@ public class Server {
 		this.physicalAd = physicalAd;
 		this.solutionHeb = solutionHeb;
 		this.typeBD = typeBD;
+		this.versionBD = versionBD;
+	}
+	public SimpleStringProperty getCartevid() {
+		return cartevid;
+	}
+	public void setCartevid(SimpleStringProperty cartevid) {
+		this.cartevid = cartevid;
+	}
+	public SimpleStringProperty getVersionOS() {
+		return versionOS;
+	}
+	public void setVersionOS(SimpleStringProperty versionOS) {
+		this.versionOS = versionOS;
+	}
+	public SimpleStringProperty getDateOS() {
+		return dateOS;
+	}
+	public void setDateOS(SimpleStringProperty dateOS) {
+		this.dateOS = dateOS;
+	}
+	public SimpleStringProperty getVMCI() {
+		return VMCI;
+	}
+	public void setVMCI(SimpleStringProperty vMCI) {
+		VMCI = vMCI;
+	}
+	public SimpleStringProperty getSCSI() {
+		return SCSI;
+	}
+	public void setSCSI(SimpleStringProperty sCSI) {
+		SCSI = sCSI;
+	}
+	public SimpleStringProperty getCDDVD() {
+		return CDDVD;
+	}
+	public void setCDDVD(SimpleStringProperty cDDVD) {
+		CDDVD = cDDVD;
+	}
+	public SimpleStringProperty getDD() {
+		return DD;
+	}
+	public void setDD(SimpleStringProperty dD) {
+		DD = dD;
+	}
+	public SimpleStringProperty getDisquette() {
+		return disquette;
+	}
+	public void setDisquette(SimpleStringProperty disquette) {
+		this.disquette = disquette;
+	}
+	public SimpleStringProperty getAdapRes() {
+		return adapRes;
+	}
+	public void setAdapRes(SimpleStringProperty adapRes) {
+		this.adapRes = adapRes;
+	}
+	public SimpleStringProperty getDns() {
+		return dns;
+	}
+	public void setDns(SimpleStringProperty dns) {
+		this.dns = dns;
+	}
+	public SimpleStringProperty getPasserelle() {
+		return passerelle;
+	}
+	public void setPasserelle(SimpleStringProperty passerelle) {
+		this.passerelle = passerelle;
+	}
+	public SimpleStringProperty getPhysicalAd() {
+		return physicalAd;
+	}
+	public void setPhysicalAd(SimpleStringProperty physicalAd) {
+		this.physicalAd = physicalAd;
+	}
+	public SimpleStringProperty getSolutionHeb() {
+		return solutionHeb;
+	}
+	public void setSolutionHeb(SimpleStringProperty solutionHeb) {
+		this.solutionHeb = solutionHeb;
+	}
+	public SimpleStringProperty getCheminSrc() {
+		return cheminSrc;
+	}
+	public void setCheminSrc(SimpleStringProperty cheminSrc) {
+		this.cheminSrc = cheminSrc;
+	}
+	public SimpleStringProperty getTypeBD() {
+		return typeBD;
+	}
+	public void setTypeBD(SimpleStringProperty typeBD) {
+		this.typeBD = typeBD;
+	}
+	public SimpleStringProperty getVersionBD() {
+		return versionBD;
+	}
+	public void setVersionBD(SimpleStringProperty versionBD) {
 		this.versionBD = versionBD;
 	}
 	public SimpleStringProperty getTypeS() {
