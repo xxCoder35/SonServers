@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -109,7 +110,7 @@ public class HomePageController implements Initializable {
     private JFXButton detailsButton;
 
     @FXML
-    private Label servername;
+    private JFXTextField servername;
 
     @FXML
     private JFXButton delete;
@@ -140,7 +141,7 @@ public class HomePageController implements Initializable {
     private JFXTextField osserver;
     @FXML
     private JFXComboBox<String> osCB;
-
+  String SrvnameActif=null;
 
 		
 
@@ -160,7 +161,7 @@ public class HomePageController implements Initializable {
 
   @FXML
   void modifierServ(ActionEvent event) {
-  
+       servername.setEditable(true);
 	    versionserver.setEditable(true);
 	    memoire.setEditable(true);
 	    cpu.setEditable(true);
@@ -192,10 +193,10 @@ public class HomePageController implements Initializable {
 	  boolean isDB=false;
 	  
 	  
-	  Server serv;
-	if(AS.containsKey(servername.getText())) {isAS=true;  serv=AS.get(servername.getText());}
-	else if(DB.containsKey(servername.getText())) {serv= DB.get(servername.getText()); isDB=true;}
-	else { serv= others.get(servername.getText());}
+	Server serv;
+	if(AS.containsKey(SrvnameActif)) {isAS=true;  serv=AS.get(SrvnameActif);}
+	else if(DB.containsKey(SrvnameActif)) {serv= DB.get(SrvnameActif); isDB=true;}
+	else { serv= others.get(SrvnameActif);}
 	
 	
 	for (String att:changedAttr)
@@ -203,8 +204,9 @@ public class HomePageController implements Initializable {
 		  switch(att)
 		  {
 		  case "description":
-		  { boolean change=false;
-			  if(description.getText().compareTo(serv.getDescription().get())!=0 &&!change)
+		  { 
+			  boolean change = false;
+			if(description.getText().compareTo(serv.getDescription().get())!=0 && change==false)
 			  {
 				  SQL=SQL+"description='"+description.getText()+"',";change=true;
 				  if(isAS==true) AS.get(serv.getNomS().get()).setDescription(new SimpleStringProperty(description.getText()));
@@ -347,6 +349,32 @@ public class HomePageController implements Initializable {
 			  
 		  }
 		  break;
+		  case "servername" :{
+			    System.out.print(isAS);
+				  SQL=SQL+"servername='"+servername.getText()+"',";
+				  if(isAS==true) {
+				  String oldkey=serv.getNomS().get();
+				  AS.get(serv.getNomS().get()).setNomS(new SimpleStringProperty(servername.getText()));
+				  AS.put(servername.getText(),AS.get(oldkey));
+				  AS.remove(oldkey);
+				  majMenuButton(AS,ASshow);}
+				  else if(isDB==true) {String oldkey=serv.getNomS().get();
+				  DB.get(serv.getNomS().get()).setNomS(new SimpleStringProperty(servername.getText()));
+				  DB.put(servername.getText(),DB.get(oldkey));
+				  DB.remove(oldkey);
+				  majMenuButton(DB,DBshow);}
+				  else {
+					  String oldkey=serv.getNomS().get();
+					  others.get(serv.getNomS().get()).setNomS(new SimpleStringProperty(servername.getText()));
+					  others.put(servername.getText(),others.get(oldkey));
+					  others.remove(oldkey);
+					  majMenuButton(others,othersShow);
+				  }
+				  
+			  
+			  
+		  }
+		  break;
 	    case "versionOs" :{ 
 	
 			  if(versionOs.getText().compareTo(serv.getVersionOS().get())!=0)
@@ -359,25 +387,25 @@ public class HomePageController implements Initializable {
 		  }
 	    break;
 	      case"ipv4":{ if(ipv4.getText().matches("(.*).(.*).(.*).(.*)/(.*)"))
-	               { SQL=SQL+"ipv4='"+ipv4.getText().substring(0,ipv4.getText().indexOf("/")-1)+"',";
+	               { SQL=SQL+"ipv4='"+ipv4.getText().substring(0,ipv4.getText().indexOf("/"))+"',";
 	                 SQL=SQL+"ipv4m='"+ipv4.getText().substring(ipv4.getText().indexOf("/")+1)+"',";
-	                 if(isAS==true) { AS.get(serv.getNomS().get()).setIpv4a(new SimpleStringProperty(ipv4.getText().substring(0,ipv4.getText().indexOf("/")-1)));
+	                 if(isAS==true) { AS.get(serv.getNomS().get()).setIpv4a(new SimpleStringProperty(ipv4.getText().substring(0,ipv4.getText().indexOf("/"))));
 	                                  AS.get(serv.getNomS().get()).setIpv4m(new SimpleStringProperty(ipv4.getText().substring(ipv4.getText().indexOf("/")+1))); }
-	   			  else if(isDB==true) {DB.get(serv.getNomS().get()).setIpv4a(new SimpleStringProperty(ipv4.getText().substring(0,ipv4.getText().indexOf("/")-1)));
+	   			  else if(isDB==true) {DB.get(serv.getNomS().get()).setIpv4a(new SimpleStringProperty(ipv4.getText().substring(0,ipv4.getText().indexOf("/"))));
 	   			                       DB.get(serv.getNomS().get()).setIpv4m(new SimpleStringProperty(ipv4.getText().substring(ipv4.getText().indexOf("/")+1)));}
-	   			  else {others.get(serv.getNomS().get()).setIpv4a(new SimpleStringProperty(ipv4.getText().substring(0,ipv4.getText().indexOf("/")-1)));
+	   			  else {others.get(serv.getNomS().get()).setIpv4a(new SimpleStringProperty(ipv4.getText().substring(0,ipv4.getText().indexOf("/"))));
 	   			        others.get(serv.getNomS().get()).setIpv4m(new SimpleStringProperty(ipv4.getText().substring(ipv4.getText().indexOf("/")+1)));}  }
 	    	  }
 	      break;
 		  case "ipv6":{
-			  if(ipv4.getText().matches("(.*)/(.*)"))
-              { SQL=SQL+"ipv6='"+ipv4.getText().substring(0,ipv4.getText().indexOf("/")-1)+"',";
-                SQL=SQL+"ipv6m='"+ipv4.getText().substring(ipv4.getText().indexOf("/")+1)+"',";
-                if(isAS==true) {AS.get(serv.getNomS().get()).setIpv6a(new SimpleStringProperty(ipv6.getText().substring(0,ipv6.getText().indexOf("/")-1)));
+			  if(ipv6.getText().matches("(.*)/(.*)"))
+              { SQL=SQL+"ipv6='"+ipv6.getText().substring(0,ipv6.getText().indexOf("/"))+"',";
+                SQL=SQL+"ipv6m='"+ipv6.getText().substring(ipv6.getText().indexOf("/")+1)+"',";
+                if(isAS==true) {AS.get(serv.getNomS().get()).setIpv6a(new SimpleStringProperty(ipv6.getText().substring(0,ipv6.getText().indexOf("/"))));
                 AS.get(serv.getNomS().get()).setIpv6m(new SimpleStringProperty(ipv6.getText().substring(ipv6.getText().indexOf("/")+1)));}
-  			  else if(isDB==true) {DB.get(serv.getNomS().get()).setIpv6a(new SimpleStringProperty(ipv6.getText().substring(0,ipv6.getText().indexOf("/")-1)));
+  			  else if(isDB==true) {DB.get(serv.getNomS().get()).setIpv6a(new SimpleStringProperty(ipv6.getText().substring(0,ipv6.getText().indexOf("/"))));
                 DB.get(serv.getNomS().get()).setIpv6m(new SimpleStringProperty(ipv6.getText().substring(ipv6.getText().indexOf("/")+1)));}
-  			  else {others.get(serv.getNomS().get()).setIpv6a(new SimpleStringProperty(ipv6.getText().substring(0,ipv6.getText().indexOf("/")-1)));
+  			  else {others.get(serv.getNomS().get()).setIpv6a(new SimpleStringProperty(ipv6.getText().substring(0,ipv6.getText().indexOf("/"))));
   			others.get(serv.getNomS().get()).setIpv6m(new SimpleStringProperty(ipv6.getText().substring(ipv6.getText().indexOf("/")+1)));}
                 }
 		  }break;
@@ -436,7 +464,7 @@ public class HomePageController implements Initializable {
 			System.out.print("La requete "+SQL);
 			if(!SQL.equals("UPDATE server SET where servername=? "))try(Connection conn=DBconnection.getConnection();PreparedStatement ps=conn.prepareStatement(SQL);)
 			{
-				ps.setString(1,servername.getText());
+				ps.setString(1,SrvnameActif);
 				
 				ps.execute();
 				
@@ -448,7 +476,8 @@ public class HomePageController implements Initializable {
 	  
 	
 	  //end
-	  versionserver.setEditable(false);
+		servername.setEditable(false);
+		versionserver.setEditable(false);
 	    memoire.setEditable(false);
 	    cpu.setEditable(false);
 	    cartevideo.setEditable(false);
@@ -540,14 +569,14 @@ public class HomePageController implements Initializable {
 		    ///////////////////////
 		    versionserver.textProperty().addListener((observable, oldValue, newValue) -> {
 		     	if(!oldValue.equals("jjhjhj")&&newValue.equals(""))  { System.out.println("textfield changed from " + oldValue + " to " + newValue);
-		   	 changedAttr.add("versionserver");}
+		     	if(!changedAttr.contains("versionserver")) changedAttr.add("versionserver");}
 			
 		    
 		});
 		
 		    memoire.textProperty().addListener((observable, oldValue, newValue) -> {
 		     	if(!oldValue.equals("jjhjhj")&& !newValue.equals("")) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
-			   	 changedAttr.add("memoire");}
+		     	if(!changedAttr.contains("memoire")) changedAttr.add("memoire");}
 					
 				    
 			});
@@ -556,101 +585,107 @@ public class HomePageController implements Initializable {
 		     	if(!oldValue.equals("jjhjhj") && !newValue.equals("")) 
 		     	{	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 					
-			   	 changedAttr.add("cpu");  } 
+		     	if(!changedAttr.contains("cpu"))changedAttr.add("cpu");  } 
 			});
 			
 		    cartevideo.textProperty().addListener((observable, oldValue, newValue) -> {
 		     	if(!oldValue.equals("jjhjhj")&& !newValue.equals("")) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
-			   	 changedAttr.add("cartevideo");}
+		     	if(!changedAttr.contains("cartevideo"))changedAttr.add("cartevideo");}
+					
+				    
+			});
+		    servername.textProperty().addListener((observable, oldValue, newValue) -> {
+		     	if(!oldValue.equals("jjhjhj")&& !newValue.equals("")) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		     	if(!changedAttr.contains("servername")) changedAttr.add("servername");}
 					
 				    
 			});
 			
 		    mvci.textProperty().addListener((observable, oldValue, newValue) -> {
 		     	if(!oldValue.equals("jjhjhj")&& newValue.equals("")) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
-			   	changedAttr.add("mvci");}
+		     	if(!changedAttr.contains("mvci"))changedAttr.add("mvci");}
 					
 				    
 			});
 			
 		    scsi.textProperty().addListener((observable, oldValue, newValue) -> {
 		     	if(!oldValue.equals("jjhjhj") && newValue.equals("")) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
-			   	changedAttr.add("scsi");}
+		     	if(!changedAttr.contains("scsi"))	changedAttr.add("scsi");}
 				    
 			});
 			
 		    cddvd.textProperty().addListener((observable, oldValue, newValue) -> {
 		     	if(!oldValue.equals("jjhjhj")&&newValue.equals("")) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
-			   	changedAttr.add("cddvd");}
+		     	if(!changedAttr.contains("cddvd"))changedAttr.add("cddvd");}
 				    
 			});
 			
 		    disquedur.textProperty().addListener((observable, oldValue, newValue) -> {
 		     	if(!oldValue.equals("jjhjhj")&&newValue.equals("")) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
-			   	changedAttr.add("disquedur");}
+		     	if(!changedAttr.contains("disquedur"))changedAttr.add("disquedur");}
 				    
 			});
 			
 	        disquette.textProperty().addListener((observable, oldValue, newValue) -> {
 	         	if(!oldValue.equals("jjhjhj")&&newValue.equals("")) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
-			   	changedAttr.add("disquette");	}
+	         	if(!changedAttr.contains("disquette"))changedAttr.add("disquette");	}
 				    
 			});
 			
 		    adaptateurres.textProperty().addListener((observable, oldValue, newValue) -> {
 			   	if(!oldValue.equals("jjhjhj")&&newValue.equals("")) {System.out.println("textfield changed from " + oldValue + " to " + newValue);
-			   	changedAttr.add("adaptateurres");		
+			   	if(!changedAttr.contains("adaptateurres"))changedAttr.add("adaptateurres");		
 			   	}
 			});
 			
 		    dateinstalation.textProperty().addListener((observable, oldValue, newValue) -> {
 		     	if(!oldValue.equals("jjhjhj")&& !newValue.equals("")) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
 				
-			   	changedAttr.add("dateinstalation");	}	  
+		     	if(!changedAttr.contains("dateinstalation"))changedAttr.add("dateinstalation");	}	  
 			});
 			
 		    versionOs.textProperty().addListener((observable, oldValue, newValue) -> {
 		    	System.out.println("changement : "+oldValue+newValue);
 		     	if(!oldValue.equals("jjhjhj")&& !newValue.equals("")) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
-			   	changedAttr.add("versionOs");	}		
+		     	if(!changedAttr.contains("versionOs"))changedAttr.add("versionOs");	}		
 				    
 			});
 			
 		    ipv4.textProperty().addListener((observable, oldValue, newValue) -> {
 		     	if(!oldValue.equals("jjhjhj")&& !newValue.equals("")) {  	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 					
-			   	changedAttr.add("ipv4");}	 
+		     	if(!changedAttr.contains("ipv4"))changedAttr.add("ipv4");}	 
 			});
 			
 		    ipv6.textProperty().addListener((observable, oldValue, newValue) -> {
 		     	if(!oldValue.equals("jjhjhj")&& !newValue.equals("")) { 	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 					
-			   	changedAttr.add("ipv6");	 } 
+		     	if(!changedAttr.contains("ipv6")) changedAttr.add("ipv6");	 } 
 			});
 			
 		    dns.textProperty().addListener((observable, oldValue, newValue) -> {
 		     	if(!oldValue.equals("jjhjhj")&& !newValue.equals("")) { 	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
-			   	changedAttr.add("dns");	}	
+		     	if(!changedAttr.contains("dns"))	changedAttr.add("dns");	}	
 				    
 			});
 			
 		    passerelle.textProperty().addListener((observable, oldValue, newValue) -> {
 		     	if(!oldValue.equals("jjhjhj")&& !newValue.equals("")) {  	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
-			   	changedAttr.add("passerelle");	}
+		     	if(!changedAttr.contains("passerelle"))changedAttr.add("passerelle");	}
 				    
 			});
 			
 		    mac.textProperty().addListener((observable, oldValue, newValue) -> {
-		    	if(!oldValue.equals("jjhjhj")&& !newValue.equals("")) {   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		    	if(!oldValue.equals("jjhjhj") && !newValue.equals("")) {   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 					
-			   	changedAttr.add("mac");	   }
+		    	if(!changedAttr.contains("mac"))changedAttr.add("mac");	   }
 			});
 			
 		    description.textProperty().addListener((observable, oldValue, newValue) -> {
-			   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
-					
-			   	changedAttr.add("description");	 
-			});
+		    	if(!oldValue.matches("Description") && !newValue.equals("")) {
+		    System.out.println("textfield changed from " + oldValue + " to " + newValue);
+			if(!changedAttr.contains("description")) changedAttr.add("description");	 
+		    	}	});
 		
 		
 		String sql="SELECT * from server where typeserver=?";
@@ -683,17 +718,28 @@ public class HomePageController implements Initializable {
 		
 	/*	AS.add(new Server(new SimpleStringProperty("AS_XXXXXX35"), null, null, null, null, null, null, null, null, null, null));
 		AS.add(new Server(new SimpleStringProperty("AS_XXXXXX65"), null, null, null, null, null, null, null, null, null, null));*/	
+    	initialiserMenuButton();
+    	details.setVisible(false);
+    	 servername.setEditable(false);
+   
+	}
+    @FXML
+    void shwDetails(ActionEvent event) {  	
+details.setVisible(true);
+    }
+    void initialiserMenuButton(){
+    	
     	MenuItem m;
     	for(Server serv :AS.values() ) {
     		m=new MenuItem(serv.getNomS().get());m.addEventHandler(ActionEvent.ACTION,(e) -> {
-    	        
-    	     System.out.printf(((MenuItem) e.getSource()).getText()+"choosed!");
+    			SrvnameActif=((MenuItem) e.getSource()).getText(); 
+    	    
     	     servername.setText(((MenuItem) e.getSource()).getText());
     	     cpu.setText(AS.get(((MenuItem) e.getSource()).getText()).getCPU().get());
     	     memoire.setText(AS.get(((MenuItem) e.getSource()).getText()).getMemoire().get());
     	     versionserver.setText(AS.get(((MenuItem) e.getSource()).getText()).getVersionserver().get());
-    	     ipv4.setText(AS.get(((MenuItem) e.getSource()).getText()).getIpv4a().get()+"\\"+AS.get(((MenuItem) e.getSource()).getText()).getIpv4m().get());
-    	     ipv6.setText(AS.get(((MenuItem) e.getSource()).getText()).getIpv6a().get()+"\\"+AS.get(((MenuItem) e.getSource()).getText()).getIpv6m().get());
+    	     ipv4.setText(AS.get(((MenuItem) e.getSource()).getText()).getIpv4a().get()+"/"+AS.get(((MenuItem) e.getSource()).getText()).getIpv4m().get());
+    	     ipv6.setText(AS.get(((MenuItem) e.getSource()).getText()).getIpv6a().get()+"/"+AS.get(((MenuItem) e.getSource()).getText()).getIpv6m().get());
     	     osserver.setText(AS.get(((MenuItem) e.getSource()).getText()).getServerOS().get());
     	     cartevideo.setText(AS.get(((MenuItem) e.getSource()).getText()).getCartevid().get());
     	     mvci.setText(AS.get(((MenuItem) e.getSource()).getText()).getVMCI().get());
@@ -703,9 +749,9 @@ public class HomePageController implements Initializable {
     	     disquette.setText(AS.get(((MenuItem) e.getSource()).getText()).getDisquette().get());
     	     adaptateurres.setText(AS.get(((MenuItem) e.getSource()).getText()).getAdapRes().get());
     	     dateinstalation.setText(AS.get(((MenuItem) e.getSource()).getText()).getDateOS().get());
-    	     versionOs.setText(AS.get(((MenuItem) e.getSource()).getText()).getSCSI().get());
+    	     versionOs.setText(AS.get(((MenuItem) e.getSource()).getText()).getVersionOS().get());
     	     dns.setText(AS.get(((MenuItem) e.getSource()).getText()).getDns().get());
-    	     passerelle.setText(AS.get(((MenuItem) e.getSource()).getText()).getSCSI().get());
+    	     passerelle.setText(AS.get(((MenuItem) e.getSource()).getText()).getPasserelle().get());
     	     mac.setText(AS.get(((MenuItem) e.getSource()).getText()).getPhysicalAd().get());
     	     osserver.setText(AS.get(((MenuItem) e.getSource()).getText()).getServerOS().get());
     	     description.setText(AS.get(((MenuItem) e.getSource()).getText()).getDescription().get());
@@ -721,8 +767,8 @@ public class HomePageController implements Initializable {
     	
       	for(Server serv :DB.values() ) {
     		m=new MenuItem(serv.getNomS().get());m.addEventHandler(ActionEvent.ACTION,(e) -> {
-    	        
-    	     System.out.printf(((MenuItem) e.getSource()).getText()+"choosed!");
+    	     SrvnameActif=((MenuItem) e.getSource()).getText();
+    	     System.out.printf(SrvnameActif+"choosed!");
     	     servername.setText(((MenuItem) e.getSource()).getText());
     	     cpu.setText(DB.get(((MenuItem) e.getSource()).getText()).getCPU().get());
     	     memoire.setText(DB.get(((MenuItem) e.getSource()).getText()).getMemoire().get());
@@ -741,13 +787,17 @@ public class HomePageController implements Initializable {
     	}
     	
     	DBshow.getItems().setAll(menuitemsDB.values());
-    	details.setVisible(false);
-    	 
-   
-	}
-    @FXML
-    void shwDetails(ActionEvent event) {  	
-details.setVisible(true);
+    	
+    	
+    	
     }
-
+   void majMenuButton (ObservableMap<String,Server> map,MenuButton button) {
+	   MenuItem m;
+		ObservableMap<String,MenuItem> menuitem =FXCollections.observableHashMap();
+		for(Server serv :map.values() ) {
+    	 m=new MenuItem(serv.getNomS().get());
+    	 menuitem.put(m.getText(),m);
+		}
+		button.getItems().setAll(menuitem.values());
+   }
 }

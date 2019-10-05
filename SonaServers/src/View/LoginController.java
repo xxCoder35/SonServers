@@ -1,6 +1,7 @@
 package View;
 
 import java.net.URL;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+
 
 import Model.DBconnection;
 import javafx.beans.value.ChangeListener;
@@ -127,6 +129,11 @@ private static String userConnected;
     	
     	
     }
+    @FXML
+    void sinscrire(ActionEvent event) {
+ goToInscrire(event);
+    }
+
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

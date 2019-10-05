@@ -276,16 +276,11 @@
                   <Font name="Bell MT" size="14.0" />
                </font>
                <graphic>
-                  <JFXButton fx:id="detailsButton" text="+" />
+                  <JFXButton fx:id="detailsButton" onAction="#shwDetails" text="+" />
                </graphic>
             </Label>
             <AnchorPane prefHeight="44.0" prefWidth="1060.0">
                <children>
-                  <Label fx:id="servername" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="278.0" text="Nom du serveur" textFill="#5fc4c6">
-                     <font>
-                        <Font name="System Bold Italic" size="23.0" />
-                     </font>
-                  </Label>
                   <Line endX="180.0" layoutX="112.0" layoutY="48.0" startX="-100.0" stroke="#31bca9" />
                   <JFXButton fx:id="delete" graphicTextGap="0.0" layoutX="300.0" layoutY="19.0" onAction="#supprimerServer" prefHeight="27.0" prefWidth="30.0" ripplerFill="#afffc9" textFill="WHITE">
                      <graphic>
@@ -305,9 +300,14 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
+                  <JFXTextField id="name" fx:id="servername" editable="false" focusColor="#31bca9" layoutX="17.0" layoutY="7.0" prefHeight="32.0" prefWidth="271.0" stylesheets="@ShowInfo.css" text="jjhjhj" unFocusColor="#31bca9">
+                     <font>
+                        <Font name="Arial" size="19.0" />
+                     </font>
+                  </JFXTextField>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="491.0" layoutY="428.0" prefHeight="202.0" prefWidth="513.0" style="-fx-background-color: #c3fcf2; -fx-border-radius: 20; -fx-background-radius: 20;">
+            <AnchorPane fx:id="details" layoutX="491.0" layoutY="428.0" prefHeight="202.0" prefWidth="513.0" style="-fx-background-color: #c3fcf2; -fx-border-radius: 20; -fx-background-radius: 20;">
                <children>
                   <HBox prefHeight="54.0" prefWidth="513.0" spacing="80.0" style="-fx-background-color: #c3fcf2; -fx-background-radius: 20;">
                      <children>
@@ -319,7 +319,7 @@
                               <Insets top="20.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXTextArea id="Champs" fx:id="description" editable="false" focusColor="#c3fcf2" prefHeight="35.0" prefWidth="244.0" stylesheets="@ShowInfo.css" text="bkbj hgbkbjhjbjdfxnlksdfk,sdkf,ld,fkd,fkDescription&#10;&#10;" unFocusColor="#c3fcf2">
+                        <JFXTextArea id="Champs" fx:id="description" editable="false" focusColor="#c3fcf2" prefHeight="35.0" prefWidth="244.0" stylesheets="@ShowInfo.css" text="Description" unFocusColor="#c3fcf2">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
