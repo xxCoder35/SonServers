@@ -2,12 +2,16 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,10 +22,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1380.0" style="-fx-padding: 20; -fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.HomePageController">
    <children>
-      <AnchorPane prefHeight="696.0" prefWidth="322.0" style="-fx-background-color: linear-gradient(to bottom, #46b1b0, #60bbba, #76c5c5, #8cd0d0, #a0dada);">
+      <AnchorPane prefHeight="720.0" prefWidth="322.0" style="-fx-background-color: linear-gradient(to bottom, #46b1b0, #60bbba, #76c5c5, #8cd0d0, #a0dada);">
          <children>
             <MenuButton fx:id="ASshow" layoutX="3.0" layoutY="77.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #60BBBA;" stylesheets="@MenuButton.css" text="Application Servers">
                <items>
@@ -49,7 +54,7 @@
                   </ImageView>
                </graphic>
             </MenuButton>
-            <JFXButton graphicTextGap="10.0" layoutX="12.0" layoutY="645.0" text="Paramètres">
+            <JFXButton graphicTextGap="10.0" layoutX="12.0" layoutY="645.0" onAction="#Parametres" text="Paramètres">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,10 +63,10 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="addAS" layoutX="278.0" layoutY="81.0" prefHeight="25.0" prefWidth="30.0" text="+">
+            <JFXButton layoutX="278.0" layoutY="81.0" onAction="#addAS" prefHeight="25.0" prefWidth="30.0" text="+">
              
             </JFXButton>
-            <JFXButton fx:id="addDB" layoutX="278.0" layoutY="148.0" prefHeight="25.0" prefWidth="30.0" text="+">
+            <JFXButton layoutX="278.0" layoutY="148.0" onAction="#addDB" prefHeight="25.0" prefWidth="30.0" text="+">
               
             </JFXButton>
             <MenuButton fx:id="othersShow" layoutX="3.0" layoutY="211.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #60BBBA;" stylesheets="@MenuButton.css" text="Autres">
@@ -77,10 +82,10 @@
                   </ImageView>
                </graphic>
             </MenuButton>
-            <JFXButton fx:id="addserver" layoutX="281.0" layoutY="215.0" prefHeight="25.0" prefWidth="30.0" text="+" />
+            <JFXButton layoutX="281.0" layoutY="215.0" onAction="#addserver" prefHeight="25.0" prefWidth="30.0" text="+" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="showinfoPane" layoutX="322.0" prefHeight="720.0" prefWidth="1056.0">
+      <AnchorPane fx:id="showinfoPane" layoutX="322.0" prefHeight="720.0" prefWidth="1056.0" visible="false">
          <children>
             <VBox layoutX="20.0" layoutY="150.0" prefHeight="346.0" prefWidth="352.0">
                <children>
@@ -326,13 +331,12 @@
                         </JFXTextArea>
                      </children>
                   </HBox>
-                  <GridPane fx:id="detailAS" layoutY="53.0" prefHeight="149.0" prefWidth="503.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" visible="false">
+                  <GridPane fx:id="detailAS" layoutY="53.0" prefHeight="149.0" prefWidth="503.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
@@ -341,21 +345,18 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Solution hébérgée" GridPane.rowIndex="1" />
-                        <JFXTextField focusColor="#c3fcf2" unFocusColor="#c3fcf2" GridPane.columnIndex="1" />
-                        <JFXTextField focusColor="#c3fcf2" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <JFXTextField fx:id="chemin" editable="false" focusColor="#c3fcf2" prefHeight="54.0" prefWidth="246.0" unFocusColor="#c3fcf2" GridPane.columnIndex="1" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </padding>
                   </GridPane>
-                  <GridPane fx:id="detailDB" hgap="10.0" layoutY="53.0" prefHeight="127.0" prefWidth="436.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" vgap="5.0">
+                  <GridPane fx:id="detailDB" hgap="10.0" layoutY="53.0" prefHeight="127.0" prefWidth="436.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" vgap="5.0" visible="false">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
@@ -366,23 +367,17 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Solution hébérgée" GridPane.rowIndex="2" />
                         <Label id="Champs" fx:id="cBDType" prefHeight="19.0" prefWidth="40.0" stylesheets="@ShowInfo.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <JFXTextField id="Champs" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1">
+                        <JFXTextField id="Champs" fx:id="vrsBD" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                        </JFXTextField>
-                        <JFXTextField id="Champs" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <JFXTextField id="Champs" fx:id="typeBD" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
@@ -401,28 +396,162 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="formulairepane" layoutX="322.0" prefHeight="720.0" prefWidth="1056.0" visible="false" />
-      <AnchorPane layoutX="369.0" layoutY="44.0" prefHeight="645.0" prefWidth="653.0" visible="false">
+      <AnchorPane fx:id="formulairepane" layoutX="404.0" layoutY="54.0" prefHeight="621.0" prefWidth="706.0" visible="false">
          <children>
-            <VBox layoutX="100.0" layoutY="82.0" prefHeight="478.0" prefWidth="551.0" spacing="50.0">
-               <padding>
-                  <Insets left="10.0" right="10.0" top="20.0" />
-               </padding>
+            <VBox fx:id="HardwareForm" prefHeight="621.0" prefWidth="709.0" spacing="30.0" style="-fx-background-color: #EEFCFD;" visible="false">
                <children>
-                  <JFXComboBox prefHeight="25.0" prefWidth="387.0" promptText="Serveur" />
-                  <JFXComboBox prefHeight="25.0" prefWidth="390.0" promptText="Paramètres à modifier" />
-                  <JFXTextField text="Nouvelle valeur ( il contiendra au début l'ancienne valeur hakda bech may3awdch yekteb koulech" />
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+                  <JFXTextField fx:id="nomserveur" focusColor="#42908e" labelFloat="true" promptText="nom du serveur" />
+                  <JFXTextField fx:id="memoire1" focusColor="#42908e" labelFloat="true" promptText="Mémoire" />
+                  <JFXTextField fx:id="cpu1" focusColor="#42908e" labelFloat="true" promptText="CPU" />
+                  <JFXTextField fx:id="cartevd" focusColor="#42908e" labelFloat="true" promptText="Carte vidéo" />
+                  <JFXTextField fx:id="vmci" focusColor="#42908e" labelFloat="true" promptText="Périphérique VMCI" />
+                  <JFXTextField fx:id="controleur" focusColor="#42908e" labelFloat="true" promptText="Controleur SCSI" />
+                  <JFXTextField fx:id="lectcd" focusColor="#42908e" labelFloat="true" promptText="Lecteur CD/DVD" />
+                  <JFXTextField fx:id="disquedur1" focusColor="#42908e" labelFloat="true" promptText="Disque dur" />
+                  <JFXTextField fx:id="lecteurdedisquette1" focusColor="#42908e" labelFloat="true" promptText="Lecteur disquette" />
+                  <JFXTextField fx:id="adaptateurrs1" focusColor="#42908e" labelFloat="true" promptText="Adaptateur reseau" />
+                  <JFXButton fx:id="suivant1" buttonType="RAISED" onAction="#suivant1" ripplerFill="#80f293" text="Suivant &gt;">
+                     <VBox.margin>
+                        <Insets left="500.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets left="60.0" right="70.0" top="20.0" />
+               </padding>
+            </VBox>
+            <VBox fx:id="reseausystem" prefHeight="621.0" prefWidth="709.0" spacing="30.0" style="-fx-background-color: #EEFCFD;" visible="false">
+               <children>
+                  <HBox prefHeight="50.0" prefWidth="649.0" spacing="70.0">
                      <children>
-                        <JFXButton text="Confirmer" />
-                        <JFXButton text="Màj an other one" />
+                        <JFXTextField fx:id="ipv4f" focusColor="#42908e" labelFloat="true" prefHeight="25.0" prefWidth="458.0" promptText="Adresse IPV4" />
+                        <JFXTextField fx:id="msqipv4f" focusColor="#42908e" labelFloat="true" promptText="Masque" />
+                     </children>
+                  </HBox>
+                  <JFXTextField fx:id="passerellef" focusColor="#42908e" labelFloat="true" promptText="Passerelle" />
+                  <JFXTextField fx:id="dnsf" focusColor="#42908e" labelFloat="true" promptText="Serveur DNS" />
+                  <HBox prefHeight="45.0" prefWidth="649.0" spacing="70.0">
+                     <children>
+                        <JFXTextField fx:id="ipv6f" focusColor="#42908e" labelFloat="true" prefHeight="25.0" prefWidth="443.0" text="Adresse IPV6" />
+                        <JFXTextField fx:id="msqipv6f" focusColor="#42908e" labelFloat="true" text="masqueIPV6" />
+                     </children>
+                  </HBox>
+                  <JFXTextField fx:id="macf" focusColor="#42908e" labelFloat="true" text="Adresse Physique" />
+                  <JFXComboBox fx:id="sof" focusColor="#42908e" labelFloat="true" prefHeight="25.0" prefWidth="399.0" promptText="systeme d'exploiatation" />
+                  <JFXDatePicker fx:id="datef" defaultColor="#42908e" prefHeight="28.0" prefWidth="586.0" promptText="Installé le" />
+                  <JFXTextField fx:id="versionf" focusColor="#42908e" labelFloat="true" text="Version du système d'exploitation" />
+                  <HBox prefHeight="56.0" prefWidth="649.0" spacing="30.0">
+                     <children>
+                        <JFXButton fx:id="retour" buttonType="RAISED" onAction="#retour1" text="Retour" />
+                        <JFXButton buttonType="RAISED" onAction="#suivant2" ripplerFill="#66cd8e" text="Suivant&gt;">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </JFXButton>
                      </children>
                      <padding>
-                        <Insets left="70.0" />
+                        <Insets left="480.0" top="50.0" />
                      </padding>
                   </HBox>
                </children>
+               <padding>
+                  <Insets left="30.0" right="30.0" top="20.0" />
+               </padding>
             </VBox>
+            <VBox fx:id="descriptionForm" prefHeight="621.0" prefWidth="709.0" spacing="50.0" style="-fx-background-color: #EEFCFD;">
+               <children>
+                  <JFXTextArea fx:id="descriptionf" focusColor="#42908e" labelFloat="true" promptText="Description" text="Description" />
+                  <JFXTextField fx:id="cheminf" focusColor="#42908e" labelFloat="true" prefHeight="37.0" prefWidth="599.0" promptText="Chemin Src" />
+                  <JFXTextField fx:id="typeBDDf" focusColor="#42908e" labelFloat="true" promptText="Type la Base de donnée" />
+                  <JFXTextField fx:id="versionBDDf" focusColor="#42908e" labelFloat="true" promptText="Version de la base de donnée" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" onAction="#enregistrer" prefHeight="33.0" prefWidth="87.0" ripplerFill="#7feea2" text="Confirmer" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="300.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="40.0" right="70.0" top="30.0" />
+               </padding></VBox>
+         </children></AnchorPane>
+      <JFXTextField fx:id="searchbar" focusColor="#47b9a6" labelFloat="true" layoutX="960.0" layoutY="14.0" prefHeight="25.0" prefWidth="330.0" promptText="Recherche" unFocusColor="#3e8c81" />
+      <JFXButton layoutX="1290.0" layoutY="10.0" onAction="#search" style="-fx-border-radius: 60; -fx-background-radius: 10;">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/search-var-flat/256x256.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <AnchorPane fx:id="searchpane" layoutX="409.0" layoutY="127.0" prefHeight="453.0" prefWidth="628.0" visible="false">
+         <children>
+            <Label layoutX="74.0" layoutY="31.0" prefHeight="28.0" prefWidth="183.0" text="Résultats de la recherche " textFill="#138061" underline="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tableresult" layoutX="61.0" layoutY="84.0" prefHeight="200.0" prefWidth="382.0">
+              <columns>
+                <TableColumn fx:id="noms" editable="false" prefWidth="381.0" text="Noms des Serveurs" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="configPane" layoutX="363.0" layoutY="65.0" prefHeight="630.0" prefWidth="761.0">
+         <children>
+            <AnchorPane fx:id="configmenu" layoutX="21.0" layoutY="45.0" prefHeight="418.0" prefWidth="419.0" visible="false">
+               <children>
+                  <Text fill="#42bf8b" layoutX="20.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Générale" wrappingWidth="156.033203125">
+                     <font>
+                        <Font name="Book Antiqua" size="19.0" />
+                     </font>
+                  </Text>
+                  <Line endX="100.0" layoutX="120.0" layoutY="47.0" startX="-100.0" stroke="#3ac34c" />
+                  <JFXButton layoutX="20.0" layoutY="82.0" onAction="#AddOS" prefHeight="25.0" prefWidth="352.0" text="Ajouter un système d'exploitation " textFill="#298371" underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <Text fill="#42bf8b" layoutX="24.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paramétres du compte" wrappingWidth="208.0">
+                     <font>
+                        <Font name="Book Antiqua" size="19.0" />
+                     </font>
+                  </Text>
+                  <Line endX="100.0" layoutX="120.0" layoutY="186.0" startX="-100.0" stroke="#3ac34c" />
+                  <JFXButton layoutX="12.0" layoutY="225.0" onAction="#changepwd" prefHeight="30.0" prefWidth="322.0" text="Changer le mot de passe " textFill="#298371" underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="addospane" layoutX="67.0" layoutY="86.0" prefHeight="200.0" prefWidth="636.0" visible="false">
+               <children>
+                  <JFXTextField fx:id="sys" focusColor="#42908e" layoutX="67.0" layoutY="52.0" prefHeight="33.0" prefWidth="408.0" promptText="systeme d'exploitation" unFocusColor="#42908e" />
+                  <JFXButton buttonType="RAISED" layoutX="266.0" layoutY="120.0" onAction="#confirmadd" prefHeight="25.0" prefWidth="146.0" style="-fx-border-color: #42908e; -fx-background-radius: 30; -fx-border-radius: 30;" text="Ajouter" textFill="#42908e" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="67.0" layoutY="69.0" prefHeight="238.0" prefWidth="672.0" visible="false">
+               <children>
+                  <JFXPasswordField focusColor="#42908e" labelFloat="true" layoutX="180.0" layoutY="38.0" prefHeight="25.0" prefWidth="281.0" promptText="Ancien mot de passe" unFocusColor="#42908e" />
+                  <JFXPasswordField focusColor="#42908e" labelFloat="true" layoutX="180.0" layoutY="82.0" prefHeight="25.0" prefWidth="281.0" promptText="Nouveau mot de passe" unFocusColor="#42908e" />
+                  <JFXButton buttonType="RAISED" layoutX="278.0" layoutY="162.0" prefHeight="39.0" prefWidth="94.0" style="-fx-border-color: #42908e; -fx-background-radius: 20; -fx-border-radius: 20;" text="confirmer" textFill="#42908e">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

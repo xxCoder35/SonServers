@@ -34,7 +34,7 @@ public class Server {
     private SimpleStringProperty dns;
     private SimpleStringProperty passerelle;
     private SimpleStringProperty physicalAd;
-    private SimpleStringProperty solutionHeb;
+   
   
 	//FOR AS
     private SimpleStringProperty cheminSrc;
@@ -77,8 +77,8 @@ public class Server {
 	}
 	//COnstructeur AS
 	
-	public SimpleStringProperty getNomS() {
-		return nomS;
+	public String getNomS() {
+		return nomS.get();
 	}
 	public Server(SimpleStringProperty nomS, SimpleStringProperty typeS, SimpleStringProperty versionserver,
 			SimpleStringProperty memoire, SimpleStringProperty cPU,SimpleStringProperty carteVid, SimpleStringProperty serverOS,
@@ -87,7 +87,7 @@ public class Server {
 			SimpleStringProperty description, SimpleStringProperty vMCI, SimpleStringProperty sCSI,
 			SimpleStringProperty cDDVD, SimpleStringProperty dD, SimpleStringProperty disquette,
 			SimpleStringProperty adapRes, SimpleStringProperty dns, SimpleStringProperty passerelle,
-			SimpleStringProperty physicalAd, SimpleStringProperty solutionHeb, SimpleStringProperty cheminSrc) {
+			SimpleStringProperty physicalAd, SimpleStringProperty cheminSrc) {
 		super();
 		this.nomS = nomS;
 		this.typeS = typeS;
@@ -111,7 +111,7 @@ public class Server {
 		this.dns = dns;
 		this.passerelle = passerelle;
 		this.physicalAd = physicalAd;
-		this.solutionHeb = solutionHeb;
+	  this.cartevid=carteVid;
 		this.cheminSrc = cheminSrc;
 	}
 	//construct DB 
@@ -126,7 +126,7 @@ public class Server {
 			SimpleStringProperty description, SimpleStringProperty vMCI, SimpleStringProperty sCSI,
 			SimpleStringProperty cDDVD, SimpleStringProperty dD, SimpleStringProperty disquette,
 			SimpleStringProperty adapRes, SimpleStringProperty dns, SimpleStringProperty passerelle,
-			SimpleStringProperty physicalAd, SimpleStringProperty solutionHeb, SimpleStringProperty typeBD,
+			SimpleStringProperty physicalAd, SimpleStringProperty typeBD,
 			SimpleStringProperty versionBD) {
 		super();
 		this.cartevid=carteVid;
@@ -143,6 +143,7 @@ public class Server {
 		this.ipv6a = ipv6a;
 		this.ipv6m = ipv6m;
 		Description = description;
+		 this.cartevid=carteVid;
 		VMCI = vMCI;
 		SCSI = sCSI;
 		CDDVD = cDDVD;
@@ -152,7 +153,7 @@ public class Server {
 		this.dns = dns;
 		this.passerelle = passerelle;
 		this.physicalAd = physicalAd;
-		this.solutionHeb = solutionHeb;
+		
 		this.typeBD = typeBD;
 		this.versionBD = versionBD;
 	}
@@ -228,12 +229,7 @@ public class Server {
 	public void setPhysicalAd(SimpleStringProperty physicalAd) {
 		this.physicalAd = physicalAd;
 	}
-	public SimpleStringProperty getSolutionHeb() {
-		return solutionHeb;
-	}
-	public void setSolutionHeb(SimpleStringProperty solutionHeb) {
-		this.solutionHeb = solutionHeb;
-	}
+
 	public SimpleStringProperty getCheminSrc() {
 		return cheminSrc;
 	}

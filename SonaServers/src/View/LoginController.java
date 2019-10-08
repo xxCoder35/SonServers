@@ -84,7 +84,7 @@ private static String userConnected;
 						        if (rs.next()) {
 						        	rs.close();
 						           	userConnected=uname;
-						        	System.out.print("  "+uname);
+						    
 						          goToHome(event);
 						        }
 						        else

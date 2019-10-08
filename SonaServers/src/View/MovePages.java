@@ -68,6 +68,7 @@ public interface MovePages {
 		try {
 			Parent root1;
 			root1 = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
+
 			primaryStage.setScene(new Scene(root1,1380,700));
 	//	ScenicView.show(root1); 
 		} catch (IOException e) {
