@@ -2,7 +2,7 @@ package View;
 
 import java.io.IOException;
 
-import org.scenicview.ScenicView;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +18,7 @@ public interface MovePages {
 	
 		try {
 			Parent root1;
-			root1 = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
+			root1 = FXMLLoader.load(getClass().getResource("/View/LoginPage.fxml"));
 			primaryStage.setScene(new Scene(root1,1380,700));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -32,7 +32,7 @@ public interface MovePages {
 	
 		try {
 			Parent root1;
-			root1 = FXMLLoader.load(getClass().getResource("/view/inscriptionPage.fxml"));
+			root1 = FXMLLoader.load(getClass().getResource("/View/inscriptionPage.fxml"));
 			primaryStage.setScene(new Scene(root1,1380,700));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -53,7 +53,7 @@ public interface MovePages {
 	
 		try {
 			Parent root1;
-			root1 = FXMLLoader.load(getClass().getResource("/view/DBconfig.fxml"));
+			root1 = FXMLLoader.load(getClass().getResource("/View/DBconfig.fxml"));
 			primaryStage.setScene(new Scene(root1,1380,700));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -67,7 +67,7 @@ public interface MovePages {
 	
 		try {
 			Parent root1;
-			root1 = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
+			root1 = FXMLLoader.load(getClass().getResource("/View/HomePage.fxml"));
 
 			primaryStage.setScene(new Scene(root1,1380,700));
 	//	ScenicView.show(root1); 

@@ -1326,8 +1326,7 @@ private String os;
 
    @FXML
    void Parametres(ActionEvent event) {
-	   searchbar.setVisible(false);
-	   formulairepane.setVisible(false);
+	 	   formulairepane.setVisible(false);
 	   showinfoPane.setVisible(false);
 	   searchpane.setVisible(false);
 	   configPane.setVisible(true);
@@ -1359,16 +1358,21 @@ private String os;
    }
    @FXML
    JFXPasswordField newpwd;
+   
    @FXML
    void changepwd(ActionEvent event) {
 	   configmenu.setVisible(false);
-	  pwdpane.setVisible(true);
-	   
+	   pwdpane.setVisible(true);}
+   
+   
+   @FXML
+   void confirmpwdchange(ActionEvent event) {
 	if(oldpwd.getText()!="")   try(Connection conn=DBconnection.getConnection();PreparedStatement preparedStmt = conn.prepareStatement("select passwd from user where userid=?");){
 		   
 		   preparedStmt.setString(1,LoginController.getUserConnected());
-		   ResultSet rs=preparedStmt.getResultSet();
-		   if (rs.next()) {
+		   ResultSet rs=preparedStmt.executeQuery();
+		  if(rs.next()) 
+		  {
 			   if(rs.getString("passwd").equals(oldpwd.getText())){  
 				try(PreparedStatement ps=conn.prepareStatement("UPDATE user SET passwd=? where userid=?");){
 					 ps.setString(1,newpwd.getText());

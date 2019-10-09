@@ -28,7 +28,7 @@
    <children>
       <AnchorPane prefHeight="720.0" prefWidth="322.0" style="-fx-background-color: linear-gradient(to bottom, #46b1b0, #60bbba, #76c5c5, #8cd0d0, #a0dada);">
          <children>
-            <MenuButton fx:id="ASshow" layoutX="3.0" layoutY="77.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #60BBBA;" stylesheets="@MenuButton.css" text="Application Servers">
+            <MenuButton fx:id="ASshow" layoutX="3.0" layoutY="77.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #60BBBA;" stylesheets="/View/MenuButton.css" text="Application Servers">
                <items>
                   <MenuItem mnemonicParsing="false" text="act" />
                   <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -36,12 +36,12 @@
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons8-server-96.png" />
+                        <Image url="/View/icons8-server-96.png" />
                      </image>
                   </ImageView>
                </graphic>
             </MenuButton>
-            <MenuButton fx:id="DBshow" layoutX="3.0" layoutY="144.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #60BBBA;" stylesheets="@MenuButton.css" text="DB Servers">
+            <MenuButton fx:id="DBshow" layoutX="3.0" layoutY="144.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #60BBBA;" stylesheets="/View/MenuButton.css" text="DB Servers">
                <items>
                   <MenuItem mnemonicParsing="false" text="Action 1" />
                   <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -49,7 +49,7 @@
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons8-server-96.png" />
+                        <Image url="/View/icons8-server-96.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -58,7 +58,7 @@
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons8-edit-property-52.png" />
+                        <Image url="/View/icons8-edit-property-52.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -69,7 +69,7 @@
             <JFXButton layoutX="278.0" layoutY="148.0" onAction="#addDB" prefHeight="25.0" prefWidth="30.0" text="+">
               
             </JFXButton>
-            <MenuButton fx:id="othersShow" layoutX="3.0" layoutY="211.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #60BBBA;" stylesheets="@MenuButton.css" text="Autres">
+            <MenuButton fx:id="othersShow" layoutX="3.0" layoutY="211.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #60BBBA;" stylesheets="/View/MenuButton.css" text="Autres">
                <items>
                   <MenuItem mnemonicParsing="false" text="Action 1" />
                   <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -77,7 +77,7 @@
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons8-server-96.png" />
+                        <Image url="/View/icons8-server-96.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -89,7 +89,7 @@
          <children>
             <VBox layoutX="20.0" layoutY="150.0" prefHeight="346.0" prefWidth="352.0">
                <children>
-                  <Label id="title" prefHeight="44.0" prefWidth="322.0" stylesheets="@ShowInfo.css" text="Matériel" textAlignment="CENTER" textFill="#0b7e8a">
+                  <Label id="title" prefHeight="44.0" prefWidth="322.0" stylesheets="/View/ShowInfo.css" text="Matériel" textAlignment="CENTER" textFill="#0b7e8a">
                      <font>
                         <Font name="Bell MT" size="18.0" />
                      </font>
@@ -118,20 +118,20 @@
                      </rowConstraints>
                      <children>
                         <Label GridPane.rowIndex="10" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Mémoire" GridPane.rowIndex="3" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="@ShowInfo.css" text="version du serveur" GridPane.rowIndex="2">
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Mémoire" GridPane.rowIndex="3" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="/View/ShowInfo.css" text="version du serveur" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="CPU" GridPane.rowIndex="4" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="179.0" stylesheets="@ShowInfo.css" text="Carte vidéo" GridPane.rowIndex="5" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Périphérique VMCI" GridPane.rowIndex="6" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Controleur SCSI" GridPane.rowIndex="7" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Lecteur CD/DVD" GridPane.rowIndex="8" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Disque Dur" GridPane.rowIndex="9" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Lecteur Disquette" GridPane.rowIndex="10" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Adaptateur Réseau" GridPane.rowIndex="11" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="CPU" GridPane.rowIndex="4" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="179.0" stylesheets="/View/ShowInfo.css" text="Carte vidéo" GridPane.rowIndex="5" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Périphérique VMCI" GridPane.rowIndex="6" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Controleur SCSI" GridPane.rowIndex="7" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Lecteur CD/DVD" GridPane.rowIndex="8" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Disque Dur" GridPane.rowIndex="9" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Lecteur Disquette" GridPane.rowIndex="10" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Adaptateur Réseau" GridPane.rowIndex="11" />
                         <JFXTextField id="Champs" fx:id="versionserver" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Arial" size="14.0" />
@@ -191,7 +191,7 @@
             </VBox>
             <VBox layoutX="500.0" layoutY="52.0" prefHeight="320.0" prefWidth="352.0">
                <children>
-                  <Label id="title" layoutX="500.0" prefHeight="44.0" prefWidth="322.0" stylesheets="@ShowInfo.css" text="Système d'exploitation &amp; Réseau" textAlignment="CENTER" textFill="#0b7e8a">
+                  <Label id="title" layoutX="500.0" prefHeight="44.0" prefWidth="322.0" stylesheets="/View/ShowInfo.css" text="Système d'exploitation &amp; Réseau" textAlignment="CENTER" textFill="#0b7e8a">
                      <font>
                         <Font name="Bell MT" size="18.0" />
                      </font>
@@ -216,18 +216,18 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="173.0" stylesheets="@ShowInfo.css" text="Version du OS" GridPane.rowIndex="2" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="@ShowInfo.css" text="Système d'exploitation" GridPane.rowIndex="1">
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="173.0" stylesheets="/View/ShowInfo.css" text="Version du OS" GridPane.rowIndex="2" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="/View/ShowInfo.css" text="Système d'exploitation" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Date d'installation du OS" GridPane.rowIndex="3" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="179.0" stylesheets="@ShowInfo.css" text="adresse ipv4" GridPane.rowIndex="4" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="adresse ipv6" GridPane.rowIndex="5" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Serveur DNS" GridPane.rowIndex="6" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Passerelle" GridPane.rowIndex="7" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Adresse physique" GridPane.rowIndex="8" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Date d'installation du OS" GridPane.rowIndex="3" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="179.0" stylesheets="/View/ShowInfo.css" text="adresse ipv4" GridPane.rowIndex="4" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="adresse ipv6" GridPane.rowIndex="5" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Serveur DNS" GridPane.rowIndex="6" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Passerelle" GridPane.rowIndex="7" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Adresse physique" GridPane.rowIndex="8" />
                         <JFXTextField id="Champs" fx:id="dateinstalation" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="Arial" size="14.0" />
@@ -276,7 +276,7 @@
                   </GridPane>
                </children>
             </VBox>
-            <Label id="title" layoutX="503.0" layoutY="372.0" prefHeight="56.0" prefWidth="490.0" stylesheets="@ShowInfo.css" text="Détails" textAlignment="CENTER" textFill="#0b7e8a">
+            <Label id="title" layoutX="503.0" layoutY="372.0" prefHeight="56.0" prefWidth="490.0" stylesheets="/View/ShowInfo.css" text="Détails" textAlignment="CENTER" textFill="#0b7e8a">
                <font>
                   <Font name="Bell MT" size="14.0" />
                </font>
@@ -291,7 +291,7 @@
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Desktop/Capture.PNG" />
+                              <Image url="/View/Capture.PNG" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -300,12 +300,12 @@
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Desktop/edit.PNG" />
+                              <Image url="/View/edit.PNG" />
                            </image>
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXTextField id="name" fx:id="servername" editable="false" focusColor="#31bca9" layoutX="17.0" layoutY="7.0" prefHeight="32.0" prefWidth="271.0" stylesheets="@ShowInfo.css" text="jjhjhj" unFocusColor="#31bca9">
+                  <JFXTextField id="name" fx:id="servername" editable="false" focusColor="#31bca9" layoutX="17.0" layoutY="7.0" prefHeight="32.0" prefWidth="271.0" stylesheets="/View/ShowInfo.css" text="jjhjhj" unFocusColor="#31bca9">
                      <font>
                         <Font name="Arial" size="19.0" />
                      </font>
@@ -316,7 +316,7 @@
                <children>
                   <HBox prefHeight="54.0" prefWidth="513.0" spacing="80.0" style="-fx-background-color: #c3fcf2; -fx-background-radius: 20;">
                      <children>
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Description">
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Description">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -324,7 +324,7 @@
                               <Insets top="20.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXTextArea id="Champs" fx:id="description" editable="false" focusColor="#c3fcf2" prefHeight="35.0" prefWidth="244.0" stylesheets="@ShowInfo.css" text="Description" unFocusColor="#c3fcf2">
+                        <JFXTextArea id="Champs" fx:id="description" editable="false" focusColor="#c3fcf2" prefHeight="35.0" prefWidth="244.0" stylesheets="/View/ShowInfo.css" text="Description" unFocusColor="#c3fcf2">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -340,7 +340,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="@ShowInfo.css" text="Chemin App">
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="/View/ShowInfo.css" text="Chemin App">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -361,13 +361,13 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="@ShowInfo.css" text="Type BD" GridPane.rowIndex="1" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="@ShowInfo.css" text="version BD">
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Type BD" GridPane.rowIndex="1" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="/View/ShowInfo.css" text="version BD">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label id="Champs" fx:id="cBDType" prefHeight="19.0" prefWidth="40.0" stylesheets="@ShowInfo.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label id="Champs" fx:id="cBDType" prefHeight="19.0" prefWidth="40.0" stylesheets="/View/ShowInfo.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -488,7 +488,7 @@
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/search-var-flat/256x256.png" />
+                  <Image url="/View/256x256.png" />
                </image>
             </ImageView>
          </graphic>
@@ -541,11 +541,11 @@
                   <JFXButton buttonType="RAISED" layoutX="266.0" layoutY="120.0" onAction="#confirmadd" prefHeight="25.0" prefWidth="146.0" style="-fx-border-color: #42908e; -fx-background-radius: 30; -fx-border-radius: 30;" text="Ajouter" textFill="#42908e" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="67.0" layoutY="69.0" prefHeight="238.0" prefWidth="672.0" visible="false">
+            <AnchorPane fx:id="pwdpane" layoutX="67.0" layoutY="69.0" prefHeight="238.0" prefWidth="672.0" visible="false">
                <children>
-                  <JFXPasswordField focusColor="#42908e" labelFloat="true" layoutX="180.0" layoutY="38.0" prefHeight="25.0" prefWidth="281.0" promptText="Ancien mot de passe" unFocusColor="#42908e" />
-                  <JFXPasswordField focusColor="#42908e" labelFloat="true" layoutX="180.0" layoutY="82.0" prefHeight="25.0" prefWidth="281.0" promptText="Nouveau mot de passe" unFocusColor="#42908e" />
-                  <JFXButton buttonType="RAISED" layoutX="278.0" layoutY="162.0" prefHeight="39.0" prefWidth="94.0" style="-fx-border-color: #42908e; -fx-background-radius: 20; -fx-border-radius: 20;" text="confirmer" textFill="#42908e">
+                  <JFXPasswordField fx:id="oldpwd" focusColor="#42908e" labelFloat="true" layoutX="180.0" layoutY="38.0" prefHeight="25.0" prefWidth="281.0" promptText="Ancien mot de passe" unFocusColor="#42908e" />
+                  <JFXPasswordField fx:id="newpwd" focusColor="#42908e" labelFloat="true" layoutX="180.0" layoutY="82.0" prefHeight="25.0" prefWidth="281.0" promptText="Nouveau mot de passe" unFocusColor="#42908e" />
+                  <JFXButton buttonType="RAISED" layoutX="278.0" layoutY="162.0" prefHeight="39.0" prefWidth="94.0" onAction="#confirmpwdchange" style="-fx-border-color: #42908e; -fx-background-radius: 20; -fx-border-radius: 20;" text="confirmer" textFill="#42908e">
                      <font>
                         <Font size="15.0" />
                      </font>

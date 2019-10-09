@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1380.0" style="-fx-background-color: linear-gradient(to bottom, #125964, #136371, #156e7f, #18788d, #1b839c, #2a8fa7, #389bb3, #44a8be, #5bb9c8, #72cad3, #89dcdd, #a1ede8);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.InscriptionController">
+   <children>
+      <VBox layoutX="350.0" layoutY="36.0" prefHeight="607.0" prefWidth="676.0" spacing="70.0" style="-fx-background-color: #CCEFF0;">
+         <children>
+            <Text fill="#30c99e" strokeType="OUTSIDE" strokeWidth="0.0" text="Inscription" textAlignment="RIGHT" wrappingWidth="371.4700622558594">
+               <font>
+                  <Font name="Arial Black" size="20.0" />
+               </font>
+            </Text>
+            <JFXTextField fx:id="nom" focusColor="#408ba8" labelFloat="true" promptText="Nom" unFocusColor="#408ba8">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="prenom" focusColor="#408ba8" labelFloat="true" promptText="Prenom" unFocusColor="#408ba8">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <JFXTextField fx:id="usern" focusColor="#408ba8" labelFloat="true" promptText="nom d'utilisateur" unFocusColor="#408ba8">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label fx:id="uidexistant" prefHeight="17.0" prefWidth="283.0" text="ce nom d'utilisateur existe déjà !" textFill="#ff0c0c" visible="false" />
+               </children>
+            </VBox>
+            <JFXPasswordField fx:id="mdp" labelFloat="true" promptText="Mot de passe" unFocusColor="#408ba8">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXPasswordField>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="70.0">
+               <padding>
+                  <Insets left="290.0" top="10.0" />
+               </padding>
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#confirm" prefHeight="63.0" prefWidth="122.0" style="-fx-background-color: #75d3bb; -fx-background-radius: 20;" text="S'inscrire" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#Cancel" prefHeight="59.0" prefWidth="123.0" style="-fx-background-color: #75d3bb; -fx-background-radius: 20;" text="Annuler" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="40.0" right="40.0" top="30.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

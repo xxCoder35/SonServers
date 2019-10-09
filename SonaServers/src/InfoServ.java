@@ -21,7 +21,8 @@ public class InfoServ extends Application {
 			
 			@Override
 			public void start(Stage primaryStage) throws Exception {
-			root =FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
+		
+			root =FXMLLoader.load(getClass().getResource("/View/LoginPage.fxml"));
 			primaryStage.setTitle("InfoServer ");
 			Scene scene=new Scene(root, 1200, 700);
 		    primaryStage.setScene(scene);
