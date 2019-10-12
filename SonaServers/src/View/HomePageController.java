@@ -26,6 +26,12 @@ import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.Printer;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -36,10 +42,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.transform.Scale;
 
 
 
-public class HomePageController implements Initializable {
+public class HomePageController implements Initializable{
 
 	 
 	@FXML
@@ -63,8 +70,6 @@ public class HomePageController implements Initializable {
     @FXML
     private AnchorPane showinfoPane;
 
-    @FXML
-    private JFXTextField versionserver;
 
     @FXML
     private JFXTextField memoire;
@@ -149,6 +154,13 @@ public class HomePageController implements Initializable {
     private JFXTextField osserver;
     @FXML
     private JFXComboBox<String> osCB;
+    @FXML
+    private JFXTextField cheminBD;
+  
+
+    @FXML
+    private JFXTextField cheminf1;
+
     
     @FXML
     private AnchorPane configPane;
@@ -275,6 +287,7 @@ public class HomePageController implements Initializable {
 	private LocalDate  dat;
 	private String versionsys;
 	private String mott ;
+	
 	final ObservableList<String> data  =  FXCollections.observableArrayList();
 	final ObservableList<Server> rechercherr  =  FXCollections.observableArrayList();
 	 @FXML
@@ -307,7 +320,7 @@ private String os;
   @FXML
   void modifierServ(ActionEvent event) {
        servername.setEditable(true);
-	    versionserver.setEditable(true);
+	
 	    memoire.setEditable(true);
 	    cpu.setEditable(true);
 	    cartevideo.setEditable(true);
@@ -389,17 +402,7 @@ private String os;
 			  
 		  }
 		  break;
-		  case "versionserver":
-		  { 
-			  if(versionserver.getText().compareTo(serv.getVersionserver().get())!=0)
-			  {
-				  if(isAS==true) AS.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionserver.getText()));
-				  else if(isDB==true) DB.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionserver.getText()));
-				  else others.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionserver.getText()));
-			  }
-			 
-		  }
-		  break;
+		
 		  case "mvci":
 		  {
 			  if(mvci.getText().compareTo(serv.getVMCI().get())!=0)
@@ -586,7 +589,64 @@ private String os;
 			  
 		  }
 		  break;
+		  case "cheminfmx" :{ 
+				
+			  if(cheminf1.getText().compareTo(serv.getVersionOS().get())!=0)
+		  {
+			  SQL=SQL+"cheminfmx='"+chemin.getText()+"',";
+			  if(isAS==true) AS.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+			  else if(isDB==true) DB.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+			  else others.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+		  }
+		  }
+	    break;
+		  case "cheminrdf" :{ 
+				
+			  if(versionOs.getText().compareTo(serv.getVersionOS().get())!=0)
+		  {
+			  SQL=SQL+"cheminrdf='"+versionOs.getText()+"',";
+			  if(isAS==true) AS.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+			  else if(isDB==true) DB.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+			  else others.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+		  }
+		  }
+	    break;
+		  case "versionBDD" :{ 
+				
+			  if(versionOs.getText().compareTo(serv.getVersionOS().get())!=0)
+		  {
+			  SQL=SQL+"cheminrdf='"+versionOs.getText()+"',";
+			  if(isAS==true) AS.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+			  else if(isDB==true) DB.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+			  else others.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+		  }
+		  }
+	    break;
 	     
+		  case "typeBDD" :{ 
+				
+			  if(versionOs.getText().compareTo(serv.getVersionOS().get())!=0)
+		  {
+			  SQL=SQL+"cheminrdf='"+versionOs.getText()+"',";
+			  if(isAS==true) AS.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+			  else if(isDB==true) DB.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+			  else others.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+		  }
+		  }
+	    break;
+		  case "cheminBDD" :{ 
+				
+			  if(versionOs.getText().compareTo(serv.getVersionOS().get())!=0)
+		  {
+			  SQL=SQL+"cheminrdf='"+versionOs.getText()+"',";
+			  if(isAS==true) AS.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+			  else if(isDB==true) DB.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+			  else others.get(serv.getNomS()).setVersionOS(new SimpleStringProperty(versionOs.getText()));
+		  }
+		  }
+	    break;
+	     
+		  
 		  
 		  
 		  
@@ -622,7 +682,6 @@ private String os;
 	
 	  //end
 		servername.setEditable(false);
-		versionserver.setEditable(false);
 	    memoire.setEditable(false);
 	    cpu.setEditable(false);
 	    cartevideo.setEditable(false);
@@ -714,7 +773,7 @@ private String os;
 		descriptionForm.setVisible(false);
 		formulairepane.setVisible(false);
 		showinfoPane.setVisible(false);
-		 versionserver.setEditable(false);
+	
 		    memoire.setEditable(false);
 		    cpu.setEditable(false);
 		    cartevideo.setEditable(false);
@@ -750,13 +809,7 @@ private String os;
 				}
 			osCB.setItems(os);
 		    ///////////////////////
-		    versionserver.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("jjhjhj")&& !newValue.equals("") && !newValue.equals(null))  { System.out.println("textfield changed from " + oldValue + " to " + newValue);
-		     	if(!changedAttr.contains("versionserver")) changedAttr.add("versionserver");}
-			
-		    
-		});
-		
+		 		
 		    memoire.textProperty().addListener((observable, oldValue, newValue) -> {
 		     	if(!oldValue.equals("jjhjhj")&& !newValue.equals("")) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 		     	if(!changedAttr.contains("memoire")) changedAttr.add("memoire");}
@@ -828,8 +881,8 @@ private String os;
 			});
 			
 		    versionOs.textProperty().addListener((observable, oldValue, newValue) -> {
-		    	System.out.println("changement : "+oldValue+newValue);
-		     	if(!oldValue.equals("jjhjhj")&& !newValue.equals("")) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		    	
+		     	if(!oldValue.equals("jjhjhj")&& !newValue.equals("")&&!oldValue.equals(null)&&!newValue.equals(null)) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 		     	if(!changedAttr.contains("versionOs"))changedAttr.add("versionOs");	}		
 				    
 			});
@@ -880,7 +933,7 @@ private String os;
     		while (rs.next())
     		{
     			
-    		AS.put(rs.getString("servername"),new Server(new SimpleStringProperty(rs.getString("servername")),new SimpleStringProperty(rs.getString("typeserver")),new SimpleStringProperty(rs.getString("versionserver")),new SimpleStringProperty(rs.getString("memoire")),new SimpleStringProperty(rs.getString("cpu")),new SimpleStringProperty(rs.getString("cartevideo")),new SimpleStringProperty(rs.getString("os")),new SimpleStringProperty(rs.getString("versionOs")),new SimpleStringProperty(rs.getString("dateinstalation")),new SimpleStringProperty(rs.getString("ipv4")),new SimpleStringProperty(rs.getString("ipv4m")),new SimpleStringProperty(rs.getString("ipv6")),new SimpleStringProperty(rs.getString("ipv6m")),new SimpleStringProperty(rs.getString("description")),new SimpleStringProperty(rs.getString("mvci")),new SimpleStringProperty(rs.getString("scsi")),new SimpleStringProperty(rs.getString("scsi")), new SimpleStringProperty(rs.getString("cddvd")),new SimpleStringProperty(rs.getString("disquedur")),new SimpleStringProperty(rs.getString("disquette")), new SimpleStringProperty(rs.getString("adaptateurres")),new SimpleStringProperty(rs.getString("dns")),new SimpleStringProperty(rs.getString("mac")),new SimpleStringProperty(rs.getString("cheminsrc"))));
+    		AS.put(rs.getString("servername"),new Server(new SimpleStringProperty(rs.getString("servername")),new SimpleStringProperty(rs.getString("typeserver")),new SimpleStringProperty(rs.getString("memoire")),new SimpleStringProperty(rs.getString("cpu")),new SimpleStringProperty(rs.getString("cartevideo")),new SimpleStringProperty(rs.getString("os")),new SimpleStringProperty(rs.getString("versionOs")),new SimpleStringProperty(rs.getString("dateinstalation")),new SimpleStringProperty(rs.getString("ipv4")),new SimpleStringProperty(rs.getString("ipv4m")),new SimpleStringProperty(rs.getString("ipv6")),new SimpleStringProperty(rs.getString("ipv6m")),new SimpleStringProperty(rs.getString("description")),new SimpleStringProperty(rs.getString("mvci")),new SimpleStringProperty(rs.getString("scsi")),new SimpleStringProperty(rs.getString("scsi")), new SimpleStringProperty(rs.getString("cddvd")),new SimpleStringProperty(rs.getString("disquedur")),new SimpleStringProperty(rs.getString("disquette")), new SimpleStringProperty(rs.getString("adaptateurres")),new SimpleStringProperty(rs.getString("dns")),new SimpleStringProperty(rs.getString("mac")),new SimpleStringProperty(rs.getString("cheminfxm")),new SimpleStringProperty(rs.getString("cheminrdf"))));
     		}
     		rs.close();
     		ps.setString(1,"DB");
@@ -889,7 +942,7 @@ private String os;
     		 while (rs.next())
     		{
     			
-    			DB.put(rs.getString("servername"),new Server(new SimpleStringProperty(rs.getString("servername")),new SimpleStringProperty(rs.getString("typeserver")),new SimpleStringProperty(rs.getString("versionserver")),new SimpleStringProperty(rs.getString("memoire")),new SimpleStringProperty(rs.getString("cpu")),new SimpleStringProperty(rs.getString("cartevideo")),new SimpleStringProperty(rs.getString("os")),new SimpleStringProperty(rs.getString("versionOs")),new SimpleStringProperty(rs.getString("dateinstalation")),new SimpleStringProperty(rs.getString("ipv4")),new SimpleStringProperty(rs.getString("ipv4m")),new SimpleStringProperty(rs.getString("ipv6")),new SimpleStringProperty(rs.getString("ipv6m")),new SimpleStringProperty(rs.getString("description")),new SimpleStringProperty(rs.getString("mvci")),new SimpleStringProperty(rs.getString("scsi")),new SimpleStringProperty(rs.getString("scsi")), new SimpleStringProperty(rs.getString("cddvd")),new SimpleStringProperty(rs.getString("disquedur")),new SimpleStringProperty(rs.getString("disquette")), new SimpleStringProperty(rs.getString("adaptateurres")),new SimpleStringProperty(rs.getString("dns")),new SimpleStringProperty(rs.getString("mac")),new SimpleStringProperty(rs.getString("typeBD")), new SimpleStringProperty(rs.getString("versionBD"))));
+    			DB.put(rs.getString("servername"),new Server(new SimpleStringProperty(rs.getString("servername")),new SimpleStringProperty(rs.getString("typeserver")),new SimpleStringProperty(rs.getString("memoire")),new SimpleStringProperty(rs.getString("cpu")),new SimpleStringProperty(rs.getString("cartevideo")),new SimpleStringProperty(rs.getString("os")),new SimpleStringProperty(rs.getString("versionOs")),new SimpleStringProperty(rs.getString("dateinstalation")),new SimpleStringProperty(rs.getString("ipv4")),new SimpleStringProperty(rs.getString("ipv4m")),new SimpleStringProperty(rs.getString("ipv6")),new SimpleStringProperty(rs.getString("ipv6m")),new SimpleStringProperty(rs.getString("description")),new SimpleStringProperty(rs.getString("mvci")),new SimpleStringProperty(rs.getString("scsi")),new SimpleStringProperty(rs.getString("scsi")), new SimpleStringProperty(rs.getString("cddvd")),new SimpleStringProperty(rs.getString("disquedur")),new SimpleStringProperty(rs.getString("disquette")), new SimpleStringProperty(rs.getString("adaptateurres")),new SimpleStringProperty(rs.getString("dns")),new SimpleStringProperty(rs.getString("mac")),new SimpleStringProperty(rs.getString("typeBDD")), new SimpleStringProperty(rs.getString("versionBDD")),new SimpleStringProperty(rs.getString("cheminBDD"))));
     		}
     	rs.close();
     	ps.setString(1,"autres");
@@ -898,7 +951,7 @@ private String os;
    		while (rs.next())
    		{
    			System.out.print(rs.getString("servername"));
-   		others.put(rs.getString("servername"),new Server(new SimpleStringProperty(rs.getString("servername")),new SimpleStringProperty(rs.getString("typeserver")),new SimpleStringProperty(rs.getString("versionserver")),new SimpleStringProperty(rs.getString("memoire")),new SimpleStringProperty(rs.getString("cpu")),new SimpleStringProperty(rs.getString("cartevideo")),new SimpleStringProperty(rs.getString("os")),new SimpleStringProperty(rs.getString("versionOs")),new SimpleStringProperty(rs.getString("dateinstalation")),new SimpleStringProperty(rs.getString("ipv4")),new SimpleStringProperty(rs.getString("ipv4m")),new SimpleStringProperty(rs.getString("ipv6")),new SimpleStringProperty(rs.getString("ipv6m")),new SimpleStringProperty(rs.getString("description")),new SimpleStringProperty(rs.getString("mvci")),new SimpleStringProperty(rs.getString("scsi")),new SimpleStringProperty(rs.getString("scsi")), new SimpleStringProperty(rs.getString("cddvd")),new SimpleStringProperty(rs.getString("disquedur")),new SimpleStringProperty(rs.getString("disquette")), new SimpleStringProperty(rs.getString("adaptateurres")),new SimpleStringProperty(rs.getString("dns")),new SimpleStringProperty(rs.getString("mac"))));
+   		others.put(rs.getString("servername"),new Server(new SimpleStringProperty(rs.getString("servername")),new SimpleStringProperty(rs.getString("typeserver")),new SimpleStringProperty(rs.getString("memoire")),new SimpleStringProperty(rs.getString("cpu")),new SimpleStringProperty(rs.getString("cartevideo")),new SimpleStringProperty(rs.getString("os")),new SimpleStringProperty(rs.getString("versionOs")),new SimpleStringProperty(rs.getString("dateinstalation")),new SimpleStringProperty(rs.getString("ipv4")),new SimpleStringProperty(rs.getString("ipv4m")),new SimpleStringProperty(rs.getString("ipv6")),new SimpleStringProperty(rs.getString("ipv6m")),new SimpleStringProperty(rs.getString("description")),new SimpleStringProperty(rs.getString("mvci")),new SimpleStringProperty(rs.getString("scsi")),new SimpleStringProperty(rs.getString("scsi")), new SimpleStringProperty(rs.getString("cddvd")),new SimpleStringProperty(rs.getString("disquedur")),new SimpleStringProperty(rs.getString("disquette")), new SimpleStringProperty(rs.getString("adaptateurres")),new SimpleStringProperty(rs.getString("dns")),new SimpleStringProperty(rs.getString("mac"))));
    		}
    		rs.close();
     		
@@ -933,7 +986,7 @@ private String os;
     	     servername.setText(((MenuItem) e.getSource()).getText());
     	     cpu.setText(AS.get(((MenuItem) e.getSource()).getText()).getCPU().get());
     	     memoire.setText(AS.get(((MenuItem) e.getSource()).getText()).getMemoire().get());
-    	     versionserver.setText(AS.get(((MenuItem) e.getSource()).getText()).getVersionserver().get());
+    	     
     	     ipv4.setText(AS.get(((MenuItem) e.getSource()).getText()).getIpv4a().get()+"/"+AS.get(((MenuItem) e.getSource()).getText()).getIpv4m().get());
     	     ipv6.setText(AS.get(((MenuItem) e.getSource()).getText()).getIpv6a().get()+"/"+AS.get(((MenuItem) e.getSource()).getText()).getIpv6m().get());
     	     osserver.setText(AS.get(((MenuItem) e.getSource()).getText()).getServerOS().get());
@@ -956,7 +1009,8 @@ private String os;
     	     details.setVisible(false);
     	     formulairepane.setVisible(false);
     	     searchpane.setVisible(false);
-    	     chemin.setText(AS.get(((MenuItem) e.getSource()).getText()).getCheminSrc().get());;
+    	     chemin.setText(AS.get(((MenuItem) e.getSource()).getText()).getCheminfmx().get());;//fmx
+    	     cheminf1.setText(AS.get(((MenuItem) e.getSource()).getText()).getCheminrdf().get());;//rdf
     	     
     	    });
     	
@@ -976,12 +1030,13 @@ private String os;
     	     servername.setText(((MenuItem) e.getSource()).getText());
     	     cpu.setText(DB.get(((MenuItem) e.getSource()).getText()).getCPU().get());
     	     memoire.setText(DB.get(((MenuItem) e.getSource()).getText()).getMemoire().get());
-    	     versionserver.setText(DB.get(((MenuItem) e.getSource()).getText()).getVersionserver().get());
+    	   
     	     ipv4.setText(DB.get(((MenuItem) e.getSource()).getText()).getIpv4a()+"\\"+DB.get(((MenuItem) e.getSource()).getText()).getIpv4m().get());
     	     ipv6.setText(DB.get(((MenuItem) e.getSource()).getText()).getIpv6a().get()+"\\"+DB.get(((MenuItem) e.getSource()).getText()).getIpv6m().get());
     	     osserver.setText(DB.get(((MenuItem) e.getSource()).getText()).getServerOS().get());
     	 	vrsBD.setText(DB.get(((MenuItem) e.getSource()).getText()).getVersionBD().get());
  	    	typeBD.setText(DB.get(((MenuItem) e.getSource()).getText()).getTypeBD().get());
+ 	    	cheminBD.setText(DB.get(((MenuItem) e.getSource()).getText()).getCheminBD().get());;
     	     showinfoPane.setVisible(true);
     	     formulairepane.setVisible(false);
     	     searchpane.setVisible(false);
@@ -1004,7 +1059,7 @@ private String os;
     	     servername.setText(((MenuItem) e.getSource()).getText());
     	     cpu.setText(others.get(((MenuItem) e.getSource()).getText()).getCPU().get());
     	     memoire.setText(others.get(((MenuItem) e.getSource()).getText()).getMemoire().get());
-    	     versionserver.setText(others.get(((MenuItem) e.getSource()).getText()).getVersionserver().get());
+    	    
     	     ipv4.setText(others.get(((MenuItem) e.getSource()).getText()).getIpv4a().get()+"/"+others.get(((MenuItem) e.getSource()).getText()).getIpv4m().get());
     	     ipv6.setText(others.get(((MenuItem) e.getSource()).getText()).getIpv6a().get()+"/"+others.get(((MenuItem) e.getSource()).getText()).getIpv6m().get());
     	     osserver.setText(others.get(((MenuItem) e.getSource()).getText()).getServerOS().get());
@@ -1054,7 +1109,7 @@ private String os;
  	     servername.setText(((MenuItem) e.getSource()).getText());
  	     cpu.setText(map.get(((MenuItem) e.getSource()).getText()).getCPU().get());
  	     memoire.setText(map.get(((MenuItem) e.getSource()).getText()).getMemoire().get());
- 	     versionserver.setText(map.get(((MenuItem) e.getSource()).getText()).getVersionserver().get());
+ 	   
  	     ipv4.setText(map.get(((MenuItem) e.getSource()).getText()).getIpv4a().get()+"/"+map.get(((MenuItem) e.getSource()).getText()).getIpv4m().get());
  	     ipv6.setText(map.get(((MenuItem) e.getSource()).getText()).getIpv6a().get()+"/"+map.get(((MenuItem) e.getSource()).getText()).getIpv6m().get());
  	     osserver.setText(map.get(((MenuItem) e.getSource()).getText()).getServerOS().get());
@@ -1076,13 +1131,15 @@ private String os;
  	     if (button.getText()=="Application Servers")
  	     {
 
- 	        chemin.setText(map.get(((MenuItem) e.getSource()).getText()).getCheminSrc().get());;
+ 	        chemin.setText(map.get(((MenuItem) e.getSource()).getText()).getCheminfmx().get());;
+ 	        cheminf1.setText(map.get(((MenuItem) e.getSource()).getText()).getCheminrdf().get());;
  	        isAS=true;
  	        isDB=false;
  	     }
  	     else if(button.getText()=="DB Servers") {
  	    	vrsBD.setText(map.get(((MenuItem) e.getSource()).getText()).getVersionBD().get());
  	    	typeBD.setText(map.get(((MenuItem) e.getSource()).getText()).getTypeBD().get());
+ 	    	 cheminBD.setText(map.get(((MenuItem) e.getSource()).getText()).getCheminBD().get());
  	       isAS=false;
 	       isDB=true;
  	     }
@@ -1203,7 +1260,7 @@ private String os;
 	   searchpane.setVisible(true);
 	   	mott= searchbar.getText();
     	
-        String query = " select servername from server where  memoire =? or cpu =? or cartevideo =? or mvci =? or scsi =? or cddvd =? or disquedur =? or disquette =? or adaptateurres =? or os =? or ipv4 =? or ipv4m=? or dns =? or ipv6 =? or ipv6m =? or mac =?  or versionserver =? or passerelle=?";
+        String query = " select servername from server where  memoire =? or cpu =? or cartevideo =? or mvci =? or scsi =? or cddvd =? or disquedur =? or disquette =? or adaptateurres =? or os =? or ipv4 =? or ipv4m=? or dns =? or ipv6 =? or ipv6m =? or mac =?  or passerelle=?";
     	 try(Connection conn=DBconnection.getConnection();PreparedStatement preparedStmt = conn.prepareStatement(query);){
       	
       	  preparedStmt.setString (1, mott);
@@ -1222,8 +1279,8 @@ private String os;
       	  preparedStmt.setString (14, mott);
       	  preparedStmt.setString (15, mott);
       	  preparedStmt.setString (16, mott);
-      	   preparedStmt.setString (17, mott);
-      	  preparedStmt.setString(18,mott);
+      
+      	  preparedStmt.setString(17,mott);
       	
       	  
     	
@@ -1233,7 +1290,7 @@ private String os;
     	 noms.setCellValueFactory(new PropertyValueFactory<Server,String>("nomS"));
       
             while (rs.next()) {
-            	rechercherr.add(new Server(new SimpleStringProperty(rs.getString("servername")), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null));
+            	rechercherr.add(new Server(new SimpleStringProperty(rs.getString("servername")), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null));
             	                         
             }
          //    noms.setCellValueFactory(new PropertyValueFactory<>("servername"));
@@ -1252,7 +1309,7 @@ private String os;
 	   if(isAS==true) {
 		   query = " insert into server (servername,server,memoire,cpu,cartevideo,mvci,scsi,cddvd,disquedur,disquette,adaptateurres"
 		   		+    ",os,ipv4,ipv4m,dns,ipv6,ipv6m,mac,dateinstalation,versionOs,passerelle,"
-		   		+ "description,cheminsrc,typeserver)"
+		   		+ "description,cheminfxm,typeserver)"
      		        + " values (?,?,?,?,?,?,?,?,?,?"
      		        + ",?,?,?,?,?,?,?,?,?,?"
      		        + ",?,?,?)";
@@ -1260,7 +1317,7 @@ private String os;
 	   else if(isDB==true) {
 		    query = " insert into server (servername,memoire,cpu,cartevideo,mvci,scsi,cddvd,disquedur,disquette,adaptateurres"
 			   		+    ",os,ipv4,ipv4m,dns,ipv6,ipv6m,mac,dateinstalation,versionOs,passerelle,"
-			   		+ "description,versionBDD,typeBDD,typeserver)"
+			   		+ "description,versionBDD,typeBDD,typeserver,)"
 	     		        + " values (?,?,?,?,?,?,?,?,?,?"
 	     		        + ",?,?,?,?,?,?,?,?,?,?"
 	     		        + ",?,?,?,?)";
@@ -1298,15 +1355,15 @@ private String os;
 	      	  ps.setString(20,psrl);
 	      	  ps.setString(21,descriptionf.getText());
 		   if(isAS==true)
-		   { ps.setString (22,cheminf.getText()); AS.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("AS"),new SimpleStringProperty(" "),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio), new SimpleStringProperty(dat.getYear()+"/"+dat.getMonthValue()+"/"+dat.getDayOfMonth())
+		   { ps.setString (22,cheminf.getText()); AS.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("AS"),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio), new SimpleStringProperty(dat.getYear()+"/"+dat.getMonthValue()+"/"+dat.getDayOfMonth())
 		   , new SimpleStringProperty(ipv44),new SimpleStringProperty(masqipv4),new SimpleStringProperty( ipv66), new SimpleStringProperty(masqipv6),new SimpleStringProperty( descriptionf.getText()),new SimpleStringProperty(vm),new SimpleStringProperty(cntrlr),new SimpleStringProperty(lctcd),new SimpleStringProperty(disqdr1),new SimpleStringProperty(lectdisq),new SimpleStringProperty(adptrs), new SimpleStringProperty(dnns),new SimpleStringProperty(psrl),new SimpleStringProperty(adressePhysique),new SimpleStringProperty(" "), new SimpleStringProperty(cheminf.getText())));
 		   majMenuButton(AS, ASshow);
 		   ps.setString(24,"AS");}
-		   else if(isDB==true) {ps.setString (22,versionBDDf.getText());ps.setString (23,typeBDDf.getText());DB.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("AS"),new SimpleStringProperty(" "),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio), new SimpleStringProperty(dat.getYear()+"/"+dat.getMonthValue()+"/"+dat.getDayOfMonth())
+		   else if(isDB==true) {ps.setString (22,versionBDDf.getText());ps.setString (23,typeBDDf.getText());DB.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("AS"),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio), new SimpleStringProperty(dat.getYear()+"/"+dat.getMonthValue()+"/"+dat.getDayOfMonth())
 				   , new SimpleStringProperty(ipv44),new SimpleStringProperty(masqipv4),new SimpleStringProperty( ipv66), new SimpleStringProperty(masqipv6),new SimpleStringProperty( descriptionf.getText()),new SimpleStringProperty(vm),new SimpleStringProperty(cntrlr),new SimpleStringProperty(lctcd),new SimpleStringProperty(disqdr1),new SimpleStringProperty(lectdisq),new SimpleStringProperty(adptrs), new SimpleStringProperty(dnns),new SimpleStringProperty(psrl),new SimpleStringProperty(adressePhysique),new SimpleStringProperty(typeBDDf.getText()),
 					new SimpleStringProperty(versionBDDf.getText())));
 		   majMenuButton(DB, DBshow);ps.setString(24,"DB");}
-		   else { others.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("AS"),new SimpleStringProperty(" "),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio), new SimpleStringProperty(dat.getYear()+"/"+dat.getMonthValue()+"/"+dat.getDayOfMonth())
+		   else { others.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("AS"),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio), new SimpleStringProperty(dat.getYear()+"/"+dat.getMonthValue()+"/"+dat.getDayOfMonth())
 				   , new SimpleStringProperty(ipv44),new SimpleStringProperty(masqipv4),new SimpleStringProperty( ipv66), new SimpleStringProperty(masqipv6),new SimpleStringProperty( descriptionf.getText()),new SimpleStringProperty(vm),new SimpleStringProperty(cntrlr),new SimpleStringProperty(lctcd),new SimpleStringProperty(disqdr1),new SimpleStringProperty(lectdisq),new SimpleStringProperty(adptrs), new SimpleStringProperty(dnns),new SimpleStringProperty(psrl),new SimpleStringProperty(adressePhysique)));
 		   majMenuButton(others, othersShow);}
 		
@@ -1406,5 +1463,38 @@ private String os;
 	 addospane.setVisible(false);
 	 sys.clear();
    }
+   @FXML
+   void imprimer(ActionEvent event) {
+	   print(showinfoPane);
+
+   }
+   public void print(final Node node) {
+       Printer printer = Printer.getDefaultPrinter();
+       PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.DEFAULT);
+       double oldX,oldY;
+       oldX=node.getBoundsInParent().getWidth();
+       oldY=node.getBoundsInParent().getHeight();
+       double scaleX = pageLayout.getPrintableWidth() / node.getBoundsInParent().getWidth();
+       double scaleY = pageLayout.getPrintableHeight() / node.getBoundsInParent().getHeight();
+       node.getTransforms().add(new Scale(scaleX, scaleY));
+     
+       PrinterJob job = PrinterJob.createPrinterJob();
+       if (job != null  ) {
+    	   job.showPrintDialog(node.getScene().getWindow());
+    	   System.out.print("ennnd");
+          boolean success = job.printPage(node);/*
+           if (success) {
+        	   System.out.print("ennnd2");
+        	  
+               job.endJob();}
+             */
+   //          node.getTransforms().add(new Scale(oldX, oldY));
+           
+       }
+       
+   }
+
+
+
 
 }

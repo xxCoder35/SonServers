@@ -13,7 +13,6 @@ public class Server {
 	}
 	private SimpleStringProperty nomS;
 	private SimpleStringProperty typeS;
-    private SimpleStringProperty versionserver;
     private SimpleStringProperty memoire;
     private SimpleStringProperty CPU;
     private SimpleStringProperty serverOS;
@@ -37,12 +36,14 @@ public class Server {
    
   
 	//FOR AS
-    private SimpleStringProperty cheminSrc;
+    private SimpleStringProperty cheminfmx;
+    private SimpleStringProperty cheminrdf;
     //FOR DBS
     private SimpleStringProperty typeBD;
     private SimpleStringProperty versionBD;
+    private SimpleStringProperty cheminBD;
 //Constructeur for others
-	public Server(SimpleStringProperty nomS, SimpleStringProperty typeS, SimpleStringProperty versionserver,
+	public Server(SimpleStringProperty nomS, SimpleStringProperty typeS,
 			SimpleStringProperty memoire, SimpleStringProperty cPU,SimpleStringProperty carteVid,SimpleStringProperty serverOS,
 			SimpleStringProperty versionOS, SimpleStringProperty dateOS, SimpleStringProperty ipv4a,
 			SimpleStringProperty ipv4m, SimpleStringProperty ipv6a, SimpleStringProperty ipv6m,
@@ -54,7 +55,6 @@ public class Server {
 		this.nomS = nomS;
 		this.cartevid=carteVid;
 		this.typeS = typeS;
-		this.versionserver = versionserver;
 		this.memoire = memoire;
 		CPU = cPU;
 		this.serverOS = serverOS;
@@ -80,18 +80,17 @@ public class Server {
 	public String getNomS() {
 		return nomS.get();
 	}
-	public Server(SimpleStringProperty nomS, SimpleStringProperty typeS, SimpleStringProperty versionserver,
+	public Server(SimpleStringProperty nomS, SimpleStringProperty typeS,
 			SimpleStringProperty memoire, SimpleStringProperty cPU,SimpleStringProperty carteVid, SimpleStringProperty serverOS,
 			SimpleStringProperty versionOS, SimpleStringProperty dateOS, SimpleStringProperty ipv4a,
 			SimpleStringProperty ipv4m, SimpleStringProperty ipv6a, SimpleStringProperty ipv6m,
 			SimpleStringProperty description, SimpleStringProperty vMCI, SimpleStringProperty sCSI,
 			SimpleStringProperty cDDVD, SimpleStringProperty dD, SimpleStringProperty disquette,
 			SimpleStringProperty adapRes, SimpleStringProperty dns, SimpleStringProperty passerelle,
-			SimpleStringProperty physicalAd, SimpleStringProperty cheminSrc) {
+			SimpleStringProperty physicalAd, SimpleStringProperty cheminfmx, SimpleStringProperty cheminrdf) {
 		super();
 		this.nomS = nomS;
 		this.typeS = typeS;
-		this.versionserver = versionserver;
 		this.memoire = memoire;
 		CPU = cPU;
 		this.serverOS = serverOS;
@@ -112,14 +111,33 @@ public class Server {
 		this.passerelle = passerelle;
 		this.physicalAd = physicalAd;
 	  this.cartevid=carteVid;
-		this.cheminSrc = cheminSrc;
+		this.cheminfmx = cheminfmx;
+		this.cheminrdf=cheminrdf;
 	}
 	//construct DB 
 	
+	public SimpleStringProperty getCheminfmx() {
+		return cheminfmx;
+	}
+	public void setCheminfmx(SimpleStringProperty cheminfmx) {
+		this.cheminfmx = cheminfmx;
+	}
+	public SimpleStringProperty getCheminrdf() {
+		return cheminrdf;
+	}
+	public void setCheminrdf(SimpleStringProperty cheminrdf) {
+		this.cheminrdf = cheminrdf;
+	}
+	public SimpleStringProperty getCheminBD() {
+		return cheminBD;
+	}
+	public void setCheminBD(SimpleStringProperty cheminBD) {
+		this.cheminBD = cheminBD;
+	}
 	public void setNomS(SimpleStringProperty nomS) {
 		this.nomS = nomS;
 	}
-	public Server(SimpleStringProperty nomS, SimpleStringProperty typeS, SimpleStringProperty versionserver,
+	public Server(SimpleStringProperty nomS, SimpleStringProperty typeS,
 			SimpleStringProperty memoire, SimpleStringProperty cPU,SimpleStringProperty carteVid, SimpleStringProperty serverOS,
 			SimpleStringProperty versionOS, SimpleStringProperty dateOS, SimpleStringProperty ipv4a,
 			SimpleStringProperty ipv4m, SimpleStringProperty ipv6a, SimpleStringProperty ipv6m,
@@ -127,12 +145,12 @@ public class Server {
 			SimpleStringProperty cDDVD, SimpleStringProperty dD, SimpleStringProperty disquette,
 			SimpleStringProperty adapRes, SimpleStringProperty dns, SimpleStringProperty passerelle,
 			SimpleStringProperty physicalAd, SimpleStringProperty typeBD,
-			SimpleStringProperty versionBD) {
+			SimpleStringProperty versionBD,SimpleStringProperty cheminBDD) {
 		super();
 		this.cartevid=carteVid;
 		this.nomS = nomS;
 		this.typeS = typeS;
-		this.versionserver = versionserver;
+		
 		this.memoire = memoire;
 		CPU = cPU;
 		this.serverOS = serverOS;
@@ -156,6 +174,7 @@ public class Server {
 		
 		this.typeBD = typeBD;
 		this.versionBD = versionBD;
+		this.cheminBD=cheminBDD;
 	}
 	public SimpleStringProperty getCartevid() {
 		return cartevid;
@@ -230,12 +249,7 @@ public class Server {
 		this.physicalAd = physicalAd;
 	}
 
-	public SimpleStringProperty getCheminSrc() {
-		return cheminSrc;
-	}
-	public void setCheminSrc(SimpleStringProperty cheminSrc) {
-		this.cheminSrc = cheminSrc;
-	}
+
 	public SimpleStringProperty getTypeBD() {
 		return typeBD;
 	}
@@ -254,12 +268,7 @@ public class Server {
 	public void setTypeS(SimpleStringProperty typeS) {
 		this.typeS = typeS;
 	}
-	public SimpleStringProperty getVersionserver() {
-		return versionserver;
-	}
-	public void setVersionserver(SimpleStringProperty versionserver) {
-		this.versionserver = versionserver;
-	}
+
 	public SimpleStringProperty getMemoire() {
 		return memoire;
 	}
