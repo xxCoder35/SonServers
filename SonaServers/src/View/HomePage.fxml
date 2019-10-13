@@ -85,7 +85,7 @@
             <JFXButton layoutX="281.0" layoutY="215.0" onAction="#addserver" prefHeight="25.0" prefWidth="30.0" text="+" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="showinfoPane" layoutX="322.0" prefHeight="720.0" prefWidth="1056.0">
+      <AnchorPane fx:id="showinfoPane" layoutX="322.0" prefHeight="720.0" prefWidth="1056.0" visible="false">
          <children>
             <VBox layoutX="20.0" layoutY="150.0" prefHeight="346.0" prefWidth="352.0">
                <children>
@@ -299,7 +299,7 @@
                         <Font name="Arial" size="19.0" />
                      </font>
                   </JFXTextField>
-                  <JFXButton  layoutX="365.0" layoutY="23.0" text="imprimer" onAction="#imprimer" />
+                  <JFXButton layoutX="365.0" layoutY="23.0" onAction="#imprimer" text="imprimer" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="details" layoutX="491.0" layoutY="428.0" prefHeight="202.0" prefWidth="513.0" style="-fx-background-color: #c3fcf2; -fx-border-radius: 20; -fx-background-radius: 20;">
@@ -331,7 +331,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXTextField fx:id="chemin" editable="false" focusColor="#c3fcf2" prefHeight="54.0" prefWidth="246.0" unFocusColor="#c3fcf2" GridPane.columnIndex="1" />
+                        <JFXTextField id="Champs" fx:id="cheminfxm" editable="false" focusColor="#c3fcf2" prefHeight="54.0" prefWidth="246.0" stylesheets="@ShowInfo.css" unFocusColor="#c3fcf2" GridPane.columnIndex="1" />
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="/View/ShowInfo.css" text="Chemin fxm">
                            <font>
                               <Font name="System Bold" size="14.0" />
@@ -342,7 +342,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="chemin1" editable="false" focusColor="#c3fcf2" prefHeight="54.0" prefWidth="246.0" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <JFXTextField id="Champs" fx:id="cheminrdf" editable="false" focusColor="#c3fcf2" prefHeight="54.0" prefWidth="246.0" stylesheets="@ShowInfo.css" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
@@ -356,10 +356,11 @@
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Type BD" GridPane.rowIndex="1" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="/View/ShowInfo.css" text="version BD">
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Type BDD" GridPane.rowIndex="1" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="/View/ShowInfo.css" text="version BDD">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -379,6 +380,16 @@
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="183.0" stylesheets="/View/ShowInfo.css" text="chemin de la BDD" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField id="Champs" fx:id="cheminBD" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
@@ -393,7 +404,7 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="formulairepane" layoutX="404.0" layoutY="54.0" prefHeight="621.0" prefWidth="706.0" visible="false">
+      <AnchorPane fx:id="formulairepane" layoutX="404.0" layoutY="54.0" prefHeight="621.0" prefWidth="706.0">
          <children>
             <VBox fx:id="HardwareForm" prefHeight="621.0" prefWidth="709.0" spacing="30.0" style="-fx-background-color: #EEFCFD;" visible="false">
                <children>
@@ -455,13 +466,14 @@
                   <Insets left="30.0" right="30.0" top="20.0" />
                </padding>
             </VBox>
-            <VBox fx:id="descriptionForm" prefHeight="621.0" prefWidth="709.0" spacing="50.0" style="-fx-background-color: #EEFCFD;" visible="false">
+            <VBox fx:id="descriptionForm" prefHeight="621.0" prefWidth="709.0" spacing="50.0" style="-fx-background-color: #EEFCFD;">
                <children>
                   <JFXTextArea fx:id="descriptionf" focusColor="#42908e" labelFloat="true" promptText="Description" text="Description" />
-                  <JFXTextField fx:id="cheminf" focusColor="#42908e" labelFloat="true" prefHeight="37.0" prefWidth="599.0" promptText="Chemin fmx" />
-                  <JFXTextField fx:id="cheminf1" focusColor="#42908e" labelFloat="true" prefHeight="37.0" prefWidth="599.0" promptText="chemin rdf" />
-                  <JFXTextField fx:id="typeBDDf" focusColor="#42908e" labelFloat="true" promptText="Type la Base de donnée" />
+                  <JFXTextField fx:id="cheminfmxf" focusColor="#42908e" labelFloat="true" prefHeight="37.0" prefWidth="599.0" promptText="Chemin fmx" />
+                  <JFXTextField fx:id="cheminrdff" focusColor="#42908e" labelFloat="true" prefHeight="37.0" prefWidth="599.0" promptText="chemin rdf" />
+                  <JFXTextField fx:id="typeBDDf" focusColor="#42908e" labelFloat="true" promptText="Type de la Base de donnée" />
                   <JFXTextField fx:id="versionBDDf" focusColor="#42908e" labelFloat="true" promptText="Version de la base de donnée" />
+                  <JFXTextField fx:id="cheminBDf" focusColor="#42908e" labelFloat="true" promptText="chemin de la Base de donnée" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <JFXButton buttonType="RAISED" onAction="#enregistrer" prefHeight="33.0" prefWidth="87.0" ripplerFill="#7feea2" text="Confirmer" />
