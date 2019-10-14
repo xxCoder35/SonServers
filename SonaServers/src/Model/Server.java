@@ -27,7 +27,14 @@ public class Server {
     private SimpleStringProperty SCSI;
     private SimpleStringProperty CDDVD;
     private SimpleStringProperty DD;
-    private SimpleStringProperty disquette;
+    private SimpleStringProperty DD2;
+    public SimpleStringProperty getDD2() {
+		return DD2;
+	}
+	public void setDD2(SimpleStringProperty dD2) {
+		DD2 = dD2;
+	}
+	private SimpleStringProperty disquette;
     private SimpleStringProperty cartevid;
     private SimpleStringProperty adapRes;
     private SimpleStringProperty dns;
@@ -48,11 +55,12 @@ public class Server {
 			SimpleStringProperty versionOS, SimpleStringProperty dateOS, SimpleStringProperty ipv4a,
 			SimpleStringProperty ipv4m, SimpleStringProperty ipv6a, SimpleStringProperty ipv6m,
 			SimpleStringProperty description, SimpleStringProperty vMCI, SimpleStringProperty sCSI,
-			SimpleStringProperty cDDVD, SimpleStringProperty dD, SimpleStringProperty disquette,
+			SimpleStringProperty cDDVD, SimpleStringProperty dD, SimpleStringProperty dD2, SimpleStringProperty disquette,
 			SimpleStringProperty adapRes, SimpleStringProperty dns, SimpleStringProperty passerelle,
 			SimpleStringProperty physicalAd) {
 		super();
 		this.nomS = nomS;
+		this.DD2=dD2;
 		this.cartevid=carteVid;
 		this.typeS = typeS;
 		this.memoire = memoire;
@@ -85,13 +93,14 @@ public class Server {
 			SimpleStringProperty versionOS, SimpleStringProperty dateOS, SimpleStringProperty ipv4a,
 			SimpleStringProperty ipv4m, SimpleStringProperty ipv6a, SimpleStringProperty ipv6m,
 			SimpleStringProperty description, SimpleStringProperty vMCI, SimpleStringProperty sCSI,
-			SimpleStringProperty cDDVD, SimpleStringProperty dD, SimpleStringProperty disquette,
+			SimpleStringProperty cDDVD, SimpleStringProperty dD,SimpleStringProperty dD2, SimpleStringProperty disquette,
 			SimpleStringProperty adapRes, SimpleStringProperty dns, SimpleStringProperty passerelle,
 			SimpleStringProperty physicalAd, SimpleStringProperty cheminfmx, SimpleStringProperty cheminrdf) {
 		super();
 		this.nomS = nomS;
 		this.typeS = typeS;
 		this.memoire = memoire;
+		this.DD2=dD2;
 		CPU = cPU;
 		this.serverOS = serverOS;
 		this.versionOS = versionOS;
@@ -142,7 +151,7 @@ public class Server {
 			SimpleStringProperty versionOS, SimpleStringProperty dateOS, SimpleStringProperty ipv4a,
 			SimpleStringProperty ipv4m, SimpleStringProperty ipv6a, SimpleStringProperty ipv6m,
 			SimpleStringProperty description, SimpleStringProperty vMCI, SimpleStringProperty sCSI,
-			SimpleStringProperty cDDVD, SimpleStringProperty dD, SimpleStringProperty disquette,
+			SimpleStringProperty cDDVD, SimpleStringProperty dD,SimpleStringProperty dD2, SimpleStringProperty disquette,
 			SimpleStringProperty adapRes, SimpleStringProperty dns, SimpleStringProperty passerelle,
 			SimpleStringProperty physicalAd, SimpleStringProperty typeBD,
 			SimpleStringProperty versionBD,SimpleStringProperty cheminBDD) {
@@ -166,6 +175,7 @@ public class Server {
 		SCSI = sCSI;
 		CDDVD = cDDVD;
 		DD = dD;
+		DD2 = dD2;
 		this.disquette = disquette;
 		this.adapRes = adapRes;
 		this.dns = dns;

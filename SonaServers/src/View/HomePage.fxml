@@ -85,9 +85,9 @@
             <JFXButton layoutX="281.0" layoutY="215.0" onAction="#addserver" prefHeight="25.0" prefWidth="30.0" text="+" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="showinfoPane" layoutX="322.0" prefHeight="720.0" prefWidth="1056.0" visible="false">
+      <AnchorPane fx:id="showinfoPane" layoutX="322.0" prefHeight="720.0" prefWidth="1056.0">
          <children>
-            <VBox layoutX="20.0" layoutY="150.0" prefHeight="346.0" prefWidth="352.0">
+            <VBox fx:id="matbox" layoutX="20.0" layoutY="150.0" prefHeight="346.0" prefWidth="352.0">
                <children>
                   <Label id="title" prefHeight="44.0" prefWidth="322.0" stylesheets="/View/ShowInfo.css" text="Matériel" textAlignment="CENTER" textFill="#0b7e8a">
                      <font>
@@ -97,7 +97,7 @@
                         <Insets left="15.0" />
                      </VBox.margin>
                   </Label>
-                  <GridPane hgap="10.0" prefHeight="278.0" prefWidth="352.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" vgap="5.0">
+                  <GridPane fx:id="materiel" hgap="10.0" prefHeight="278.0" prefWidth="352.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" vgap="5.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -114,9 +114,10 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label GridPane.rowIndex="9" />
+                        <Label GridPane.rowIndex="10" />
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Mémoire" GridPane.rowIndex="2" />
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="CPU" GridPane.rowIndex="3" />
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="179.0" stylesheets="/View/ShowInfo.css" text="Carte vidéo" GridPane.rowIndex="4" />
@@ -124,49 +125,55 @@
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Controleur SCSI" GridPane.rowIndex="6" />
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Lecteur CD/DVD" GridPane.rowIndex="7" />
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Disque Dur" GridPane.rowIndex="8" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Lecteur Disquette" GridPane.rowIndex="9" />
-                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Adaptateur Réseau" GridPane.rowIndex="10" />
-                        <JFXTextField id="Champs" fx:id="memoire" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Lecteur Disquette" GridPane.rowIndex="10" />
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Adaptateur Réseau" GridPane.rowIndex="11" />
+                        <JFXTextField id="Champs" fx:id="memoire" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="cpu" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <JFXTextField id="Champs" fx:id="cpu" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="cartevideo" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <JFXTextField id="Champs" fx:id="cartevideo" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="mvci" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <JFXTextField id="Champs" fx:id="mvci" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="scsi" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <JFXTextField id="Champs" fx:id="scsi" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="cddvd" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <JFXTextField id="Champs" fx:id="cddvd" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="disquedur" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <JFXTextField id="Champs" fx:id="disquedur" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="8">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="disquette" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                        <JFXTextField id="Champs" fx:id="disquette" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="10">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="adaptateurres" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                        <JFXTextField id="Champs" fx:id="adaptateurres" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Disque Dur 2" GridPane.rowIndex="9" />
+                        <JFXTextField id="Champs" fx:id="disquedur3" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="9">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
@@ -178,7 +185,7 @@
                   </GridPane>
                </children>
             </VBox>
-            <VBox layoutX="500.0" layoutY="52.0" prefHeight="320.0" prefWidth="352.0">
+            <VBox fx:id="sysbox" layoutX="500.0" layoutY="52.0" prefHeight="320.0" prefWidth="352.0">
                <children>
                   <Label id="title" layoutX="500.0" prefHeight="44.0" prefWidth="322.0" stylesheets="/View/ShowInfo.css" text="Système d'exploitation &amp; Réseau" textAlignment="CENTER" textFill="#0b7e8a">
                      <font>
@@ -188,7 +195,7 @@
                         <Insets left="15.0" />
                      </VBox.margin>
                   </Label>
-                  <GridPane hgap="10.0" prefHeight="274.0" prefWidth="352.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" vgap="5.0">
+                  <GridPane fx:id="systmres" hgap="10.0" prefHeight="274.0" prefWidth="352.0" style="-fx-background-color: #C3FCF2; -fx-background-radius: 20;" vgap="5.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -217,43 +224,43 @@
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Serveur DNS" GridPane.rowIndex="6" />
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Passerelle" GridPane.rowIndex="7" />
                         <Label id="LabelChamps" prefHeight="15.0" prefWidth="177.0" stylesheets="/View/ShowInfo.css" text="Adresse physique" GridPane.rowIndex="8" />
-                        <JFXTextField id="Champs" fx:id="dateinstalation" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <JFXTextField id="Champs" fx:id="dateinstalation" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="versionOs" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <JFXTextField id="Champs" fx:id="versionOs" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="ipv4" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <JFXTextField id="Champs" fx:id="ipv4" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="ipv6" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <JFXTextField id="Champs" fx:id="ipv6" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="dns" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <JFXTextField id="Champs" fx:id="dns" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="passerelle" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <JFXTextField id="Champs" fx:id="passerelle" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="mac" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <JFXTextField id="Champs" fx:id="mac" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="8">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
                         <JFXComboBox fx:id="osCB" focusColor="#c3fcf2" prefHeight="25.0" prefWidth="170.0" unFocusColor="#c3fcf2" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <JFXTextField id="Champs" fx:id="osserver" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <JFXTextField id="Champs" fx:id="osserver" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
@@ -273,9 +280,9 @@
                   <JFXButton fx:id="detailsButton" onAction="#shwDetails" text="+" />
                </graphic>
             </Label>
-            <AnchorPane prefHeight="44.0" prefWidth="1060.0">
+            <AnchorPane fx:id="header" prefHeight="44.0" prefWidth="1060.0">
                <children>
-                  <Line endX="180.0" layoutX="112.0" layoutY="48.0" startX="-100.0" stroke="#31bca9" />
+                  <Line endX="180.0" layoutX="112.0" layoutY="47.0" startX="-100.0" stroke="#31bca9" />
                   <JFXButton fx:id="delete" graphicTextGap="0.0" layoutX="300.0" layoutY="19.0" onAction="#supprimerServer" prefHeight="27.0" prefWidth="30.0" ripplerFill="#afffc9" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
@@ -294,7 +301,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXTextField id="name" fx:id="servername" editable="false" focusColor="#31bca9" layoutX="17.0" layoutY="7.0" prefHeight="32.0" prefWidth="271.0" stylesheets="/View/ShowInfo.css" text="jjhjhj" unFocusColor="#31bca9">
+                  <JFXTextField id="name" fx:id="servername" editable="false" focusColor="#31bca9" layoutX="17.0" layoutY="7.0" prefHeight="32.0" prefWidth="271.0" stylesheets="/View/ShowInfo.css" text="" unFocusColor="#31bca9">
                      <font>
                         <Font name="Arial" size="19.0" />
                      </font>
@@ -370,12 +377,12 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <JFXTextField id="Champs" fx:id="vrsBD" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1">
+                        <JFXTextField id="Champs" fx:id="vrsBD" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField id="Champs" fx:id="typeBD" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <JFXTextField id="Champs" fx:id="typeBD" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
@@ -385,7 +392,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <JFXTextField id="Champs" fx:id="cheminBD" focusColor="#c3fcf2" text="jjhjhj" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <JFXTextField id="Champs" fx:id="cheminBD" focusColor="#c3fcf2" text="" unFocusColor="#c3fcf2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
@@ -404,18 +411,28 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="formulairepane" layoutX="404.0" layoutY="54.0" prefHeight="621.0" prefWidth="706.0">
+      <AnchorPane fx:id="formulairepane" layoutX="404.0" layoutY="54.0" prefHeight="621.0" prefWidth="706.0" visible="false">
          <children>
-            <VBox fx:id="HardwareForm" prefHeight="621.0" prefWidth="709.0" spacing="30.0" style="-fx-background-color: #EEFCFD;" visible="false">
+            <VBox fx:id="HardwareForm" prefHeight="621.0" prefWidth="709.0" spacing="30.0" style="-fx-background-color: #EEFCFD;">
                <children>
                   <JFXTextField fx:id="nomserveur" focusColor="#42908e" labelFloat="true" promptText="nom du serveur" />
-                  <JFXTextField fx:id="memoire1" focusColor="#42908e" labelFloat="true" promptText="Mémoire" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <JFXTextField fx:id="memoire1" focusColor="#42908e" labelFloat="true" prefHeight="25.0" prefWidth="242.0" promptText="Mémoire" />
+                        <JFXComboBox fx:id="unit" focusColor="#163618" />
+                     </children>
+                  </HBox>
                   <JFXTextField fx:id="cpu1" focusColor="#42908e" labelFloat="true" promptText="CPU" />
                   <JFXTextField fx:id="cartevd" focusColor="#42908e" labelFloat="true" promptText="Carte vidéo" />
                   <JFXTextField fx:id="vmci" focusColor="#42908e" labelFloat="true" promptText="Périphérique VMCI" />
                   <JFXTextField fx:id="controleur" focusColor="#42908e" labelFloat="true" promptText="Controleur SCSI" />
                   <JFXTextField fx:id="lectcd" focusColor="#42908e" labelFloat="true" promptText="Lecteur CD/DVD" />
-                  <JFXTextField fx:id="disquedur1" focusColor="#42908e" labelFloat="true" promptText="Disque dur" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+                     <children>
+                        <JFXTextField fx:id="disquedur1" focusColor="#42908e" labelFloat="true" prefHeight="25.0" prefWidth="182.0" promptText="Disque dur" />
+                        <JFXTextField fx:id="disquedur2" focusColor="#42908e" labelFloat="true" prefHeight="25.0" prefWidth="182.0" promptText="Disque dur2" />
+                     </children>
+                  </HBox>
                   <JFXTextField fx:id="lecteurdedisquette1" focusColor="#42908e" labelFloat="true" promptText="Lecteur disquette" />
                   <JFXTextField fx:id="adaptateurrs1" focusColor="#42908e" labelFloat="true" promptText="Adaptateur reseau" />
                   <JFXButton fx:id="suivant1" buttonType="RAISED" onAction="#suivant1" ripplerFill="#80f293" text="Suivant &gt;">
@@ -428,7 +445,7 @@
                   <Insets left="60.0" right="70.0" top="20.0" />
                </padding>
             </VBox>
-            <VBox fx:id="reseausystem" prefHeight="621.0" prefWidth="709.0" spacing="30.0" style="-fx-background-color: #EEFCFD;" visible="false">
+            <VBox fx:id="reseausystem" prefHeight="621.0" prefWidth="720.0" spacing="30.0" style="-fx-background-color: #EEFCFD;" visible="false">
                <children>
                   <HBox prefHeight="50.0" prefWidth="649.0" spacing="70.0">
                      <children>
@@ -466,7 +483,7 @@
                   <Insets left="30.0" right="30.0" top="20.0" />
                </padding>
             </VBox>
-            <VBox fx:id="descriptionForm" prefHeight="621.0" prefWidth="709.0" spacing="50.0" style="-fx-background-color: #EEFCFD;">
+            <VBox fx:id="descriptionForm" prefHeight="621.0" prefWidth="709.0" spacing="50.0" style="-fx-background-color: #EEFCFD;" visible="false">
                <children>
                   <JFXTextArea fx:id="descriptionf" focusColor="#42908e" labelFloat="true" promptText="Description" text="Description" />
                   <JFXTextField fx:id="cheminfmxf" focusColor="#42908e" labelFloat="true" prefHeight="37.0" prefWidth="599.0" promptText="Chemin fmx" />
