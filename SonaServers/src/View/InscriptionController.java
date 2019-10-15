@@ -38,14 +38,14 @@ public class InscriptionController implements MovePages {
 
     @FXML
     void confirm(ActionEvent event) {
-String SQL1="SELECT * from user wher userid=?";
+String SQL1="SELECT * from user where userid=?";
     	
     	try(Connection conn=DBconnection.getConnection();PreparedStatement ps=conn.prepareStatement(SQL1);)
     	{
     		
     		ps.setString(1,usern.getText());
     	
-    	ResultSet rs=ps.getResultSet();
+    	ResultSet rs=ps.executeQuery();
     	if(rs.next()) uidexistant.setVisible(true);
     	else {
     		String SQL="INSERT into user (nom,prenom,userid,passwd) values(?,?,?,?)";

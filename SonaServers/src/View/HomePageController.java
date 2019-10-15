@@ -701,7 +701,7 @@ private boolean NO_CHG=true;
 		  
 	  }
 	  
-		if(osCB.getValue().compareTo(serv.getServerOS().get())!=0) {
+		if(osCB.getValue()!=null && osCB.getValue().compareTo(serv.getServerOS().get())!=0) {
 				
 				SQL=SQL+"os='"+osCB.getSelectionModel().getSelectedItem()+"',";
 				osserver.setText(osCB.getSelectionModel().getSelectedItem());
@@ -859,138 +859,138 @@ private boolean NO_CHG=true;
 		    ///////////////////////
 		 		
 		    memoire.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("")&& !newValue.equals("")&& NO_CHG==false) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		     	if(!oldValue.equals("")|| !newValue.equals("")&& NO_CHG==false) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 		     	if(!changedAttr.contains("memoire")) changedAttr.add("memoire");}
 					
 				    
 			});
 			
 		    cpu.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("") && !newValue.equals("")&& NO_CHG==false) 
+		     	if(!oldValue.equals("") || !newValue.equals("")&& NO_CHG==false) 
 		     	{	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 					
 		     	if(!changedAttr.contains("cpu"))changedAttr.add("cpu");  } 
 			});
 			
 		    cartevideo.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("")&& !newValue.equals("")&& NO_CHG==false) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		     	if(!oldValue.equals("")|| !newValue.equals("")&& NO_CHG==false) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
 		     	if(!changedAttr.contains("cartevideo"))changedAttr.add("cartevideo");}
 					
 				    
 			});
 		    servername.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("")&& !newValue.equals("")&& NO_CHG==false) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		     	if(!oldValue.equals("")|| !newValue.equals("")&& NO_CHG==false) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
 		     	if(!changedAttr.contains("servername")) changedAttr.add("servername");}
 					
 				    
 			});
 			
 		    mvci.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("")&& newValue.equals("")&& NO_CHG==false) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		     	if(!oldValue.equals("") || newValue.equals("")&& NO_CHG==false) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
 		     	if(!changedAttr.contains("mvci"))changedAttr.add("mvci");}
 					
 				    
 			});
 			
 		    scsi.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("") && newValue.equals("")&& NO_CHG==false) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		     	if(!oldValue.equals("") || newValue.equals("")&& NO_CHG==false) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 		     	if(!changedAttr.contains("scsi"))	changedAttr.add("scsi");}
 				    
 			});
 			
 		    cddvd.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("")&&newValue.equals("")&& NO_CHG==false) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		     	if(!oldValue.equals("")||newValue.equals("")&& NO_CHG==false) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
 		     	if(!changedAttr.contains("cddvd"))changedAttr.add("cddvd");}
 				    
 			});
 			
 		    disquedur.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("")&&newValue.equals("")&& NO_CHG==false) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		     	if(!oldValue.equals("")||newValue.equals("")&& NO_CHG==false) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 		     	if(!changedAttr.contains("disquedur"))changedAttr.add("disquedur");}
 				    
 			});
 		    disquedur3.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("")&&newValue.equals("")&& NO_CHG==false) {	 
+		     	if(!oldValue.equals("")||newValue.equals("")&& NO_CHG==false) {	 
 		     	if(!changedAttr.contains("disquedur2"))changedAttr.add("disquedur2");}
 				    
 			});
 			
 	        disquette.textProperty().addListener((observable, oldValue, newValue) -> {
-	         	if(!oldValue.equals("")&&newValue.equals("")&& NO_CHG==false) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+	         	if(!oldValue.equals("")||newValue.equals("")&& NO_CHG==false) {	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 	         	if(!changedAttr.contains("disquette"))changedAttr.add("disquette");	}
 				    
 			});
 			
 		    adaptateurres.textProperty().addListener((observable, oldValue, newValue) -> {
-			   	if(!oldValue.equals("")&&newValue.equals("")&& NO_CHG==false) {System.out.println("textfield changed from " + oldValue + " to " + newValue);
+			   	if(!oldValue.equals("")||newValue.equals("")&& NO_CHG==false) {System.out.println("textfield changed from " + oldValue + " to " + newValue);
 			   	if(!changedAttr.contains("adaptateurres"))changedAttr.add("adaptateurres");		
 			   	}
 			});
 			
 		    dateinstalation.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("")&& !newValue.equals("")&& NO_CHG==false) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		     	if(!oldValue.equals("")|| !newValue.equals("")&& NO_CHG==false) { System.out.println("textfield changed from " + oldValue + " to " + newValue);
 				
 		     	if(!changedAttr.contains("dateinstalation"))changedAttr.add("dateinstalation");	}	  
 			});
 			
 		    versionOs.textProperty().addListener((observable, oldValue, newValue) -> {
 		    	if(oldValue!=null && newValue!=null&& NO_CHG==false)
-		     	if(!oldValue.equals("")&& !newValue.equals("")&& oldValue!=null && newValue!=null) {	 if(!changedAttr.contains("versionOs"))changedAttr.add("versionOs");	}		
+		     	if(!oldValue.equals("")|| !newValue.equals("")&& oldValue!=null && newValue!=null) {	 if(!changedAttr.contains("versionOs"))changedAttr.add("versionOs");	}		
 				    
 			});
 			
 		    ipv4.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("")&& !newValue.equals("")&& NO_CHG==false) {  	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		     	if(!oldValue.equals("")|| !newValue.equals("")&& NO_CHG==false) {  	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 					
 		     	if(!changedAttr.contains("ipv4"))changedAttr.add("ipv4");}	 
 			});
 			
 		    ipv6.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("")&& !newValue.equals("")&& NO_CHG==false) { 	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		     	if(!oldValue.equals("")|| !newValue.equals("")&& NO_CHG==false) { 	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 					
 		     	if(!changedAttr.contains("ipv6")) changedAttr.add("ipv6");	 } 
 			});
 			
 		    dns.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("")&& !newValue.equals("")&& NO_CHG==false) { 	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		     	if(!oldValue.equals("")|| !newValue.equals("")&& NO_CHG==false) { 	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 		     	if(!changedAttr.contains("dns"))	changedAttr.add("dns");	}	
 				    
 			});
 			
 		    passerelle.textProperty().addListener((observable, oldValue, newValue) -> {
-		     	if(!oldValue.equals("")&& !newValue.equals("")&& NO_CHG==false) {  	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		     	if(!oldValue.equals("")|| !newValue.equals("")&& NO_CHG==false) {  	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 		     	if(!changedAttr.contains("passerelle"))changedAttr.add("passerelle");	}
 				    
 			});
 			
 		    mac.textProperty().addListener((observable, oldValue, newValue) -> {
-		    	if(!oldValue.equals("") && !newValue.equals("")&& NO_CHG==false) {   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		    	if(!oldValue.equals("") || !newValue.equals("")&& NO_CHG==false) {   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 					
 		    	if(!changedAttr.contains("mac"))changedAttr.add("mac");	   }
 			});
 
 		    cheminfxm.textProperty().addListener((observable, oldValue, newValue) -> {
-		    	if(!oldValue.equals("") && !newValue.equals("")&& NO_CHG==false) {   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		    	if(!oldValue.equals("") || !newValue.equals("")&& NO_CHG==false) {   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 					
 		    	if(!changedAttr.contains("cheminfxm"))changedAttr.add("cheminfxm");	   }
 			});
 		    cheminrdf.textProperty().addListener((observable, oldValue, newValue) -> {
-		    	if(!oldValue.equals("") && !newValue.equals("")&& NO_CHG==false) {   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		    	if(!oldValue.equals("") || !newValue.equals("")&& NO_CHG==false) {   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 					
 		    	if(!changedAttr.contains("cheminrdf"))changedAttr.add("cheminrdf");	   }
 			});
 		    vrsBD.textProperty().addListener((observable, oldValue, newValue) -> {
-		    	if(!oldValue.equals("") && !newValue.equals("")&& NO_CHG==false) {   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		    	if(!oldValue.equals("") || !newValue.equals("")&& NO_CHG==false) {   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 					
 		    	if(!changedAttr.contains("versionBDD"))changedAttr.add("versionBDD");	   }
 			});
 		    typeBD.textProperty().addListener((observable, oldValue, newValue) -> {
-		    	if(!oldValue.equals("") && !newValue.equals("")&& NO_CHG==false) {   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		    	if(!oldValue.equals("") || !newValue.equals("")&& NO_CHG==false) {   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 					
 		    	if(!changedAttr.contains("typeBDD"))changedAttr.add("typeBDD");	   }
 			});
 		    cheminBD.textProperty().addListener((observable, oldValue, newValue) -> {
-		    	if(!oldValue.equals("") && !newValue.equals("")&& NO_CHG==false) {   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
+		    	if(!oldValue.equals("") || !newValue.equals("")&& NO_CHG==false) {   	 System.out.println("textfield changed from " + oldValue + " to " + newValue);
 					
 		    	if(!changedAttr.contains("cheminBDD"))changedAttr.add("cheminBDD");	   }
 			});
@@ -1198,7 +1198,7 @@ private boolean NO_CHG=true;
     	
     	
     }
-   void majMenuButton (ObservableMap<String,Server> map,MenuButton button) {
+   void majMenuButton (ObservableMap<String,Server> map,MenuButton button) throws NullPointerException{
 	   MenuItem m;
 		ObservableMap<String,MenuItem> menuitem =FXCollections.observableHashMap();
 		for(Server serv :map.values() ) {
@@ -1211,7 +1211,7 @@ private boolean NO_CHG=true;
     		  showinfoPane.setVisible(true);
     		   formulairepane.setVisible(false);
     		   searchpane.setVisible(false);
-    		   details.setVisible(false);
+    	details.setVisible(false);
     	SrvnameActif=((MenuItem) e.getSource()).getText(); 
         configPane.setVisible(false);
  	     servername.setText(((MenuItem) e.getSource()).getText());
@@ -1424,7 +1424,7 @@ private boolean NO_CHG=true;
    void enregistrer(ActionEvent event) {
 	   String query="";
 	   if(isAS==true) {
-		   query = " insert into server (servername,server,memoire,cpu,cartevideo,mvci,scsi,cddvd,disquedur,disquette,adaptateurres"
+		   query = " insert into server (servername,memoire,cpu,cartevideo,mvci,scsi,cddvd,disquedur,disquette,adaptateurres"
 		   		+    ",os,ipv4,ipv4m,dns,ipv6,ipv6m,mac,dateinstalation,versionOs,passerelle,"
 		   		+ "description,cheminfxm,typeserver,cheminrdf,disquedur2)"
      		        + " values (?,?,?,?,?,?,?,?,?,?"
@@ -1469,14 +1469,20 @@ private boolean NO_CHG=true;
 	      	  ps.setString (15, ipv66);
 	      	  ps.setString (16, masqipv6);
 	      	  ps.setString (17, adressePhysique);
-	      	  ps.setDate(18,java.sql.Date.valueOf(dat));
+	      if(dat!=null) ps.setDate(18,java.sql.Date.valueOf(dat));
+	      else ps.setDate(18,null);
 	      	  ps.setString (19, versio);
 	      	  ps.setString(20,psrl);
 	      	  ps.setString(21,descriptionf.getText());
 	      	 ps.setString (25, disqdr2);
 		   if(isAS==true)
-		   { ps.setString (22,cheminfmxf.getText()); ps.setString (24,cheminrdff.getText());AS.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("AS"),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio), new SimpleStringProperty(dat.getYear()+"/"+dat.getMonthValue()+"/"+dat.getDayOfMonth())
+		   {ps.setString (22,cheminfmxf.getText()); ps.setString (24,cheminrdff.getText());
+		   if (dat!=null) 
+		   AS.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("AS"),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio), new SimpleStringProperty(dat.getYear()+"/"+dat.getMonthValue()+"/"+dat.getDayOfMonth())
 		   , new SimpleStringProperty(ipv44),new SimpleStringProperty(masqipv4),new SimpleStringProperty( ipv66), new SimpleStringProperty(masqipv6),new SimpleStringProperty( descriptionf.getText()),new SimpleStringProperty(vm),new SimpleStringProperty(cntrlr),new SimpleStringProperty(lctcd),new SimpleStringProperty(disqdr1),new SimpleStringProperty(disqdr2),new SimpleStringProperty(lectdisq),new SimpleStringProperty(adptrs), new SimpleStringProperty(dnns),new SimpleStringProperty(psrl),new SimpleStringProperty(adressePhysique),new SimpleStringProperty(cheminfmxf.getText()), new SimpleStringProperty(cheminrdff.getText())));
+		   else 
+			   AS.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("AS"),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio),null
+					   , new SimpleStringProperty(ipv44),new SimpleStringProperty(masqipv4),new SimpleStringProperty( ipv66), new SimpleStringProperty(masqipv6),new SimpleStringProperty( descriptionf.getText()),new SimpleStringProperty(vm),new SimpleStringProperty(cntrlr),new SimpleStringProperty(lctcd),new SimpleStringProperty(disqdr1),new SimpleStringProperty(disqdr2),new SimpleStringProperty(lectdisq),new SimpleStringProperty(adptrs), new SimpleStringProperty(dnns),new SimpleStringProperty(psrl),new SimpleStringProperty(adressePhysique),new SimpleStringProperty(cheminfmxf.getText()), new SimpleStringProperty(cheminrdff.getText())));
 		   majMenuButton(AS, ASshow);
 		   ps.setString(23,"AS");
 			 ps.setString (25, disqdr2);}
