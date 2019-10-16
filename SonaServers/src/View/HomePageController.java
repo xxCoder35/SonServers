@@ -393,7 +393,7 @@ private boolean NO_CHG=true;
 	else if(DB.containsKey(SrvnameActif)) {serv= DB.get(SrvnameActif); isDB=true;}
 	else { serv= others.get(SrvnameActif);}
 	
-	 System.out.println("****"+NO_CHG);
+	
 	for (String att:changedAttr)
 	  { System.out.println(" xx" +att);
 	 
