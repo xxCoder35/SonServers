@@ -409,6 +409,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
+            <Label fx:id="updatephrase" layoutX="6.0" layoutY="104.0" prefHeight="17.0" prefWidth="299.0" text="Dernière mise à jour" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="formulairepane" layoutX="404.0" layoutY="54.0" prefHeight="621.0" prefWidth="706.0" visible="false">
