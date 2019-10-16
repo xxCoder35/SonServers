@@ -355,7 +355,8 @@ private boolean NO_CHG=true;
   @FXML
   void modifierServ(ActionEvent event) {
        servername.setEditable(true);
-	
+	   cheminfxm.setEditable(true);
+	   cheminrdf.setEditable(true);
 	    memoire.setEditable(true);
 	    cpu.setEditable(true);
 	    cartevideo.setEditable(true);
@@ -378,7 +379,7 @@ private boolean NO_CHG=true;
 	    osCB.setVisible(true);
 	    osCB.setValue(osserver.getText());
 	    maj.setVisible(true);
-	     }
+	    changedAttr.clear();}
 
   @FXML
   void Confirmermaj(ActionEvent event) {
@@ -392,9 +393,10 @@ private boolean NO_CHG=true;
 	else if(DB.containsKey(SrvnameActif)) {serv= DB.get(SrvnameActif); isDB=true;}
 	else { serv= others.get(SrvnameActif);}
 	
-	
+	 System.out.println("****"+NO_CHG);
 	for (String att:changedAttr)
 	  { System.out.println(" xx" +att);
+	 
 		  switch(att)
 		  {
 		  case "description":
@@ -481,7 +483,7 @@ private boolean NO_CHG=true;
 		  {
 			  if(cddvd.getText().compareTo(serv.getCDDVD().get())!=0)
 			  {
-				  SQL=SQL+"cddvd='"+scsi.getText()+"',";
+				  SQL=SQL+"cddvd='"+cddvd.getText()+"',";
 				  if(isAS==true) AS.get(serv.getNomS()).setCDDVD(new SimpleStringProperty(cddvd.getText()));
 				  else if(isDB==true) DB.get(serv.getNomS()).setCDDVD(new SimpleStringProperty(cddvd.getText()));
 				  else others.get(serv.getNomS()).setCDDVD(new SimpleStringProperty(cddvd.getText()));
@@ -501,7 +503,7 @@ private boolean NO_CHG=true;
 		  case "disquedur2": {
 			  if(disquedur3.getText().compareTo(serv.getDD2().get())!=0)
 			  {
-				  SQL=SQL+"disquedur2='"+disquedur2.getText()+"',";
+				  SQL=SQL+"disquedur2='"+disquedur3.getText()+"',";
 				  if(isAS==true) AS.get(serv.getNomS()).setDD2(new SimpleStringProperty(disquedur3.getText()));
 				  else if(isDB==true) DB.get(serv.getNomS()).setDD2(new SimpleStringProperty(disquedur3.getText()));
 				  else others.get(serv.getNomS()).setDD2(new SimpleStringProperty(disquedur3.getText()));
@@ -635,9 +637,9 @@ private boolean NO_CHG=true;
 			  
 		  }
 		  break;
-		  case "cheminfmx" :{ 
+		  case "cheminfxm" :{ 
 				
-			  if(cheminf1.getText().compareTo(serv.getVersionOS().get())!=0)
+			  if(cheminfxm.getText().compareTo(serv.getCheminfmx().get())!=0)
 		  {
 			  SQL=SQL+"cheminfmx='"+cheminfxm.getText()+"',";
 			  if(isAS==true) AS.get(serv.getNomS()).setCheminfmx(new SimpleStringProperty(cheminfxm.getText()));
@@ -1067,7 +1069,8 @@ private boolean NO_CHG=true;
    
 	}
     @FXML
-    void shwDetails(ActionEvent event) {  	
+    void shwDetails(ActionEvent event) {  
+    	System.out.print(isAS+"jjjjjjjjjjjjjjj");
       details.setVisible(true);
       if(isAS==true) {detailAS.setVisible(true);detailDB.setVisible(false); }
       else if(isDB==true) {detailAS.setVisible(false);detailDB.setVisible(true);}
@@ -1078,14 +1081,27 @@ private boolean NO_CHG=true;
     	MenuItem m;
     	for(Server serv :AS.values() ) {
     		m=new MenuItem(serv.getNomS());m.addEventHandler(ActionEvent.ACTION,(e) -> {
-    			 if(((MenuItem) e.getSource()).getText().equals(previous_serv) || previous_serv.equals("init")) {
-        			 NO_CHG=true; 
+    			 if(!((MenuItem) e.getSource()).getText().equals(previous_serv) || previous_serv.equals("init")) {
+        			 NO_CHG=true; previous_serv=((MenuItem) e.getSource()).getText();
         		 }
         		 else {NO_CHG=false;previous_serv=((MenuItem) e.getSource()).getText();}
-    	     SrvnameActif=((MenuItem) e.getSource()).getText(); 
-    		
+    	   
+    			 SrvnameActif=((MenuItem) e.getSource()).getText(); 
+    		System.out.println("===="+SrvnameActif);
     	     isAS=true;
     	     isDB=false;
+    	     String sql="SELECT userid,max(datechange) FROM sonatrach_servers.historique where nomserver=?" ;
+    	     
+			try(Connection conn=DBconnection.getConnection();PreparedStatement ps=conn.prepareStatement(sql);){
+    	    	 ps.setString(1,((MenuItem) e.getSource()).getText());
+    	    	 ResultSet rs=ps.executeQuery();
+    	      if(rs.next())   updatephrase.setText("Dernière mise à jour à " +rs.getString("max(datechange)")+" Par "+rs.getString("userid"));
+    	   updatephrase.setUnderline(true);
+			rs.close();} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+    	
     	     servername.setText(((MenuItem) e.getSource()).getText());
     	     cpu.setText(AS.get(((MenuItem) e.getSource()).getText()).getCPU().get());
     	     memoire.setText(AS.get(((MenuItem) e.getSource()).getText()).getMemoire().get());
@@ -1134,6 +1150,18 @@ private boolean NO_CHG=true;
         	      configPane.setVisible(false);
         	      details.setVisible(false);
     	     SrvnameActif=((MenuItem) e.getSource()).getText();
+    	     String sql="SELECT userid,max(datechange) FROM sonatrach_servers.historique where nomserver=?" ;
+    	     
+ 			try(Connection conn=DBconnection.getConnection();PreparedStatement ps=conn.prepareStatement(sql);){
+     	    	 ps.setString(1,((MenuItem) e.getSource()).getText());
+     	    	 ResultSet rs=ps.executeQuery();
+     	      if(rs.next())   updatephrase.setText("Dernière mise à jour à " +rs.getString("max(datechange)")+" Par "+rs.getString("userid"));
+     	   updatephrase.setUnderline(true);
+ 			rs.close();} catch (SQLException e1) {
+ 				// TODO Auto-generated catch block
+ 				e1.printStackTrace();
+ 			}
+     	
        	     servername.setText(((MenuItem) e.getSource()).getText());
        	 memoire.setText(DB.get(((MenuItem) e.getSource()).getText()).getMemoire().get());
    	     ipv4.setText(DB.get(((MenuItem) e.getSource()).getText()).getIpv4a().get()+"/"+DB.get(((MenuItem) e.getSource()).getText()).getIpv4m().get());
@@ -1183,7 +1211,18 @@ private boolean NO_CHG=true;
     	     servername.setText(((MenuItem) e.getSource()).getText());
     	     cpu.setText(others.get(((MenuItem) e.getSource()).getText()).getCPU().get());
     	     memoire.setText(others.get(((MenuItem) e.getSource()).getText()).getMemoire().get());
-    	    
+    	     String sql="SELECT userid,max(datechange) FROM sonatrach_servers.historique where nomserver=?" ;
+    	     
+ 			try(Connection conn=DBconnection.getConnection();PreparedStatement ps=conn.prepareStatement(sql);){
+     	    	 ps.setString(1,((MenuItem) e.getSource()).getText());
+     	    	 ResultSet rs=ps.executeQuery();
+     	      if(rs.next())   updatephrase.setText("Dernière mise à jour à " +rs.getString("max(datechange)")+" Par "+rs.getString("userid"));
+     	   updatephrase.setUnderline(true);
+ 			rs.close();} catch (SQLException e1) {
+ 				// TODO Auto-generated catch block
+ 				e1.printStackTrace();
+ 			}
+     	
     	     ipv4.setText(others.get(((MenuItem) e.getSource()).getText()).getIpv4a().get()+"/"+others.get(((MenuItem) e.getSource()).getText()).getIpv4m().get());
     	     ipv6.setText(others.get(((MenuItem) e.getSource()).getText()).getIpv6a().get()+"/"+others.get(((MenuItem) e.getSource()).getText()).getIpv6m().get());
     	     osserver.setText(others.get(((MenuItem) e.getSource()).getText()).getServerOS().get());
@@ -1225,11 +1264,26 @@ private boolean NO_CHG=true;
 		for(Server serv :map.values() ) {
     	 m=new MenuItem(serv.getNomS());
     	 m.addEventHandler(ActionEvent.ACTION,(e) -> {
-    		 if(((MenuItem) e.getSource()).getText().equals(previous_serv) || previous_serv.equals("init")) {
+    		 if(!((MenuItem) e.getSource()).getText().equals(previous_serv) || previous_serv.equals("init")) {
     			 NO_CHG=true; 
+    			 previous_serv=((MenuItem) e.getSource()).getText();
     		 }
     		 else {NO_CHG=false;previous_serv=((MenuItem) e.getSource()).getText();}
-    		  showinfoPane.setVisible(true);
+    		 String sql="SELECT userid,max(datechange) FROM sonatrach_servers.historique where nomserver=?" ;
+    	     
+ 			try(Connection conn=DBconnection.getConnection();PreparedStatement ps=conn.prepareStatement(sql);){
+     	    	 ps.setString(1,((MenuItem) e.getSource()).getText());
+     	    	 ResultSet rs=ps.executeQuery();
+     	      if(rs.next())   updatephrase.setText("Dernière mise à jour à " +rs.getString("max(datechange)")+" Par "+rs.getString("userid"));
+     	   updatephrase.setUnderline(true);
+ 			rs.close();} catch (SQLException e1) {
+ 				// TODO Auto-generated catch block
+ 				e1.printStackTrace();
+ 			}
+     	
+    		 
+    		 
+    		 showinfoPane.setVisible(true);
     		   formulairepane.setVisible(false);
     		   searchpane.setVisible(false);
     	details.setVisible(false);
@@ -1298,7 +1352,7 @@ private boolean NO_CHG=true;
    @FXML
    void addDB(ActionEvent event) {
 	   isAS=false;
-     isDB=true;
+       isDB=true;
     
      showinfoPane.setVisible(false);
       configPane.setVisible(false);
@@ -1517,12 +1571,14 @@ private boolean NO_CHG=true;
 		   if (dat!=null)  DB.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("DB"),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio), new SimpleStringProperty(dat.getYear()+"/"+dat.getMonthValue()+"/"+dat.getDayOfMonth())
 				   , new SimpleStringProperty(ipv44),new SimpleStringProperty(masqipv4),new SimpleStringProperty( ipv66), new SimpleStringProperty(masqipv6),new SimpleStringProperty( descriptionf.getText()),new SimpleStringProperty(vm),new SimpleStringProperty(cntrlr),new SimpleStringProperty(lctcd),new SimpleStringProperty(disqdr1),new SimpleStringProperty(disqdr2),new SimpleStringProperty(lectdisq),new SimpleStringProperty(adptrs), new SimpleStringProperty(dnns),new SimpleStringProperty(psrl),new SimpleStringProperty(adressePhysique),new SimpleStringProperty(typeBDDf.getText()),
 					new SimpleStringProperty(versionBDDf.getText()),new SimpleStringProperty(cheminBDf.getText())));
-		   else DB.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("DB"),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio), new SimpleStringProperty(dat.getYear()+"/"+dat.getMonthValue()+"/"+dat.getDayOfMonth())
+		   else DB.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("DB"),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio), new SimpleStringProperty(null)
 				   , new SimpleStringProperty(ipv44),new SimpleStringProperty(masqipv4),new SimpleStringProperty( ipv66), new SimpleStringProperty(masqipv6),new SimpleStringProperty( descriptionf.getText()),new SimpleStringProperty(vm),new SimpleStringProperty(cntrlr),new SimpleStringProperty(lctcd),new SimpleStringProperty(disqdr1),new SimpleStringProperty(disqdr2),new SimpleStringProperty(lectdisq),new SimpleStringProperty(adptrs), new SimpleStringProperty(dnns),new SimpleStringProperty(psrl),new SimpleStringProperty(adressePhysique),new SimpleStringProperty(typeBDDf.getText()),
 					new SimpleStringProperty(versionBDDf.getText()),new SimpleStringProperty(cheminBDf.getText())));
 		   majMenuButton(DB, DBshow);}
 		   else {	   ps.setString (22, disqdr2);
-			others.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("autres"),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio), new SimpleStringProperty(dat.getYear()+"/"+dat.getMonthValue()+"/"+dat.getDayOfMonth())
+		   if (dat!=null)  others.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("autres"),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio), new SimpleStringProperty(dat.getYear()+"/"+dat.getMonthValue()+"/"+dat.getDayOfMonth())
+				   , new SimpleStringProperty(ipv44),new SimpleStringProperty(masqipv4),new SimpleStringProperty( ipv66), new SimpleStringProperty(masqipv6),new SimpleStringProperty( descriptionf.getText()),new SimpleStringProperty(vm),new SimpleStringProperty(cntrlr),new SimpleStringProperty(lctcd),new SimpleStringProperty(disqdr1),new SimpleStringProperty(disqdr2),new SimpleStringProperty(lectdisq),new SimpleStringProperty(adptrs), new SimpleStringProperty(dnns),new SimpleStringProperty(psrl),new SimpleStringProperty(adressePhysique)));
+		   else others.put(nomserv,new Server(new SimpleStringProperty(nomserv),new SimpleStringProperty("autres"),new SimpleStringProperty( memoir), new SimpleStringProperty(cpuu),new SimpleStringProperty( cartvd),new SimpleStringProperty(os), new SimpleStringProperty(versio), new SimpleStringProperty(null)
 				   , new SimpleStringProperty(ipv44),new SimpleStringProperty(masqipv4),new SimpleStringProperty( ipv66), new SimpleStringProperty(masqipv6),new SimpleStringProperty( descriptionf.getText()),new SimpleStringProperty(vm),new SimpleStringProperty(cntrlr),new SimpleStringProperty(lctcd),new SimpleStringProperty(disqdr1),new SimpleStringProperty(disqdr2),new SimpleStringProperty(lectdisq),new SimpleStringProperty(adptrs), new SimpleStringProperty(dnns),new SimpleStringProperty(psrl),new SimpleStringProperty(adressePhysique)));
 		   majMenuButton(others, othersShow);}
 		
