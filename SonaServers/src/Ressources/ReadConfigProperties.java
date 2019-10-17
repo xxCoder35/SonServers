@@ -32,7 +32,7 @@ public class ReadConfigProperties {
 			try {
 				InputStream input=ReadConfigProperties.class.getResourceAsStream(filename);
 				
-				OutputStream out=new FileOutputStream(ReadConfigProperties.class.getResource(filename).getPath(),true);
+				OutputStream out=new FileOutputStream(ReadConfigProperties.class.getResourceAsStream(filename).toString(),true);
 				property.load(input);
 				property.setProperty(propretykey, newvalue);
 				property.store(out,null);

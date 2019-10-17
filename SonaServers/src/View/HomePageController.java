@@ -393,7 +393,7 @@ private boolean NO_CHG=true;
 	else if(DB.containsKey(SrvnameActif)) {serv= DB.get(SrvnameActif); isDB=true;}
 	else { serv= others.get(SrvnameActif);}
 	
-	
+
 	for (String att:changedAttr)
 	  { System.out.println(" xx" +att);
 	 
@@ -738,6 +738,7 @@ private boolean NO_CHG=true;
 				ps.setString(2,LoginController.getUserConnected());
 				ps.setObject(3,datetime);
 				ps.execute();
+		//	updatephrase.setText("Dernière mise à jour à "+datetime+" par "+LoginController.getUserConnected());
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -1087,16 +1088,19 @@ private boolean NO_CHG=true;
         		 else {NO_CHG=false;previous_serv=((MenuItem) e.getSource()).getText();}
     	   
     			 SrvnameActif=((MenuItem) e.getSource()).getText(); 
-    		System.out.println("===="+SrvnameActif);
+    	
     	     isAS=true;
     	     isDB=false;
-    	     String sql="SELECT userid,max(datechange) FROM sonatrach_servers.historique where nomserver=?" ;
+    	     String sql= 
+    	     		"select userid,datechange from historique where nomserver=?" + 
+    	     		"order by datechange desc " + 
+    	     		"limit 1" ;
     	     
 			try(Connection conn=DBconnection.getConnection();PreparedStatement ps=conn.prepareStatement(sql);){
-    	    	 ps.setString(1,((MenuItem) e.getSource()).getText());
-    	    	 ResultSet rs=ps.executeQuery();
-    	      if(rs.next())   updatephrase.setText("Dernière mise à jour à " +rs.getString("max(datechange)")+" Par "+rs.getString("userid"));
-    	   updatephrase.setUnderline(true);
+    	    ps.setString(1,((MenuItem) e.getSource()).getText());
+    	    ResultSet rs=ps.executeQuery();
+    	    if(rs.next())   updatephrase.setText("Dernière mise à jour à " +rs.getString("datechange")+" Par "+rs.getString(1));
+    	    updatephrase.setUnderline(true);
 			rs.close();} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -1150,13 +1154,16 @@ private boolean NO_CHG=true;
         	      configPane.setVisible(false);
         	      details.setVisible(false);
     	     SrvnameActif=((MenuItem) e.getSource()).getText();
-    	     String sql="SELECT userid,max(datechange) FROM sonatrach_servers.historique where nomserver=?" ;
-    	     
- 			try(Connection conn=DBconnection.getConnection();PreparedStatement ps=conn.prepareStatement(sql);){
-     	    	 ps.setString(1,((MenuItem) e.getSource()).getText());
-     	    	 ResultSet rs=ps.executeQuery();
-     	      if(rs.next())   updatephrase.setText("Dernière mise à jour à " +rs.getString("max(datechange)")+" Par "+rs.getString("userid"));
-     	   updatephrase.setUnderline(true);
+    	    String sql= "select userid,datechange from historique where nomserver=?" + 
+	     		"order by datechange desc " + 
+	     		"limit 1" ;
+	     
+		try(Connection conn=DBconnection.getConnection();PreparedStatement ps=conn.prepareStatement(sql);){
+	    ps.setString(1,((MenuItem) e.getSource()).getText());
+	    ResultSet rs=ps.executeQuery();
+	    if(rs.next())   updatephrase.setText("Dernière mise à jour à " +rs.getString("datechange")+" Par "+rs.getString(1));
+	    updatephrase.setUnderline(true);
+
  			rs.close();} catch (SQLException e1) {
  				// TODO Auto-generated catch block
  				e1.printStackTrace();
@@ -1211,12 +1218,16 @@ private boolean NO_CHG=true;
     	     servername.setText(((MenuItem) e.getSource()).getText());
     	     cpu.setText(others.get(((MenuItem) e.getSource()).getText()).getCPU().get());
     	     memoire.setText(others.get(((MenuItem) e.getSource()).getText()).getMemoire().get());
-    	     String sql="SELECT userid,max(datechange) FROM sonatrach_servers.historique where nomserver=?" ;
-    	     
+    	     String sql= "select userid,datechange from historique where nomserver=?" + 
+     	     		"order by datechange desc " + 
+     	     		"limit 1" ;
+     	     
  			try(Connection conn=DBconnection.getConnection();PreparedStatement ps=conn.prepareStatement(sql);){
-     	    	 ps.setString(1,((MenuItem) e.getSource()).getText());
-     	    	 ResultSet rs=ps.executeQuery();
-     	      if(rs.next())   updatephrase.setText("Dernière mise à jour à " +rs.getString("max(datechange)")+" Par "+rs.getString("userid"));
+     	    ps.setString(1,((MenuItem) e.getSource()).getText());
+     	    ResultSet rs=ps.executeQuery();
+     	    if(rs.next())   updatephrase.setText("Dernière mise à jour à " +rs.getString("datechange")+" Par "+rs.getString(1));
+     	    updatephrase.setUnderline(true);
+
      	   updatephrase.setUnderline(true);
  			rs.close();} catch (SQLException e1) {
  				// TODO Auto-generated catch block
@@ -1269,12 +1280,16 @@ private boolean NO_CHG=true;
     			 previous_serv=((MenuItem) e.getSource()).getText();
     		 }
     		 else {NO_CHG=false;previous_serv=((MenuItem) e.getSource()).getText();}
-    		 String sql="SELECT userid,max(datechange) FROM sonatrach_servers.historique where nomserver=?" ;
-    	     
+    		 String sql="select userid,datechange from historique where nomserver=?" + 
+     	     		"order by datechange desc " + 
+     	     		"limit 1" ;
+     	     
  			try(Connection conn=DBconnection.getConnection();PreparedStatement ps=conn.prepareStatement(sql);){
-     	    	 ps.setString(1,((MenuItem) e.getSource()).getText());
-     	    	 ResultSet rs=ps.executeQuery();
-     	      if(rs.next())   updatephrase.setText("Dernière mise à jour à " +rs.getString("max(datechange)")+" Par "+rs.getString("userid"));
+     	    ps.setString(1,((MenuItem) e.getSource()).getText());
+     	    ResultSet rs=ps.executeQuery();
+     	    if(rs.next())   updatephrase.setText("Dernière mise à jour à " +rs.getString("datechange")+" Par "+rs.getString(1));
+     	    updatephrase.setUnderline(true);
+
      	   updatephrase.setUnderline(true);
  			rs.close();} catch (SQLException e1) {
  				// TODO Auto-generated catch block
